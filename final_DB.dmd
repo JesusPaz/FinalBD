@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="final_DB" id="ECC4770C-9CED-125F-AE9D-689BFF19E868" version="3.5">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 14:42:31 UTC</createdTime>
+<ownerDesignName>final_DB</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>ECC4770C-9CED-125F-AE9D-689BFF19E868</designId>
+</OSDM_Design>
