@@ -1,0 +1,257 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="63979A67-3884-0F94-DC0F-DBBB2B6D2218" name="Solicitud">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<comment>Tabla de Solicitudes</comment>
+<commentInRDBMS>Tabla de Solicitudes</commentInRDBMS>
+<generatorID>62FD2590-562B-F249-DF36-20B057286B31</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="idSolicitud" id="37549BEA-69A9-4262-5D16-7B37BEFB4CB8">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>id de la solicitud</commentInRDBMS>
+<generatorID>4D1684DC-BFF8-AB0B-E4EA-CB6C4DEC403E</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Estado" id="C1F4307C-8541-B10B-66FC-BB81A6802E57">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Estado de la Solicitud</commentInRDBMS>
+<generatorID>998C6A47-B1C3-4015-33E2-BD44B35D2B0A</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Observacion" id="B3D8CE31-45D7-D0AE-D93D-C5DF87935B5F">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Observacion de la solicitud</commentInRDBMS>
+<generatorID>4FB9CCBC-5EDF-404A-A32B-AECCB0769029</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FechaIni" id="5EE73834-445A-853B-3DD0-77A7C0B5C71C">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Fecha Inicial  de la solicitud</commentInRDBMS>
+<generatorID>04FC1E05-BF41-AFA3-B740-91ABC3F0EA44</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FechaFin" id="1B1E5676-6B87-0324-1D14-791840FEDEDC">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Fecha Final de la solicutud</commentInRDBMS>
+<generatorID>054ADC6A-0973-2687-1D63-236C30790622</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Cliente_CedulaCliente" id="10516038-65B8-0019-455D-62E94FBAB8E6">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>860645F3-FA33-8750-E07F-D5488BF9F6A8</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ADC6C4A0-9731-714C-5118-75C5514D2588" referredColumn="43B1961D-87D2-63C8-A89A-04DF8A058481"/>
+</associations>
+</Column>
+<Column name="tipoSolicitud_idTipoSolicitud" id="31DF7187-52EE-3EFC-195F-FFFB7F5F7E07">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>63F1C47F-A43E-1F94-A46B-A4E019450505</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5D7C5A94-C98A-CFE4-61DF-A9D7763493DE" referredColumn="10EA9A1A-6770-BBBC-4009-2EAF47ADAE51"/>
+</associations>
+</Column>
+<Column name="Funcionario_CedulaFuncionario" id="23A4B847-05DB-5E3A-C8E3-693BD6757466">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>9882C5C2-2AE3-AB4E-B823-B4206C766DE3</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="418A2B26-EA66-9092-3BB1-23988805569E" referredColumn="7E478C92-3D06-A3B5-3119-5C7C2B6DF480"/>
+</associations>
+</Column>
+<Column name="tipoAnomalia_idAnomalia" id="7DE30C13-FA35-5A7D-09EC-65AF12113CA6">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>FCEE9458-87A0-7033-B43D-2202ECAC12C7</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9BA44852-7C10-A43C-BCA6-B8A01037CB30" referredColumn="E15E5AAB-B2D5-E5EB-5834-72068B893BB8"/>
+</associations>
+</Column>
+<Column name="tipoProducto_idTipoProducto" id="A86A6EBF-889D-1E6C-B1E5-AB4A8DA2D671">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>942958B2-354C-8144-31CD-BEC3393A0E36</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7A2D4DAD-1580-59FA-CBE5-3857EE62A32C" referredColumn="A5A51F57-ED0C-BA5B-AFD5-A60AAB8A123F"/>
+</associations>
+</Column>
+<Column name="Producto_idProducto" id="88531418-A81B-AC23-50DD-1A0958B9DD88">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>B0D30E0D-9ED7-2D6C-2D94-DB4A6D03891E</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2FD16930-7848-D672-79C8-B552B4E35CE0" referredColumn="85D23437-F0B3-F072-9134-E9C56D30158B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4D30BAB2-E24B-DC7D-7749-74E019BDFC05" name="Solicitud_PK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>A7F3D11C-6FB4-DA3E-A798-46507E2C2CED</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="37549BEA-69A9-4262-5D16-7B37BEFB4CB8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="025B600F-9BE3-20B1-7A9A-7737D486FA56" name="Solicitud_Cliente_FK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>98D5E307-0592-6507-3EB0-38D3DD987B5C</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="10516038-65B8-0019-455D-62E94FBAB8E6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2142A323-BD66-DFF4-3C37-3931449BAFD8" name="Solicitud_tipoSolicitud_FK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>B37DB0FD-11FF-465C-92B4-82BD5AF4A38F</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="31DF7187-52EE-3EFC-195F-FFFB7F5F7E07"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0A2B1926-7787-2342-0911-AE040073C7B1" name="Solicitud_Funcionario_FK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>E2EA6FF9-CA37-2904-CEDD-4F7E6C4A8A75</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="23A4B847-05DB-5E3A-C8E3-693BD6757466"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6AD9CC3A-4C03-D5B7-E265-6E8ABAEEBC33" name="Solicitud_tipoAnomalia_FK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>B12B2262-FB27-4414-148A-E3F1C75CA419</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7DE30C13-FA35-5A7D-09EC-65AF12113CA6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="43714AB2-85CD-DE61-3AB9-AB47EA786DC1" name="Solicitud_tipoProducto_FK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>AEA5AED5-DC32-CA46-59D8-508D1332F6E5</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A86A6EBF-889D-1E6C-B1E5-AB4A8DA2D671"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2FEBDCAB-BD84-9C4C-24F3-1B8098AEC7B7" name="Solicitud_Producto_FK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>7C499B50-13B8-84B1-D556-8BCC4AEF4747</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="88531418-A81B-AC23-50DD-1A0958B9DD88"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

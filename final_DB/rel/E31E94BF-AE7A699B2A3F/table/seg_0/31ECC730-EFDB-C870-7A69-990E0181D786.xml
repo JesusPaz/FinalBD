@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="31ECC730-EFDB-C870-7A69-990E0181D786" name="Cliente">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Tabla del cliente</commentInRDBMS>
+<generatorID>58C52DA6-B213-4B0F-2F89-A4A0BACD5B59</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CedulaCliente" id="43B1961D-87D2-63C8-A89A-04DF8A058481">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Cedula del cliente</commentInRDBMS>
+<generatorID>A03E0A8D-5C38-3F5A-60F5-23584968E4AA</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nombre" id="B2F6ACC7-835A-D13C-F08E-46BC4554681B">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Nombre del cliente</commentInRDBMS>
+<generatorID>9731CA99-8288-5AAE-EC02-BF0846B2A73C</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2F0514A7-F8C1-A86D-06F9-5779F24E291A" name="Cliente_PK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>4EEF94B7-22D4-B055-C7F0-9A3DE9DB1916</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="43B1961D-87D2-63C8-A89A-04DF8A058481"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

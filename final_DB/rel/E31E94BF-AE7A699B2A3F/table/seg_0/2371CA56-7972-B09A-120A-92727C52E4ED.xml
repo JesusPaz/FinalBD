@@ -1,0 +1,55 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2371CA56-7972-B09A-120A-92727C52E4ED" name="Funcionario">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Tabla del funcionario</commentInRDBMS>
+<generatorID>8796BEF6-B7D9-FDF1-9952-1A73024FF685</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CedulaFuncionario" id="7E478C92-3D06-A3B5-3119-5C7C2B6DF480">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Cedula del funcionario</commentInRDBMS>
+<generatorID>310613CD-8A68-2FAA-41B2-3EEE0B11D09B</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nombre" id="5E843F3D-DE2C-13A3-6C35-CA14319570F4">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<comment>Nombr</comment>
+<commentInRDBMS>Nombre del funcionario</commentInRDBMS>
+<generatorID>5DB0DBCF-5C7D-87B6-ACC9-16D212B8D58C</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9B30275C-9DC1-0978-C148-AA5761A1F73C" name="Funcionario_PK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>B7358611-5FFD-5B17-90E9-E2FF9BB421C1</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7E478C92-3D06-A3B5-3119-5C7C2B6DF480"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7341A011-6C20-B642-8225-787CBDC0FB60" name="tipoSolicitud">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Tabla del tipo de Solicitud</commentInRDBMS>
+<generatorID>99FBB3D3-E084-325F-14EC-B7D01CBE0602</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="idTipoSolicitud" id="10EA9A1A-6770-BBBC-4009-2EAF47ADAE51">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Id de el tipo de solicitud</commentInRDBMS>
+<generatorID>86D51E4B-2AB1-A73A-3A31-005E53E653EC</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="36668FBB-C115-F90D-2590-48D8F31DF466">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Nombre del tipo de solicitud</commentInRDBMS>
+<generatorID>04BF810E-8BBD-D41A-66CA-55282FC87C27</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0050AEE3-600D-9788-68CD-BD8BD1EE7833" name="tipoSolicitud_PK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>9C676D32-1E85-B54C-EF0A-6ECDE96456F5</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="10EA9A1A-6770-BBBC-4009-2EAF47ADAE51"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

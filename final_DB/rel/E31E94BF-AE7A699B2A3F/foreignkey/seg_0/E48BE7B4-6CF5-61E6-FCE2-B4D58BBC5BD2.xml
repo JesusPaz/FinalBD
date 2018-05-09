@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E48BE7B4-6CF5-61E6-FCE2-B4D58BBC5BD2" containerWithKeyObject="1A73CCA9-91B2-674F-29C3-EFB156C9F2BB" localFKIndex="53635F57-5444-4070-D43A-F11FED384AE3" name="Producto_tipoProducto_FK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Relacion entre tipo  producto y producto</commentInRDBMS>
+<generatorID>258635C8-1C64-2514-A696-C109FC64FF2A</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<referredTableLongName>tipoProducto</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>03ABC688-978C-9E31-1007-43B76C4F856E</referredTableID>
+<keyObject>E5C2A458-CA62-E1C9-518E-4FA5C0B71C76</keyObject>
+<referredKeyID>E5C2A458-CA62-E1C9-518E-4FA5C0B71C76</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>idTipoProducto</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

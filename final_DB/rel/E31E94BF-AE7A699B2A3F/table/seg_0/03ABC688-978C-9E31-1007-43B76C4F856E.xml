@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="03ABC688-978C-9E31-1007-43B76C4F856E" name="tipoProducto">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Tabla del tipo de producto</commentInRDBMS>
+<generatorID>83BDEE23-0502-2036-003D-FDB20BA44BCE</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="idTipoProducto" id="A5A51F57-ED0C-BA5B-AFD5-A60AAB8A123F">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>id del tipo de producto</commentInRDBMS>
+<generatorID>AD9381BC-19A6-BB83-53CD-941E9121AFDC</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nombre" id="8EB16B74-F244-9D61-4AB4-B5B1015B7AF3">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<commentInRDBMS>Nombre del tipo de producto</commentInRDBMS>
+<generatorID>AEF0D9B9-0693-58DE-EE9E-811A8A07EC70</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E5C2A458-CA62-E1C9-518E-4FA5C0B71C76" name="tipoProducto_PK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>0D46E453-0D02-D47E-3D52-4871BC20AF93</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A5A51F57-ED0C-BA5B-AFD5-A60AAB8A123F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

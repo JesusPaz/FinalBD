@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="58C52DA6-B213-4B0F-2F89-A4A0BACD5B59" name="Cliente">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:34:29 UTC</createdTime>
+<commentInRDBMS>Tabla del cliente</commentInRDBMS>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="CedulaCliente" id="A03E0A8D-5C38-3F5A-60F5-23584968E4AA">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:34:44 UTC</createdTime>
+<commentInRDBMS>Cedula del cliente</commentInRDBMS>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nombre" id="9731CA99-8288-5AAE-EC02-BF0846B2A73C">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:35:18 UTC</createdTime>
+<commentInRDBMS>Nombre del cliente</commentInRDBMS>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4EEF94B7-22D4-B055-C7F0-9A3DE9DB1916" name="Cliente PK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:35:07 UTC</createdTime>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A03E0A8D-5C38-3F5A-60F5-23584968E4AA</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

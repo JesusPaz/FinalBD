@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="49FECDF9-9EE7-225B-D057-5D60FFC24F70" name="Producto">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:33:13 UTC</createdTime>
+<commentInRDBMS>Tabla del producto</commentInRDBMS>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="idProducto" id="DA5799F4-E558-FFEE-0071-C3C0139FC9B8">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:33:28 UTC</createdTime>
+<commentInRDBMS>id del producto</commentInRDBMS>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FechaIni" id="717F0C8A-B09C-BF8D-72EE-C5EE6BDF478B">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:33:58 UTC</createdTime>
+<commentInRDBMS>Fecha inicio del producto</commentInRDBMS>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="idTipoProducto" id="1FB7214F-06BD-34C6-DCFE-C03413690FE7">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:38:05 UTC</createdTime>
+<generatorID>258635C8-1C64-2514-A696-C109FC64FF2A</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<referedAttribute>AD9381BC-19A6-BB83-53CD-941E9121AFDC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CedulaCliente" id="17D9254B-B96E-7F7B-B177-7DECC7209C41">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:39:19 UTC</createdTime>
+<generatorID>230D9D1E-3AC6-A97B-10B4-06A9009307FC</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<referedAttribute>A03E0A8D-5C38-3F5A-60F5-23584968E4AA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="23C234D1-6D9E-1BE8-AEF7-2E1DA300CCCA" name="Producto PK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:33:50 UTC</createdTime>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>DA5799F4-E558-FFEE-0071-C3C0139FC9B8</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

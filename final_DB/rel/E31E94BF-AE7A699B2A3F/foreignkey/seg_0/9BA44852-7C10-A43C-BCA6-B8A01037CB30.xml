@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9BA44852-7C10-A43C-BCA6-B8A01037CB30" containerWithKeyObject="63979A67-3884-0F94-DC0F-DBBB2B6D2218" localFKIndex="6AD9CC3A-4C03-D5B7-E265-6E8ABAEEBC33" name="Solicitud_tipoAnomalia_FK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:50:18 UTC</createdTime>
+<generatorID>B12B2262-FB27-4414-148A-E3F1C75CA419</generatorID>
+<ownerDesignName>final_DB</ownerDesignName>
+<referredTableLongName>tipoAnomalia</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C7954F4A-4E50-0C21-8C19-176AC36E4DCE</referredTableID>
+<keyObject>707E3C9E-BBDF-7279-1D2A-765BD2CAD1F2</keyObject>
+<referredKeyID>707E3C9E-BBDF-7279-1D2A-765BD2CAD1F2</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>idAnomalia</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

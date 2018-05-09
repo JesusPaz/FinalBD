@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8796BEF6-B7D9-FDF1-9952-1A73024FF685" name="Funcionario">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:26:10 UTC</createdTime>
+<commentInRDBMS>Tabla del funcionario</commentInRDBMS>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="CedulaFuncionario" id="310613CD-8A68-2FAA-41B2-3EEE0B11D09B">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:26:39 UTC</createdTime>
+<commentInRDBMS>Cedula del funcionario</commentInRDBMS>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nombre" id="5DB0DBCF-5C7D-87B6-ACC9-16D212B8D58C">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:28:06 UTC</createdTime>
+<comment>Nombr</comment>
+<commentInRDBMS>Nombre del funcionario</commentInRDBMS>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B7358611-5FFD-5B17-90E9-E2FF9BB421C1" name="Funcionario PK">
+<createdBy>lenovo</createdBy>
+<createdTime>2018-05-09 15:27:34 UTC</createdTime>
+<ownerDesignName>final_DB</ownerDesignName>
+<engineerTo>
+<item key="E31E94BF-003B-E540-5603-AE7A699B2A3F" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>310613CD-8A68-2FAA-41B2-3EEE0B11D09B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
