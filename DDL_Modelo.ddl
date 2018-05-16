@@ -23,7 +23,13 @@ DROP TABLE tiposolicitud CASCADE CONSTRAINTS;
 
 CREATE TABLE cliente (
     cedulacliente   VARCHAR2(20 CHAR) NOT NULL,
-    nombre          VARCHAR2(40 CHAR)
+    nombre          VARCHAR2(40 CHAR),
+    fechaNacimiento DATE , 
+    direccion VARCHAR2(40 CHAR),
+    telefono VARCHAR2(40 CHAR)
+    
+    
+    
 );
 
 COMMENT ON TABLE cliente IS
@@ -39,7 +45,11 @@ ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( cedulacliente );
 
 CREATE TABLE funcionario (
     cedulafuncionario   VARCHAR2(20 CHAR) NOT NULL,
-    nombre              VARCHAR2(40 CHAR)
+    nombre              VARCHAR2(40 CHAR),
+    fechaNacimiento DATE , 
+    direccion VARCHAR2(40 CHAR),
+    telefono VARCHAR2(40 CHAR)
+    
 );
 
 COMMENT ON TABLE funcionario IS
