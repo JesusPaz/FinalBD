@@ -1,22 +1,22 @@
-CREATE OR REPLACE PACKAGE pkTipoProducto IS 
+CREATE OR REPLACE PACKAGE pkTipoProductoNivel1 IS 
 
-    PROCEDURE pInsertarTipoProducto(LidTipoProducto IN NUMBER, LNombre  IN VARCHAR2);
+    PROCEDURE pInsertar(LidTipoProducto IN NUMBER, LNombre  IN VARCHAR2);
     
-    PROCEDURE pEliminarTipoProducto(LidTipoProducto IN NUMBER);
+    PROCEDURE pEliminar(LidTipoProducto IN NUMBER);
     
-    PROCEDURE pActualizarTipoProducto(LidTipoProducto IN NUMBER, LNombre  IN VARCHAR2);
+    PROCEDURE pModificar(LidTipoProducto IN NUMBER, LNombre  IN VARCHAR2);
     
-    FUNCTION fObtenerTipoProducto(LidTipoProducto in NUMBER) RETURN TIPOPRODUCTO%rowtype;
+    FUNCTION fConsultar(LidTipoProducto in NUMBER) RETURN TIPOPRODUCTO%rowtype;
 
    
 
     
     
-    END pkTipoProducto;
+    END pkTipoProductoNivel1;
  /   
-    CREATE OR REPLACE PACKAGE BODY pkTipoProducto IS 
+    CREATE OR REPLACE PACKAGE BODY pkTipoProductoNivel1 IS 
 -- Insertar
-  PROCEDURE pInsertarTipoProducto
+  PROCEDURE pInsertar
     (LidTipoProducto NUMBER, LNombre VARCHAR2)
   IS
     BEGIN
@@ -28,11 +28,11 @@ CREATE OR REPLACE PACKAGE pkTipoProducto IS
         RAISE_APPLICATION_ERROR(-20001,'Error, este registro ya existe.');
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
-  END pInsertarTipoProducto;
+  END pInsertar;
   
   --Eliminar
   
-   PROCEDURE pEliminarTipoProducto(LidTipoProducto IN NUMBER) IS
+   PROCEDURE pEliminar(LidTipoProducto IN NUMBER) IS
     BEGIN
     DELETE FROM TIPOPRODUCTO S WHERE S.IDTIPOPRODUCTO = LidTipoProducto;
      EXCEPTION
@@ -40,10 +40,10 @@ CREATE OR REPLACE PACKAGE pkTipoProducto IS
         RAISE_APPLICATION_ERROR(-20001,'Error, no existe solicitud con ese id.');
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
-  END pEliminarTipoProducto;
+  END pEliminar;
   
   -- Actualizar
-  PROCEDURE pActualizarTipoProducto(LidTipoProducto NUMBER, LNombre VARCHAR2) IS
+  PROCEDURE pModificar(LidTipoProducto NUMBER, LNombre VARCHAR2) IS
     BEGIN
     UPDATE TIPOPRODUCTO 
     SET  IDTIPOPRODUCTO=LidTipoProducto ,NOMBRE=LNombre
@@ -55,11 +55,11 @@ CREATE OR REPLACE PACKAGE pkTipoProducto IS
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
         
-  END pActualizarTipoProducto;
+  END pModificar;
   
   
   --OBTENER
-  FUNCTION fObtenerTipoProducto(LidTipoProducto IN NUMBER) RETURN TIPOPRODUCTO%rowtype 
+  FUNCTION fConsultar(LidTipoProducto IN NUMBER) RETURN TIPOPRODUCTO%rowtype 
     IS ovTipoProducto TIPOPRODUCTO%rowtype;
     BEGIN
         SELECT * into ovTipoProducto
@@ -72,10 +72,10 @@ CREATE OR REPLACE PACKAGE pkTipoProducto IS
             WHEN OTHERS THEN 
             RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
         
-    END fObtenerTipoProducto;
+    END fConsultar;
    
   
   
-  END pkTipoProducto;
+  END pkTipoProductoNivel1;
 
    
