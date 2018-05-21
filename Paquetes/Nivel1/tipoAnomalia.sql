@@ -12,7 +12,7 @@ create or replace PACKAGE pkTipoAnomaliaNivel1 IS
 
 /
 
-create or replace PACKAGE BODY pkTipoAnomalia IS 
+create or replace PACKAGE BODY pkTipoAnomaliaNivel1 IS 
 -- Insertar
   PROCEDURE pInsertar
     (LidAnomalia NUMBER, LNombre VARCHAR2)
