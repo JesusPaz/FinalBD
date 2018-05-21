@@ -4,43 +4,43 @@
 
 
 
-CREATE OR REPLACE PACKAGE pkClientes AS -- spec
-    PROCEDURE pInsertarCliente
+CREATE OR REPLACE PACKAGE pkClientesNivel1 AS -- spec
+    PROCEDURE pInsertar
         (ivNombre VARCHAR2, ivCedula VARCHAR2, ivFechaNacimiento DATE, ivDireccion VARCHAR2 ,ivTelefono VARCHAR2);
-    PROCEDURE pEliminarCliente(iCedulaCLiente VARCHAR2);
-    PROCEDURE pActualizarCliente
+    PROCEDURE pEliminar(iCedulaCLiente VARCHAR2);
+    PROCEDURE pModificar
         (ivCedulaBuscada VARCHAR2,ivNombre VARCHAR2, ivCedulaNueva VARCHAR2, ivFechaNacimiento DATE, ivDireccion VARCHAR2 ,ivTelefono VARCHAR2);
-    FUNCTION fObtenerCliente(ivCedula);
-END pkClientes;
+    FUNCTION fConsultar(ivCedula);
+END pkClientesNivel1;
 /
-CREATE OR REPLACE PACKAGE BODY pkClientes AS -- body
+CREATE OR REPLACE PACKAGE BODY pkClientesNivel1 AS -- body
 -- Insertar
-PROCEDURE pInsertarCliente
+PROCEDURE pInsertar
         (ivNombre VARCHAR2, ivCedula VARCHAR2, ivFechaNacimiento DATE, ivDireccion VARCHAR2 ,ivTeléfono VARCHAR2)
     IS
     BEGIN
         INSERT INTO cliente
         VALUES (ivNombre, ivCedula, ivFechaNacimiento, ivDirección, ivTeléfono);
-    END pInsertarCliente;
+    END pInsertar;
 -- Eliminar
-    PROCEDURE pEliminarCliente(iCedulaCliente IN NUMBER) IS
+    PROCEDURE pEliminar(iCedulaCliente IN NUMBER) IS
     BEGIN
         DELETE FROM cliente WHERE cedula = iCedulaCliente;
-    END pEliminarCliente;
+    END pEliminar;
 -- Actualizar
-    PROCEDURE pActualizarCliente(ivCedulaBuscada VARCHAR2,ivNombre VARCHAR2, ivCedulaNueva VARCHAR2, ivFechaNacimiento DATE, ivDireccion VARCHAR2 ,ivTelefono VARCHAR2) IS
+    PROCEDURE pModificar(ivCedulaBuscada VARCHAR2,ivNombre VARCHAR2, ivCedulaNueva VARCHAR2, ivFechaNacimiento DATE, ivDireccion VARCHAR2 ,ivTelefono VARCHAR2) IS
     BEGIN
         UPDATE cliente 
         SET nombre=ivNombre, cedula=ivCedula, fechaNacimiento=ivFechaNacimiento, direccion=ivDireccion, telefono=ivTelefono
         WHERE cedula=ivCedulaBuscada;
-    END pActualizarCliente;
+    END pModificar;
 -- Obtener
-    FUNCTION fObtenerCliente(ivCedula VARCHAR2) RETURN cliente%rowtype 
+    FUNCTION fConsultar(ivCedula VARCHAR2) RETURN cliente%rowtype 
     IS ovCliente cliente%rowtype;
     BEGIN
         SELECT * into ovCliente
         FROM cliente
         WHERE cedula=ivCedula;
-    END fObtenerCliente;
+    END fConsultar;
         
-END pkClientes;
+END pkClientesNivel1;
