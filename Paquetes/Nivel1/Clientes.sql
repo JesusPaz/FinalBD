@@ -5,7 +5,7 @@ CREATE OR REPLACE PACKAGE pkClientesNivel1 AS -- spec
     PROCEDURE pEliminar(iCedulaCLiente VARCHAR2);
     PROCEDURE pModificar
         (ivCedulaBuscada VARCHAR2,ivNombre VARCHAR2, ivCedulaNueva VARCHAR2, ivFechaNacimiento DATE, ivDireccion VARCHAR2 ,ivTelefono VARCHAR2);
-    FUNCTION fConsultar(ivCedula VARCHAR2);
+    FUNCTION fConsultar(ivCedula VARCHAR2) RETURN cliente%rowtype;
 END pkClientesNivel1;
 /
 CREATE OR REPLACE PACKAGE BODY pkClientesNivel1 AS -- body
