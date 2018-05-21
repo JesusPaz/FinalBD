@@ -23,11 +23,24 @@ CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS
     INSERT INTO SOLICITUD
     VALUES (ivIdSolicitud , ivEstado ,ivObservacion ,ivFechaIni,ivFechaFin,ivIdCliente 
     ,ivTipoSolicitud ,ivIdFuncionario,ivTipoAnomalia,ivIdTipoProducto ,ivIdProducto );
+    EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN 
+        RAISE_APPLICATION_ERROR(-20001,'Error, este registro ya existe.');
+        WHEN OTHERS THEN 
+        RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
+        
   END pInsertarSolicitud;
 -- Eliminar
   PROCEDURE pEliminarSolicitud(ivIdSolicitud IN NUMBER) IS
     BEGIN
     DELETE FROM SOLICITUD S WHERE S.IDSOLICITUD = ivIdSolicitud;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN 
+        RAISE_APPLICATION_ERROR(-20001,'Error, no existe solicitud con ese id.');
+        WHEN OTHERS THEN 
+        RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
+           
+    
   END pEliminarSolicitud;
 -- Actualizar
   PROCEDURE pActualizarSolicitud(ivIdSolicitud NUMBER, ivEstado VARCHAR2,ivObservacion VARCHAR2,ivIdCliente VARCHAR2,ivIdFuncionario VARCHAR2
@@ -38,6 +51,13 @@ CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS
     ,TIPOSOLICITUD_IDTIPOSOLICITUD=ivTipoSolicitud ,FUNCIONARIO_CEDULAFUNCIONARIO=ivIdFuncionario,TIPOANOMALIA_IDANOMALIA=ivTipoAnomalia
     ,TIPOPRODUCTO_IDTIPOPRODUCTO=ivIdTipoProducto ,PRODUCTO_IDPRODUCTO=ivIdProducto 
     WHERE IDSOLICITUD=ivIdSolicitud;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN 
+        RAISE_APPLICATION_ERROR(-20001,'Error, no existe solicitud con ese id.');
+        WHEN OTHERS THEN 
+        RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
+        
+    
   END pActualizarSolicitud;
   FUNCTION fObtenerSolicitud(ivIdSolicitud IN NUMBER) RETURN SOLICITUD%rowtype 
     IS ovSolicitud SOLICITUD%rowtype;
@@ -45,5 +65,11 @@ CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS
         SELECT * into ovSolicitud
         FROM Solicitud
         WHERE IDSOLICITUD=ivIdSolicitud;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN 
+            RAISE_APPLICATION_ERROR(-20001,'Error, no existe solicitud con ese id.');
+            WHEN OTHERS THEN 
+            RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
+        
     END fObtenerSolicitud;
 END pkSolicitudNivel1;
