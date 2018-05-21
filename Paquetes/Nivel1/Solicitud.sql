@@ -1,21 +1,21 @@
 
 CREATE OR REPLACE PACKAGE pkSolicitudNivel1 IS 
 
-    PROCEDURE pInsertarSolicitud(ivIdSolicitud IN NUMBER, ivEstado IN VARCHAR2,ivObservacion IN VARCHAR2,ivIdCliente IN VARCHAR2,ivIdFuncionario IN VARCHAR2
+    PROCEDURE pInsertar(ivIdSolicitud IN NUMBER, ivEstado IN VARCHAR2,ivObservacion IN VARCHAR2,ivIdCliente IN VARCHAR2,ivIdFuncionario IN VARCHAR2
     ,ivFechaIni IN DATE,ivFechaFin IN DATE,ivTipoSolicitud IN NUMBER,ivTipoAnomalia IN NUMBER,ivIdTipoProducto IN NUMBER,ivIdProducto IN NUMBER );
    
-    PROCEDURE pEliminarSolicitud(ivIdSolicitud IN NUMBER);
+    PROCEDURE pEliminar(ivIdSolicitud IN NUMBER);
     
-    PROCEDURE pActualizarSolicitud(ivIdSolicitud IN NUMBER, ivEstado IN VARCHAR2,ivObservacion IN VARCHAR2,ivIdCliente IN VARCHAR2,ivIdFuncionario IN VARCHAR2
+    PROCEDURE pModificar(ivIdSolicitud IN NUMBER, ivEstado IN VARCHAR2,ivObservacion IN VARCHAR2,ivIdCliente IN VARCHAR2,ivIdFuncionario IN VARCHAR2
     ,ivFechaIni IN DATE,ivFechaFin IN DATE,ivTipoSolicitud IN NUMBER,ivTipoAnomalia IN NUMBER,ivIdTipoProducto IN NUMBER,ivIdProducto IN NUMBER );
    
-    FUNCTION fObtenerSolicitud(ivIdSolicitud in NUMBER) RETURN SOLICITUD%rowtype;
+    FUNCTION fConsultar(ivIdSolicitud in NUMBER) RETURN SOLICITUD%rowtype;
     
 END pkSolicitudNivel1;
 /
 CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS 
 -- Insertar
-  PROCEDURE pInsertarSolicitud
+  PROCEDURE pInsertar
     (ivIdSolicitud NUMBER, ivEstado VARCHAR2,ivObservacion VARCHAR2,ivIdCliente VARCHAR2,ivIdFuncionario VARCHAR2
     ,ivFechaIni DATE,ivFechaFin DATE,ivTipoSolicitud NUMBER,ivTipoAnomalia NUMBER,ivIdTipoProducto NUMBER,ivIdProducto NUMBER )
   IS
@@ -29,9 +29,9 @@ CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
         
-  END pInsertarSolicitud;
+  END pInsertar;
 -- Eliminar
-  PROCEDURE pEliminarSolicitud(ivIdSolicitud IN NUMBER) IS
+  PROCEDURE pEliminar(ivIdSolicitud IN NUMBER) IS
     BEGIN
     DELETE FROM SOLICITUD S WHERE S.IDSOLICITUD = ivIdSolicitud;
     EXCEPTION
@@ -41,9 +41,9 @@ CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
            
     
-  END pEliminarSolicitud;
+  END pEliminar;
 -- Actualizar
-  PROCEDURE pActualizarSolicitud(ivIdSolicitud NUMBER, ivEstado VARCHAR2,ivObservacion VARCHAR2,ivIdCliente VARCHAR2,ivIdFuncionario VARCHAR2
+  PROCEDURE pModificar(ivIdSolicitud NUMBER, ivEstado VARCHAR2,ivObservacion VARCHAR2,ivIdCliente VARCHAR2,ivIdFuncionario VARCHAR2
     ,ivFechaIni DATE,ivFechaFin DATE,ivTipoSolicitud NUMBER,ivTipoAnomalia NUMBER,ivIdTipoProducto NUMBER,ivIdProducto NUMBER ) IS
     BEGIN
     UPDATE SOLICITUD 
@@ -55,11 +55,10 @@ CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS
         WHEN NO_DATA_FOUND THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error, no existe solicitud con ese id.');
         WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
-        
-    
-  END pActualizarSolicitud;
-  FUNCTION fObtenerSolicitud(ivIdSolicitud IN NUMBER) RETURN SOLICITUD%rowtype 
+        RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);    
+  END pModificar;
+  
+  FUNCTION fConsultar(ivIdSolicitud IN NUMBER) RETURN SOLICITUD%rowtype 
     IS ovSolicitud SOLICITUD%rowtype;
     BEGIN
         SELECT * into ovSolicitud
@@ -71,5 +70,5 @@ CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS
             WHEN OTHERS THEN 
             RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
         
-    END fObtenerSolicitud;
+    END fConsultar;
 END pkSolicitudNivel1;
