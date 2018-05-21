@@ -1,16 +1,11 @@
 
-
-
-
-
-
 CREATE OR REPLACE PACKAGE pkClientesNivel1 AS -- spec
     PROCEDURE pInsertar
         (ivNombre VARCHAR2, ivCedula VARCHAR2, ivFechaNacimiento DATE, ivDireccion VARCHAR2 ,ivTelefono VARCHAR2);
     PROCEDURE pEliminar(iCedulaCLiente VARCHAR2);
     PROCEDURE pModificar
         (ivCedulaBuscada VARCHAR2,ivNombre VARCHAR2, ivCedulaNueva VARCHAR2, ivFechaNacimiento DATE, ivDireccion VARCHAR2 ,ivTelefono VARCHAR2);
-    FUNCTION fConsultar(ivCedula);
+    FUNCTION fConsultar(ivCedula VARCHAR2);
 END pkClientesNivel1;
 /
 CREATE OR REPLACE PACKAGE BODY pkClientesNivel1 AS -- body
