@@ -1,18 +1,18 @@
 CREATE OR REPLACE PACKAGE pkFuncionarioNivel1 IS 
 
-    PROCEDURE pInsertarFuncionario(cedulaFuncionario IN VARCHAR2, nombre IN VARCHAR2, fechaNacimiento IN DATE, direccion IN VARCHAR2,telefono IN VARCHAR2  );
+    PROCEDURE pInsertar(cedulaFuncionario IN VARCHAR2, nombre IN VARCHAR2, fechaNacimiento IN DATE, direccion IN VARCHAR2,telefono IN VARCHAR2  );
    
-    PROCEDURE pEliminarFuncionario(cedulaFuncionario IN VARCHAR2);
+    PROCEDURE pEliminar(cedulaFuncionario IN VARCHAR2);
     
-    PROCEDURE pActualizarFuncionario(cedulaFuncionario IN VARCHAR2, inombre IN VARCHAR2, fechaNacimiento IN DATE, direccion IN VARCHAR2,telefono IN VARCHAR2 );
+    PROCEDURE pModificar(cedulaFuncionario IN VARCHAR2, inombre IN VARCHAR2, fechaNacimiento IN DATE, direccion IN VARCHAR2,telefono IN VARCHAR2 );
    
-    FUNCTION fObtenerFuncionario(cedulaFuncionario IN VARCHAR2) RETURN FUNCIONARIO%rowtype;
+    FUNCTION fConsultar(cedulaFuncionario IN VARCHAR2) RETURN FUNCIONARIO%rowtype;
     
 END pkFuncionarioNivel1;
 /
 CREATE OR REPLACE PACKAGE BODY pkFuncionarioNivel1 IS 
 -- Insertar
-  PROCEDURE pInsertarFuncionario
+  PROCEDURE pInsertar
     (cedulaFuncionario IN VARCHAR2, nombre IN VARCHAR2, fechaNacimiento IN DATE, direccion IN VARCHAR2,telefono IN VARCHAR2)
   IS
     BEGIN
@@ -23,19 +23,19 @@ CREATE OR REPLACE PACKAGE BODY pkFuncionarioNivel1 IS
         RAISE_APPLICATION_ERROR(-20001,'Error, este registro ya existe.');
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
-  END pInsertarFuncionario;
+  END pInsertar;
 -- Eliminar
-  PROCEDURE pEliminarFuncionario(cedulaFuncionario IN VARCHAR2) IS
+  PROCEDURE pEliminar(cedulaFuncionario IN VARCHAR2) IS
     BEGIN
     DELETE FROM FUNCIONARIO T WHERE T.CEDULAFUNCIONARIO= cedulaFuncionario;
      EXCEPTION
         WHEN NO_DATA_FOUND THEN 
-        RAISE_APPLICATION_ERROR(-20001,'Error, no existe un funcionario con esa cédula.');
+        RAISE_APPLICATION_ERROR(-20001,'Error, no existe un funcionario con esa cÃ©dula.');
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
-  END pEliminarFuncionario;
+  END pEliminar;
 -- Actualizar
-  PROCEDURE pActualizarFuncionario(cedulaFuncionario IN VARCHAR2, inombre IN VARCHAR2, fechaNacimiento IN DATE, direccion IN VARCHAR2,telefono IN VARCHAR2)
+  PROCEDURE pModificar(cedulaFuncionario IN VARCHAR2, inombre IN VARCHAR2, fechaNacimiento IN DATE, direccion IN VARCHAR2,telefono IN VARCHAR2)
   IS
     BEGIN
     UPDATE FUNCIONARIO 
@@ -43,12 +43,12 @@ CREATE OR REPLACE PACKAGE BODY pkFuncionarioNivel1 IS
     WHERE CEDULAFUNCIONARIO=cedulaFuncionario;
     EXCEPTION
         WHEN NO_DATA_FOUND THEN 
-        RAISE_APPLICATION_ERROR(-20001,'Error,no existe un funcionario con esa cédula.');
+        RAISE_APPLICATION_ERROR(-20001,'Error,no existe un funcionario con esa cÃ©dula.');
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
-  END pActualizarFuncionario;
+  END pModificar;
   
-  FUNCTION fObtenerFuncionario(cedulaFuncionario IN VARCHAR2) RETURN FUNCIONARIO%rowtype 
+  FUNCTION fConsultar(cedulaFuncionario IN VARCHAR2) RETURN FUNCIONARIO%rowtype 
     IS ovFuncionario FUNCIONARIO%rowtype;
     BEGIN
         SELECT * into ovFuncionario
@@ -56,10 +56,10 @@ CREATE OR REPLACE PACKAGE BODY pkFuncionarioNivel1 IS
         WHERE CEDULAFUNCIONARIO=cedulaFuncionario;
         EXCEPTION
         WHEN NO_DATA_FOUND THEN 
-        RAISE_APPLICATION_ERROR(-20001,'Error,no existe un funcionario con esa cédula.');
+        RAISE_APPLICATION_ERROR(-20001,'Error,no existe un funcionario con esa cÃ©dula.');
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
-    END fObtenerFuncionario;
+    END fConsultar;
 
 
 END pkFuncionarioNivel1;
