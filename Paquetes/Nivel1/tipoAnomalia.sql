@@ -1,20 +1,20 @@
-create or replace PACKAGE pkTipoAnomalia IS 
+create or replace PACKAGE pkTipoAnomaliaNivel1 IS 
 
-    PROCEDURE pInsertarAnomalia(LidAnomalia IN NUMBER, LNombre  IN VARCHAR2);
+    PROCEDURE pInsertar(LidAnomalia IN NUMBER, LNombre  IN VARCHAR2);
     
- PROCEDURE pEliminarTipoAnomalia(LidAnomalia IN NUMBER);
+ PROCEDURE pEliminar(LidAnomalia IN NUMBER);
     
-    PROCEDURE pActualizarTipoAnomalia(LidAnomalia IN NUMBER, LNombre  IN VARCHAR2);
+    PROCEDURE pModificar(LidAnomalia IN NUMBER, LNombre  IN VARCHAR2);
     
-    FUNCTION fObtenerTipoAnomalia(LidAnomalia in NUMBER) RETURN TIPOANOMALIA%rowtype;
+    FUNCTION fConsultar(LidAnomalia in NUMBER) RETURN TIPOANOMALIA%rowtype;
 
- END pkTipoAnomalia;
+ END pkTipoAnomaliaNivel1;
 
 /
 
 create or replace PACKAGE BODY pkTipoAnomalia IS 
 -- Insertar
-  PROCEDURE pInsertarAnomalia
+  PROCEDURE pInsertar
     (LidAnomalia NUMBER, LNombre VARCHAR2)
   IS
     BEGIN
@@ -26,12 +26,12 @@ create or replace PACKAGE BODY pkTipoAnomalia IS
         RAISE_APPLICATION_ERROR(-20001,'Error, este registro ya existe.');
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
-  END pInsertarAnomalia;
+  END pInsertar;
 
      
   --Eliminar
   
-   PROCEDURE pEliminarTipoAnomalia(LidAnomalia IN NUMBER) IS
+   PROCEDURE pEliminar(LidAnomalia IN NUMBER) IS
     BEGIN
     DELETE FROM TIPOANOMALIA S WHERE S.IDANOMALIA = LidAnomalia;
      EXCEPTION
@@ -39,11 +39,11 @@ create or replace PACKAGE BODY pkTipoAnomalia IS
         RAISE_APPLICATION_ERROR(-20001,'Error, no existe solicitud con ese id.');
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
-  END pEliminarTipoAnomalia;
+  END pEliminar;
 
     
   -- Actualizar
-  PROCEDURE pActualizarTipoAnomalia(LidAnomalia NUMBER, LNombre VARCHAR2) IS
+  PROCEDURE pModificar(LidAnomalia NUMBER, LNombre VARCHAR2) IS
     BEGIN
     UPDATE TIPOANOMALIA 
     SET  IDANOMALIA=LidAnomalia ,NOMBRE=LNombre
@@ -55,7 +55,7 @@ create or replace PACKAGE BODY pkTipoAnomalia IS
         WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
         
-  END pActualizarTipoAnomalia;
+  END pModificar;
   
 
   
@@ -63,7 +63,7 @@ create or replace PACKAGE BODY pkTipoAnomalia IS
   
     
   --OBTENER
-  FUNCTION fObtenerTipoAnomalia(LidAnomalia IN NUMBER) RETURN TIPOANOMALIA%rowtype 
+  FUNCTION fConsultar(LidAnomalia IN NUMBER) RETURN TIPOANOMALIA%rowtype 
     IS ovTipoAnomalia TIPOANOMALIA%rowtype;
     BEGIN
         SELECT * into ovTipoAnomalia
@@ -76,8 +76,8 @@ create or replace PACKAGE BODY pkTipoAnomalia IS
             WHEN OTHERS THEN 
             RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
         
-    END fObtenerTipoAnomalia;
+    END fConsultar;
   
   
   
-  END pkTipoAnomalia;
+  END pkTipoAnomaliaNivel1;
