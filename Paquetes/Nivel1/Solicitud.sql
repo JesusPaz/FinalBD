@@ -11,6 +11,8 @@ CREATE OR REPLACE PACKAGE pkSolicitudNivel1 IS
    
     FUNCTION fConsultar(ivIdSolicitud in NUMBER) RETURN SOLICITUD%rowtype;
     
+    PROCEDURE pCambiarEstado(ivIdSolicitud IN NUMBER, ivEstado IN VARCHAR2,ivIdFuncionario IN VARCHAR2);
+    
 END pkSolicitudNivel1;
 /
 CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS 
@@ -71,4 +73,18 @@ CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS
             RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
         
     END fConsultar;
+ 
+    PROCEDURE pCambiarEstado(ivIdSolicitud IN NUMBER, ivEstado IN VARCHAR2,ivIdFuncionario IN VARCHAR2)
+    IS
+    BEGIN
+    UPDATE SOLICITUD 
+    SET  Estado=ivEstado,FUNCIONARIO_CEDULAFUNCIONARIO=ivIdFuncionario
+    WHERE IDSOLICITUD=ivIdSolicitud;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN 
+        RAISE_APPLICATION_ERROR(-20001,'Error, no existe solicitud con ese id.');
+        WHEN OTHERS THEN 
+        RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE); 
+    END pCambiarEstado;
+    
 END pkSolicitudNivel1;

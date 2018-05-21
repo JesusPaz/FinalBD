@@ -27,9 +27,7 @@ CREATE TABLE cliente (
     cedulacliente     VARCHAR2(20 CHAR) NOT NULL,
     nombre            VARCHAR2(40 CHAR),
     fechanacimiento   DATE,
-    direccion         VARCHAR2 
---  ERROR: VARCHAR2 size not specified 
-   ,
+    direccion         VARCHAR2(40 CHAR),
     telefono          VARCHAR2(20 CHAR)
 );
 
@@ -84,7 +82,7 @@ ALTER TABLE funcionario ADD CONSTRAINT funcionario_pk PRIMARY KEY ( cedulafuncio
 CREATE TABLE parametros (
     idparametros   NUMBER(4) NOT NULL,
     nombre         VARCHAR2(40 CHAR),
-    valor          VARCHAR2(40 CHAR)
+    valor          NUMBER(4)
 );
 
 COMMENT ON TABLE parametros IS
