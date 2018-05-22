@@ -13,7 +13,7 @@ CREATE OR REPLACE PACKAGE BODY pkRegistroNivel2 IS
     IS
     BEGIN
     
-    PKSOLICITUDNIVEL1.pInsertarSolicitud(ivIdSolicitud ,'Pendiente',ivObservacion,ivIdCliente ,'000' 
+    PKSOLICITUDNIVEL1.pInsertar(ivIdSolicitud ,'Pendiente',ivObservacion,ivIdCliente ,'000' 
     ,ivTipoSolicitud,ivTipoAnomalia,ivIdTipoProducto ,ivIdProducto );
     
     EXCEPTION

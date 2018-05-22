@@ -39,11 +39,12 @@ public class Cliente {
 	 * @param direccion
 	 * @param telefono
 	 */
-	public Cliente(String cedula, String nombre, Date fechaNacimiento, String direccion, String telefono) {
+	@SuppressWarnings("deprecation")
+	public Cliente(String cedula, String nombre, String fechaNacimiento, String direccion, String telefono) {
 		super();
 		this.cedula = cedula;
 		this.nombre = nombre;
-		this.fechaNacimiento = fechaNacimiento;
+		this.fechaNacimiento = new Date(2000,12,1);
 		this.direccion = direccion;
 		this.telefono = telefono;
 	}

@@ -2,7 +2,7 @@
 CREATE OR REPLACE PACKAGE pkSolicitudNivel1 IS 
 
     PROCEDURE pInsertar(ivIdSolicitud IN NUMBER, ivEstado IN VARCHAR2,ivObservacion IN VARCHAR2,ivIdCliente IN VARCHAR2,ivIdFuncionario IN VARCHAR2
-    ,ivFechaIni IN DATE,ivFechaFin IN DATE,ivTipoSolicitud IN NUMBER,ivTipoAnomalia IN NUMBER,ivIdTipoProducto IN NUMBER,ivIdProducto IN NUMBER );
+    ,ivTipoSolicitud IN NUMBER,ivTipoAnomalia IN NUMBER,ivIdTipoProducto IN NUMBER,ivIdProducto IN NUMBER );
    
     PROCEDURE pEliminar(ivIdSolicitud IN NUMBER);
     
@@ -19,11 +19,11 @@ CREATE OR REPLACE PACKAGE BODY pkSolicitudNivel1 IS
 -- Insertar
   PROCEDURE pInsertar
     (ivIdSolicitud NUMBER, ivEstado VARCHAR2,ivObservacion VARCHAR2,ivIdCliente VARCHAR2,ivIdFuncionario VARCHAR2
-    ,ivFechaIni DATE,ivFechaFin DATE,ivTipoSolicitud NUMBER,ivTipoAnomalia NUMBER,ivIdTipoProducto NUMBER,ivIdProducto NUMBER )
+    ,ivTipoSolicitud NUMBER,ivTipoAnomalia NUMBER,ivIdTipoProducto NUMBER,ivIdProducto NUMBER )
   IS
     BEGIN
     INSERT INTO SOLICITUD
-    VALUES (ivIdSolicitud , ivEstado ,ivObservacion ,ivFechaIni,ivFechaFin,ivIdCliente 
+    VALUES (ivIdSolicitud , ivEstado ,ivObservacion ,null,null,ivIdCliente 
     ,ivTipoSolicitud ,ivIdFuncionario,ivTipoAnomalia,ivIdTipoProducto ,ivIdProducto );
     EXCEPTION
         WHEN DUP_VAL_ON_INDEX THEN 

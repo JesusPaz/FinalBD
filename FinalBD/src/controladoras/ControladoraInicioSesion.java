@@ -1,6 +1,7 @@
 package controladoras;
 
 import java.sql.CallableStatement;
+import java.sql.Date;
 
 import mundo.Cliente;
 
@@ -62,10 +63,10 @@ public class ControladoraInicioSesion extends Controladora {
 			this.Conectar();
 
 			CallableStatement query = this.conexion
-					.prepareCall("{call pkEmpleadoNivel3.pConsultarEmpleado (?,?,?,?,?)}");
+					.prepareCall("{call pkClienteNivel1.pConsultarCliente (?,?,?,?,?)}");
 			query.setString(1, cedula);
 			query.registerOutParameter(2, java.sql.Types.VARCHAR);
-			query.registerOutParameter(3, java.sql.Types.VARCHAR);
+			query.registerOutParameter(3, java.sql.Types.DATE);
 			query.registerOutParameter(4, java.sql.Types.VARCHAR);
 			query.registerOutParameter(5, java.sql.Types.VARCHAR);
 
@@ -74,7 +75,7 @@ public class ControladoraInicioSesion extends Controladora {
 			String nombre = query.getString(2);
 
 			if (nombre != null) {
-				//Empleado actual = new Empleado(cedula, query.getString(2), query.getString(3), query.getString(4));
+				Cliente actual = new Cliente(cedula, query.getString(2), query.getString(3), query.getString(4),query.getString(5));
 				//setUserActual(actual);
 			}
 
