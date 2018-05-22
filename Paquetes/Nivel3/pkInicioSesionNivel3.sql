@@ -1,37 +1,42 @@
 
 CREATE OR REPLACE PACKAGE pkInicioSesionNivel3 IS 
 
-    FUNCTION fAcceder(ivIdCliente  VARCHAR2) RETURN CLIENTE%rowtype;
-    PROCEDURE pRegistrar(ivIdCliente IN VARCHAR2,ivNombre in VARCHAR2,ivFechaNacimiento Date,ivDireccion in VARCHAR2, ivTelefono in VARCHAR2);
+    PROCEDURE fAcceder(ivIdCliente  VARCHAR2,ovNombre out VARCHAR2,ovFechaNacimiento out Date,ovDireccion out VARCHAR2, ovTelefono out VARCHAR2, 
+    ovRetorno out VARCHAR2);
+    PROCEDURE pRegistrar(ivIdCliente IN VARCHAR2,ivNombre in VARCHAR2,ivFechaNacimiento Date,ivDireccion in VARCHAR2, ivTelefono in VARCHAR2
+    ,ovRetorno out VARCHAR2);
     
 END pkInicioSesionNivel3;
 /
 CREATE OR REPLACE PACKAGE BODY pkInicioSesionNivel3 IS 
 -- Insertar
-  FUNCTION fAcceder(ivIdCliente  VARCHAR2)RETURN CLIENTE%rowtype
+  PROCEDURE fAcceder(ivIdCliente  VARCHAR2,ovNombre out VARCHAR2,ovFechaNacimiento out Date,ovDireccion out VARCHAR2, ovTelefono out VARCHAR2, 
+    ovRetorno out VARCHAR2)
     IS
     ovCliente cliente%rowtype;
     BEGIN
     
-    ovCliente:=PKCLIENTESNIVEL1.FCONSULTAR(ivIdCliente);
-    RETURN ovCliente;
+    ovCliente:=PKINICIOSESIONNIVEL2.FACCEDER(ivIdCliente);
+    
+    ovNombre :=ovCliente.nombre;
+    ovFechaNacimiento :=ovCliente.FechaNacimiento;
+    ovDireccion:=ovCliente.Direccion;
+    ovTelefono:=ovCliente.Telefono;
+    
     EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-        RAISE_APPLICATION_ERROR(-20001,'Error, Cliente no encontrado');
         WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
+        ovRetorno:=SQLERRM;
   END fAcceder;
     
-    PROCEDURE pRegistrar(ivIdCliente IN VARCHAR2,ivNombre in VARCHAR2,ivFechaNacimiento Date,ivDireccion in VARCHAR2, ivTelefono in VARCHAR2)
+    PROCEDURE pRegistrar(ivIdCliente IN VARCHAR2,ivNombre in VARCHAR2,ivFechaNacimiento Date,ivDireccion in VARCHAR2, ivTelefono in VARCHAR2
+    , ovRetorno out VARCHAR2)
     IS
     BEGIN
-    PKCLIENTESNIVEL1.pInsertar(ivNombre,ivIdCliente,ivFechaNacimiento ,ivDireccion , ivTelefono);
+    PKINICIOSESIONNIVEL2.PREGISTRAR(ivIdCliente,ivNombre,ivFechaNacimiento ,ivDireccion , ivTelefono);
+    ovRetorno:='Registro exitoso';
     EXCEPTION
-        WHEN DUP_VAL_ON_INDEX THEN 
-        RAISE_APPLICATION_ERROR(-20001,'Error, este cliente ya existe.');
         WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
-    
+        ovRetorno:=SQLERRM;
     END pRegistrar;
     
 END pkInicioSesionNivel3;
