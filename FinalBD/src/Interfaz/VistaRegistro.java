@@ -7,6 +7,15 @@ import javax.swing.JOptionPane;
 
 
 public class VistaRegistro implements ActionListener {
+	
+	
+	
+	
+	public VistaRegistro(VistaOpciones v) {
+		
+	}
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

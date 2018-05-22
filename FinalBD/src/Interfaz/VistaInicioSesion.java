@@ -6,7 +6,22 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class VistaInicioSesion extends JFrame implements ActionListener {
-
+	
+	  private javax.swing.JButton btnEntrar;
+	    private javax.swing.JLabel lblContra;
+	    private javax.swing.JLabel lblUsu;
+	    private javax.swing.JPasswordField txtContrasena;
+	    private javax.swing.JTextField txtUsuario;
+	    
+	    
+	    private VistaAsignacion asignacion;
+	    private VistaAtencion atencion;
+	    private VistaConsultas consultas;
+	    private VistaRegistro registro;
+	    
+	    
+	    private VistaOpciones opciones;
+	    
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -15,7 +30,10 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
 		
 	
     public VistaInicioSesion() {
-        initComponents();
+        opciones= new VistaOpciones(this);
+    	initComponents();
+        
+        
     }
 
     
@@ -117,11 +135,7 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
     }
 
                       
-    private javax.swing.JButton btnEntrar;
-    private javax.swing.JLabel lblContra;
-    private javax.swing.JLabel lblUsu;
-    private javax.swing.JPasswordField txtContrasena;
-    private javax.swing.JTextField txtUsuario;
+  
       
 
 }

@@ -3,7 +3,13 @@ package Interfaz;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VistaAsignacion implements ActionListener {
+import javax.swing.JFrame;
+
+public class VistaAsignacion extends JFrame implements ActionListener {
+
+	public VistaAsignacion(VistaOpciones vistaOpciones) {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
