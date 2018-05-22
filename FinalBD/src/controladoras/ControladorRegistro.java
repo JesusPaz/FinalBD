@@ -1,5 +1,5 @@
 package controladoras;
 
-public class ControladorRegistro {
+public class ControladorRegistro extends Controladora{
 
 }

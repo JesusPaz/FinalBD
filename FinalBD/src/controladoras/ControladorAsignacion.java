@@ -1,5 +1,5 @@
 package controladoras;
 
-public class ControladorAsignacion {
+public class ControladorAsignacion extends Controladora{
 
 }
