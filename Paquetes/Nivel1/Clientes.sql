@@ -14,7 +14,7 @@ CREATE OR REPLACE PACKAGE BODY pkClientesNivel1 IS -- body
     PROCEDURE pInsertar(ivNombre IN VARCHAR2, ivCedula IN VARCHAR2, ivFechaNacimiento IN DATE, ivDireccion IN VARCHAR2 ,ivTelefono IN VARCHAR2) IS
         BEGIN
         INSERT INTO cliente
-        VALUES (ivNombre, ivCedula, ivFechaNacimiento, ivDireccion, ivTelefono);
+        VALUES ( ivCedula,ivNombre, ivFechaNacimiento, ivDireccion, ivTelefono);
         EXCEPTION
         WHEN DUP_VAL_ON_INDEX THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error, este registro ya existe.');
