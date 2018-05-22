@@ -1,6 +1,7 @@
 package mundo;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class Cliente {
 	
@@ -16,7 +17,7 @@ public class Cliente {
 	/**
 	 * fecha nacimiento del cliente
 	 */
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 	/**
 	 * direccion del cliente
 	 */
@@ -41,13 +42,19 @@ public class Cliente {
 	 */
 	@SuppressWarnings("deprecation")
 	public Cliente(String cedula, String nombre, String fechaNacimiento, String direccion, String telefono) {
-		super();
-		this.cedula = cedula;
-		this.nombre = nombre;
-		//TODO convertir a date
-		this.fechaNacimiento = new Date(2000,12,1);
-		this.direccion = direccion;
-		this.telefono = telefono;
+		try {
+			
+			this.cedula = cedula;
+			this.nombre = nombre;
+			//TODO convertir a date
+			this.fechaNacimiento=fechaNacimiento;
+			//this.fechaNacimiento = (Date) SimpleDateFormat.parse(fechaNacimiento);
+			this.direccion = direccion;
+			this.telefono = telefono;	
+		}catch(Exception e) {
+			
+		}
+		
 	}
 	
 	
@@ -80,13 +87,13 @@ public class Cliente {
 	/**
 	 * @return the fechaNacimiento
 	 */
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 	/**
 	 * @param fechaNacimiento the fechaNacimiento to set
 	 */
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	/**
