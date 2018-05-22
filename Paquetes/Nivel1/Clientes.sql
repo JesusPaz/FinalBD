@@ -1,4 +1,3 @@
-
 CREATE OR REPLACE PACKAGE pkClientesNivel1 IS -- spec
     PROCEDURE pInsertar(ivNombre IN VARCHAR2, ivCedula IN VARCHAR2, ivFechaNacimiento IN DATE, ivDireccion IN VARCHAR2 ,ivTelefono IN VARCHAR2);
     
@@ -6,7 +5,7 @@ CREATE OR REPLACE PACKAGE pkClientesNivel1 IS -- spec
     
     FUNCTION fConsultar(ivCedula IN VARCHAR2) RETURN cliente%rowtype;
     
-    PROCEDURE pModificar(ivCedulaBuscada IN VARCHAR2,ivNombre IN VARCHAR2, ivCedulaNueva IN VARCHAR2, ivFechaNacimiento IN DATE, ivDireccion IN VARCHAR2 ,ivTelefono IN VARCHAR2);
+    PROCEDURE pModificar(ivCedula IN VARCHAR2,ivNombre IN VARCHAR2, ivFechaNacimiento IN DATE, ivDireccion IN VARCHAR2 ,ivTelefono IN VARCHAR2);
 
 END pkClientesNivel1;
 /
@@ -34,11 +33,11 @@ CREATE OR REPLACE PACKAGE BODY pkClientesNivel1 IS -- body
         RAISE_APPLICATION_ERROR(-20001,'Error desconocido.'||SQLERRM||SQLCODE);
     END pEliminar;
 -- Actualizar
-    PROCEDURE pModificar(ivCedulaBuscada IN VARCHAR2,ivNombre IN VARCHAR2, ivCedulaNueva IN VARCHAR2, ivFechaNacimiento IN DATE, ivDireccion IN VARCHAR2 ,ivTelefono IN VARCHAR2) IS
+    PROCEDURE pModificar(ivCedula IN VARCHAR2,ivNombre IN VARCHAR2, ivFechaNacimiento IN DATE, ivDireccion IN VARCHAR2 ,ivTelefono IN VARCHAR2) IS
         BEGIN
         UPDATE cliente 
-        SET nombre=ivNombre, cedulacliente=ivCedulaNueva, fechaNacimiento=ivFechaNacimiento, direccion=ivDireccion, telefono=ivTelefono
-        WHERE cedulacliente=ivCedulaBuscada;
+        SET nombre=ivNombre, cedulacliente=ivCedula, fechaNacimiento=ivFechaNacimiento, direccion=ivDireccion, telefono=ivTelefono
+        WHERE cedulacliente=ivCedula;
         EXCEPTION
         WHEN NO_DATA_FOUND THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error, no existe solicitud con ese id.');
@@ -60,4 +59,3 @@ CREATE OR REPLACE PACKAGE BODY pkClientesNivel1 IS -- body
     END fConsultar;
         
 END pkClientesNivel1;
-
