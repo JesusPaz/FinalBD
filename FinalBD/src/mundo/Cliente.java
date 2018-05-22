@@ -44,6 +44,7 @@ public class Cliente {
 		super();
 		this.cedula = cedula;
 		this.nombre = nombre;
+		//TODO convertir a date
 		this.fechaNacimiento = new Date(2000,12,1);
 		this.direccion = direccion;
 		this.telefono = telefono;

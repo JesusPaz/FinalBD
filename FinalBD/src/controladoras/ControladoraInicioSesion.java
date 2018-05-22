@@ -76,9 +76,9 @@ public class ControladoraInicioSesion extends Controladora {
 
 			if (nombre != null) {
 				Cliente actual = new Cliente(cedula, query.getString(2), query.getString(3), query.getString(4),query.getString(5));
-				//setUserActual(actual);
+				setUserActual(actual);
 			}
-
+//TODO
 			if (query.getString(5) != null) {
 				salida = query.getString(5);
 			}
