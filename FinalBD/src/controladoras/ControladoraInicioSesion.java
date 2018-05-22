@@ -140,7 +140,7 @@ public class ControladoraInicioSesion extends Controladora {
 	 * @return fecha
 	 */
 	public String convertirDateToString(Date date) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String fecha = sdf.format(date);
 		return fecha;
 	}
@@ -151,7 +151,7 @@ public class ControladoraInicioSesion extends Controladora {
 	 * @return fecha
 	 */
 	public Date convertirStringToDate(String fecha) {
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
         Date fechaDate = null;
         try {
             fechaDate = (Date) formato.parse(fecha);
