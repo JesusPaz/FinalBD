@@ -17,12 +17,15 @@ public class VistaRegistro extends JFrame implements ActionListener {
     private JLabel jLabel5;
     private JLabel jLabel6;
     private JLabel jLabel7;
+    private JLabel jLabel8;
     private JComboBox<String> txtAnomalia;
     private JTextField txtCedulaCliente;
     private JTextField txtIdProducto;
     private JTextField txtObservacion;
     private JComboBox<String> txtTipoP;
     private JComboBox<String> txtTipoSolicitud;
+    
+    private JTextField txtIdSolicitud;
     // End of variables declaration 
 	
 	
@@ -55,30 +58,32 @@ public class VistaRegistro extends JFrame implements ActionListener {
 
         jLabel1 = new javax.swing.JLabel();
         txtTipoP = new javax.swing.JComboBox<>();
-        txtCedulaCliente = new javax.swing.JTextField();
-        txtObservacion = new javax.swing.JTextField();
-        txtIdProducto = new javax.swing.JTextField();
-        txtAnomalia = new javax.swing.JComboBox<>();
-        txtTipoSolicitud = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        txtCedulaCliente = new JTextField();
+        txtObservacion = new JTextField();
+        txtIdProducto = new JTextField();
+        txtAnomalia = new JComboBox<>();
+        txtIdSolicitud = new JTextField();
+        txtTipoSolicitud = new JComboBox<>();
+        jLabel2 = new JLabel();
+        jLabel3 = new JLabel();
+        jLabel4 = new JLabel();
+        jLabel5 = new JLabel();
+        jLabel6 = new JLabel();
+        jLabel7 = new JLabel();
+        jLabel8 = new JLabel();
         btnRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
         jLabel1.setText("SOLICITUD");
 
-        txtTipoP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Voz", "Datos", "Integrado" }));
+        txtTipoP.setModel(new DefaultComboBoxModel<>(new String[] { "Voz", "Datos", "Integrado" }));
 
-        txtAnomalia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "anomalia1", "anomalia2", "anomalia3" }));
+        txtAnomalia.setModel(new DefaultComboBoxModel<>(new String[] { "anomalia1", "anomalia2", "anomalia3" }));
 
-        txtTipoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Creación", "Modificación", "Cancelación", "Daño", "Reclamo" }));
+        txtTipoSolicitud.setModel(new DefaultComboBoxModel<>(new String[] { "Creación", "Modificación", "Cancelación", "Daño", "Reclamo" }));
 
         jLabel2.setText("Tipo producto : ");
 
@@ -91,6 +96,8 @@ public class VistaRegistro extends JFrame implements ActionListener {
         jLabel6.setText("Anomalia : ");
 
         jLabel7.setText("Tipo solicitud :");
+        
+        jLabel8.setText("Id de la solicitud :");
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(this);
@@ -108,15 +115,18 @@ public class VistaRegistro extends JFrame implements ActionListener {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCedulaCliente)
                     .addComponent(txtObservacion)
                     .addComponent(txtIdProducto)
+                    .addComponent(txtIdSolicitud)
                     .addComponent(txtTipoP, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtTipoSolicitud, 0, 133, Short.MAX_VALUE)
                     .addComponent(txtAnomalia, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                	
                 .addGap(33, 33, 33))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -157,6 +167,10 @@ public class VistaRegistro extends JFrame implements ActionListener {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTipoSolicitud, GroupLayout.PREFERRED_SIZE, 30,GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtIdSolicitud, GroupLayout.PREFERRED_SIZE, 30,GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrar, GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addContainerGap())
