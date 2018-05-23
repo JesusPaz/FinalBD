@@ -46,7 +46,7 @@ public class VistaOpciones extends JFrame implements ActionListener{
         btnConsultar.setActionCommand("CONSULTAR");
         
 
-        btnRegistrar.setText("Registrar");
+        btnRegistrar.setText("Registrar Solicitud");
         btnRegistrar.addActionListener(this);
         btnRegistrar.setActionCommand("REGISTRAR");
 
