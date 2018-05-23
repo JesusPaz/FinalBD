@@ -6,7 +6,7 @@ END pkAtencionNivel2;
 /
 CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS 
 
-   PROCEDURE pAtenderSolicitud(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2)
+   PROCEDURE pAtenderSolicitud(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2)--p1
    IS 
    fecha DATE;
    solicitud SOLICITUD%rowtype;
@@ -36,9 +36,9 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
    ELSE
    RAISE_APPLICATION_ERROR(-20001,'Esta solicitud no esta asociada al funcionario buscado.');
    END IF; 
-   END pAsignacionAutomatica;
+   END pAtenderSolicitud;
     
-   PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN VARCHAR2, ivEstado IN VARCHAR2)
+   PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN VARCHAR2, ivEstado IN VARCHAR2)--p2
    IS
    solicitud SOLICITUD%rowtype;
    BEGIN 
@@ -54,12 +54,12 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
     solicitud.PRODUCTO_IDPRODUCTO);
     END IF;
    END IF;
-   END pAtencionIndividual;
+   END pAtenderReclamoODano;
    
-   PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2)
+   PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2)--p3
     IS
    solicitud SOLICITUD%rowtype;
-   tiempoLimite VARCHAR2;
+   tiempoLimite NUMBER;
    contador NUMBER;
    expiradas NUMBER;
    BEGIN 
@@ -70,10 +70,10 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
    
    SELECT  S.IdSolicitud into expiradas
    FROM  SOLICITUD S 
-   WHERE S.FECHAINI-S.FECHAFIN >= TO_DATE(TO_CHAR(cantidad)) 
+   WHERE S.FECHAINI-S.FECHAFIN >= TO_DATE(tiempoLimite) 
    AND ROWNUM = 1
    AND S.ESTADO='asignado'
-   AND (S.TIPOSOLICITUD='dano' OR S.TIPOSOLICITUD='reclamo');
+   AND (S.TIPOSOLICITUD_IDTIPOSOLICITUD='dano' OR S.TIPOSOLICITUD_IDTIPOSOLICITUD='reclamo');
    
    SELECT COUNT(idSolicitud) into contador
    FROM expiradas;
