@@ -26,7 +26,7 @@ public class ControladoraInicioSesion extends Controladora {
 	/**
 	 * Construtor de AuthControl
 	 */
-	private ControladoraInicioSesion() {
+	public ControladoraInicioSesion() {
 
 	}
 	//Metodos

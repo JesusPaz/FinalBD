@@ -2,16 +2,18 @@ package Interfaz;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.*;
 import javax.swing.*;
+
+import controladoras.ControladoraInicioSesion;
 
 public class VistaInicioSesion extends JFrame implements ActionListener {
 	
-	  private javax.swing.JButton btnEntrar;
-	    private javax.swing.JLabel lblContra;
-	    private javax.swing.JLabel lblUsu;
-	    private javax.swing.JPasswordField txtContrasena;
-	    private javax.swing.JTextField txtUsuario;
+	  private JButton btnEntrar;
+	    private JLabel lblContra;
+	    private JLabel lblUsu;
+	    private JPasswordField txtContrasena;
+	    private JTextField txtUsuario;
 	    
 	    
 	    private VistaAsignacion asignacion;
@@ -22,41 +24,51 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
 	    
 	    private VistaOpciones opciones;
 	    
+	    private ControladoraInicioSesion contInicioSesion;
+	    
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getActionCommand().equals("ENTRAR")) {
+			
+			try {
+				
+//				if(contInicioSesion.Acceder(txtUsuario.getText()).equals("Correcto")) {
+				opciones=new VistaOpciones(this);
+				opciones.setVisible(true);
+//				}
+			} catch (Exception e1) {
+				
+				e1.printStackTrace();
+			}
+			
+		}
 		
 	}
 		
 	
     public VistaInicioSesion() {
-        opciones= new VistaOpciones(this);
-    	initComponents();
         
+    	initComponents();
+    	contInicioSesion= new ControladoraInicioSesion();
         
     }
-
-    
-    @SuppressWarnings("unchecked")                       
+                     
     private void initComponents() {
 
-        txtUsuario = new javax.swing.JTextField();
-        btnEntrar = new javax.swing.JButton();
-        txtContrasena = new javax.swing.JPasswordField();
-        lblUsu = new javax.swing.JLabel();
-        lblContra = new javax.swing.JLabel();
+        txtUsuario = new JTextField();
+        btnEntrar = new JButton();
+        txtContrasena = new JPasswordField();
+        lblUsu = new JLabel();
+        lblContra = new JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtUsuario.setText("txtUsuario");
-        txtUsuario.setName("txtUsuario"); // NOI18N
+        txtUsuario.setName("txtUsuario"); 
         btnEntrar.setText("Entrar");
         btnEntrar.setName("butEntrar"); 
-        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrarActionPerformed(evt);
-            }
-        });
+        btnEntrar.addActionListener(this);
+        btnEntrar.setActionCommand("ENTRAR");
 
         txtContrasena.setText("jPasswordField1");
 
@@ -64,68 +76,62 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
 
         lblContra.setText("Contraseña : ");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(43, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                     .addComponent(lblContra)
-                    .addComponent(lblUsu, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(lblUsu, GroupLayout.Alignment.LEADING))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtUsuario)
-                    .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addComponent(txtContrasena, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnEntrar, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)))
                 .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsuario, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsu))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtContrasena, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblContra))
                 .addGap(18, 18, 18)
-                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEntrar,GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65))
         );
 
         pack();
     }                       
 
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
-    }                                         
+                                         
 
     /**
      * @param args the command line arguments
+     * @throws Exception 
+     * @throws IllegalAccessException 
+     * @throws InstantiationException 
+     * @throws ClassNotFoundException 
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ClassNotFoundException, InstantiationException, IllegalAccessException, Exception {
        
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+   
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+       
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

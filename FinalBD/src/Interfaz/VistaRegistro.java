@@ -3,10 +3,11 @@ package Interfaz;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
-public class VistaRegistro implements ActionListener {
+public class VistaRegistro extends JFrame implements ActionListener {
 	
 	
 	

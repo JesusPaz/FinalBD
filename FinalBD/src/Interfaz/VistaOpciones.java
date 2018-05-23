@@ -1,21 +1,32 @@
 package Interfaz;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
-public class VistaOpciones extends JFrame{
+public class VistaOpciones extends JFrame implements ActionListener{
 	
 	  private VistaAsignacion asignacion;
 	    private VistaAtencion atencion;
 	    private VistaConsultas consultas;
-	    private VistaRegistro registro;
+	    private VistaRegistro registrar;
 	    private VistaInicioSesion iSesion;
+	    
+	    
+	                   
+	    private JButton btnAsignar;
+	    private JButton btnAtender;
+	    private JButton btnConsultar;
+	    private JButton btnRegistrar;
+	    
 	
 	public VistaOpciones(VistaInicioSesion inicio) {
 		iSesion=inicio;
 		asignacion= new VistaAsignacion(this);
 		atencion= new VistaAtencion(this);
 		consultas= new VistaConsultas(this);
-		registro= new VistaRegistro(this);
+		registrar= new VistaRegistro(this);
 		
 		initComponents();
 	}
@@ -23,102 +34,92 @@ public class VistaOpciones extends JFrame{
     @SuppressWarnings("unchecked")                         
     private void initComponents() {
 
-        btnConsultar = new javax.swing.JButton();
-        btnRegistrar = new javax.swing.JButton();
-        btnAtender = new javax.swing.JButton();
-        btnAsignar = new javax.swing.JButton();
+        btnConsultar = new JButton();
+        btnRegistrar = new JButton();
+        btnAtender = new JButton();
+        btnAsignar = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnConsultar.setText("Consultar");
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
-            }
-        });
+        btnConsultar.addActionListener(this);
+        btnConsultar.setActionCommand("CONSULTAR");
+        
 
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(this);
+        btnRegistrar.setActionCommand("REGISTRAR");
 
         btnAtender.setText("Atender");
-
+        btnAtender.addActionListener(this);
+        btnAtender.setActionCommand("ATENDER");
+        
         btnAsignar.setText("Asignar");
+        btnAsignar.addActionListener(this);
+        btnAsignar.setActionCommand("ASIGNAR");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        
+       GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnConsultar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegistrar, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAtender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAtender, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAsignar, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtender, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtender, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAsignar, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>                        
 
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
-    }                                            
+  
+    
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaConsultas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaConsultas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaConsultas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaConsultas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		switch (arg0.getActionCommand()) {
+		case "CONSULTAR":
+			consultas=new VistaConsultas(this);
+			consultas.setVisible(true);
+			
+			break;
+		case "REGISTRAR":
+			registrar=new VistaRegistro(this);
+			registrar.setVisible(true);
+			break;
+		case "ASIGNAR":
+			asignacion=new VistaAsignacion(this);
+			asignacion.setVisible(true);
+			break;
+		case "ATENDER":
+			atencion=new VistaAtencion(this);
+			atencion.setVisible(true);
+			break;
+		}
+		
+		this.setVisible(false);
+		
+	}
 
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new VistaOpciones().setVisible(true);
-//            }
-//        });
-    }
-
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton btnAsignar;
-    private javax.swing.JButton btnAtender;
-    private javax.swing.JButton btnConsultar;
-    private javax.swing.JButton btnRegistrar;
-    // End of variables declaration    
+      
 
 }
