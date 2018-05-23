@@ -28,12 +28,9 @@ public class VistaRegistro extends JFrame implements ActionListener {
     private JTextField txtObservacion;
     private JComboBox<String> txtTipoP;
     private JComboBox<String> txtTipoSolicitud;
-<<<<<<< HEAD
-    
+
     private JTextField txtIdSolicitud;
-=======
     private ControladorRegistro controladorRegistro=new ControladorRegistro();
->>>>>>> 1633a68d0031b0f295f01a10127fa810a3307f3f
     // End of variables declaration 
 	
 	
@@ -119,11 +116,10 @@ public class VistaRegistro extends JFrame implements ActionListener {
 
         txtTipoP.setModel(new DefaultComboBoxModel<>(new String[] { "Voz", "Datos", "Integrado" }));
 
-<<<<<<< HEAD
+
         txtAnomalia.setModel(new DefaultComboBoxModel<>(new String[] { "anomalia1", "anomalia2", "anomalia3" }));
-=======
+
         txtAnomalia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin Anomalia", "Baja Velocidad", "Mala Calidad" }));
->>>>>>> 1633a68d0031b0f295f01a10127fa810a3307f3f
 
         txtTipoSolicitud.setModel(new DefaultComboBoxModel<>(new String[] { "Creación", "Modificación", "Cancelación", "Daño", "Reclamo" }));
 
