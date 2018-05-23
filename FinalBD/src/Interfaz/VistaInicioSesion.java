@@ -45,6 +45,7 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
 					// Mostrar Error
 					JOptionPane.showMessageDialog(null, resultado);
 				}
+				
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();

@@ -68,14 +68,14 @@ public class Solicitud {
 	 * @param tipoProducto
 	 * @param producto
 	 */
-	public Solicitud(int id, String estado, String observacion, Date fechaIni, Date fechaFin, String cedulaCliente,
+	public Solicitud(int id, String estado, String observacion, String cedulaCliente,
 			int tipoSolicitud, String cedulaFuncionaario, int tipoAnomalia, int tipoProducto, int producto) {
-		super();
+		
 		this.id = id;
 		this.estado = estado;
 		this.observacion = observacion;
-		this.fechaIni = fechaIni;
-		this.fechaFin = fechaFin;
+		//this.fechaIni = fechaIni;
+		//this.fechaFin = fechaFin;
 		this.cedulaCliente = cedulaCliente;
 		this.tipoSolicitud = tipoSolicitud;
 		this.cedulaFuncionaario = cedulaFuncionaario;

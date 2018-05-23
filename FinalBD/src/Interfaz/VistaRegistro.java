@@ -2,9 +2,13 @@ package Interfaz;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
-import javax.swing.JFrame;
 import javax.swing.*;
+
+import controladoras.ControladorRegistro;
+import controladoras.ControladoraInicioSesion;
+import mundo.Solicitud;
 
 public class VistaRegistro extends JFrame implements ActionListener {
 	
@@ -24,13 +28,18 @@ public class VistaRegistro extends JFrame implements ActionListener {
     private JTextField txtObservacion;
     private JComboBox<String> txtTipoP;
     private JComboBox<String> txtTipoSolicitud;
+<<<<<<< HEAD
     
     private JTextField txtIdSolicitud;
+=======
+    private ControladorRegistro controladorRegistro=new ControladorRegistro();
+>>>>>>> 1633a68d0031b0f295f01a10127fa810a3307f3f
     // End of variables declaration 
 	
 	
 	public VistaRegistro(VistaOpciones v) {
 		initComponents();
+		
 	}
 	
 	
@@ -41,6 +50,35 @@ public class VistaRegistro extends JFrame implements ActionListener {
 		if (e.getActionCommand().equals("REGISTRAR")) {
 
 			try {
+				
+				String Cedula=txtCedulaCliente.getText();
+				String Observacion=txtObservacion.getText();
+				//numero
+				String IdSolicitud="12";
+				// numero
+				String TipoSolicitud=(String) txtTipoSolicitud.getSelectedItem();
+				//numero
+				String TipoAnomalia=(String) txtAnomalia.getSelectedItem() ;
+				// numero
+				String IdProducto=txtIdProducto.getText();
+				//numero
+				String TipoProducto=(String) txtTipoP.getSelectedItem();
+				
+				
+				
+				Solicitud soli = new Solicitud(1234, "Pendiente"," ","000",000,"000",000,000,000);
+				
+				String resultado =  controladorRegistro.registrarSolicitud(soli);
+
+				if (resultado.equals("Solicitud registrada correctamente.")) {
+					JOptionPane.showMessageDialog(null, resultado);
+					
+				} else {
+					// Mostrar Error
+					JOptionPane.showMessageDialog(null, resultado);
+					
+				}
+
 
 			} catch (Exception exception) {
 				
@@ -81,7 +119,11 @@ public class VistaRegistro extends JFrame implements ActionListener {
 
         txtTipoP.setModel(new DefaultComboBoxModel<>(new String[] { "Voz", "Datos", "Integrado" }));
 
+<<<<<<< HEAD
         txtAnomalia.setModel(new DefaultComboBoxModel<>(new String[] { "anomalia1", "anomalia2", "anomalia3" }));
+=======
+        txtAnomalia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin Anomalia", "Baja Velocidad", "Mala Calidad" }));
+>>>>>>> 1633a68d0031b0f295f01a10127fa810a3307f3f
 
         txtTipoSolicitud.setModel(new DefaultComboBoxModel<>(new String[] { "Creación", "Modificación", "Cancelación", "Daño", "Reclamo" }));
 
