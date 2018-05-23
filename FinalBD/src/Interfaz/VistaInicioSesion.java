@@ -45,11 +45,6 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
 					// Mostrar Error
 					JOptionPane.showMessageDialog(null, resultado);
 				}
-
-				
-//				if(contInicioSesion.Acceder(txtUsuario.getText()).equals("Correcto")) {
-				
-//				}
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();
@@ -64,7 +59,7 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
         
     	initComponents();
     	contInicioSesion= new ControladoraInicioSesion();
-        
+
     }
                      
     private void initComponents() {
@@ -77,7 +72,7 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtUsuario.setText("txtUsuario");
+        txtUsuario.setText("000");
         txtUsuario.setName("txtUsuario"); 
         btnEntrar.setText("Entrar");
         btnEntrar.setName("butEntrar"); 

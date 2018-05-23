@@ -51,6 +51,7 @@ CREATE OR REPLACE PACKAGE BODY pkClientesNivel1 IS -- body
         SELECT * into ovCliente
         FROM cliente
         WHERE cedulacliente=ivCedula;
+        RETURN ovCliente;
         EXCEPTION
         WHEN NO_DATA_FOUND THEN 
         RAISE_APPLICATION_ERROR(-20001,'Error, no existe solicitud con ese id.');

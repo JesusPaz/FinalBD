@@ -16,22 +16,6 @@ public class Controladora {
 	 * instancia de la conexion actual
 	 */
 	protected Connection conexion;
-	/**
-	 * biblioteca par establecer la conexion
-	 */
-	private final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
-	/**
-	 * direccion de la conexion
-	 */
-	private final String DB_URL = "jdbc:oracle:thin:@200.3.193.24:1522:ESTUD";
-	/**
-	 * usuario de la base de datos
-	 */
-	private final String USER = "P09551_1_16";
-	/**
-	 * contraseña de la base de datos
-	 */
-	private final String PASSWORD = "1234";
 	
 	//---------------------------------------------------------------
 	//Constructor
@@ -43,8 +27,9 @@ public class Controladora {
 	 */
 	public void Conectar() throws Exception {
 		try {
-			Class.forName(JDBC_DRIVER);
-			conexion = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conexion = DriverManager.getConnection(
+					"jdbc:oracle:thin:@200.3.193.24:1522:ESTUD","P09551_1_16","1234");
 		} catch (Exception e) {
 			throw e;
 		}
@@ -58,7 +43,7 @@ public class Controladora {
 	 * Metodo encargado de terminar la conexion establecidad por el usuario
 	 * @throws SQLException
 	 */
-	public void TerminarConexion() throws SQLException {
+	public  void TerminarConexion() throws SQLException {
 		if ( conexion != null ) {
 			if( !conexion.isClosed()) {
 				conexion.close();

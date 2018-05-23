@@ -86,38 +86,40 @@ public class ControladoraInicioSesion extends Controladora {
 	 * @return salida confirmacion del login
 	 * @throws Exception
 	 */
-	public String Acceder(String cedula) throws Exception {
-		String salida = "Correcto";
+	public  String Acceder(String cedula) throws Exception {
+		String salida = "Exito";
 		try {
 			this.Conectar();
 
 			CallableStatement query = this.conexion
-					.prepareCall("{call pkInicioSesionNivel3.pAcceder (?,?,?,?,?,?)}");
+					.prepareCall("{call PKINICIOSESIONNIVEL3.PACCEDER(?,?,?,?,?,?)}");
 			query.setString(1, cedula);
 			query.registerOutParameter(2, java.sql.Types.VARCHAR);
 			query.registerOutParameter(3, java.sql.Types.DATE);
 			query.registerOutParameter(4, java.sql.Types.VARCHAR);
 			query.registerOutParameter(5, java.sql.Types.VARCHAR);
+			query.registerOutParameter(6, java.sql.Types.VARCHAR);
+			
 
 			query.execute();
 
-			String nombre = query.getString(2);
+			String nombre = query.getString(6);
 
-			if (nombre != null) {
+			if (nombre.equals("Exito")) {
 				Cliente actual = new Cliente(cedula, query.getString(2), query.getString(3), query.getString(4),query.getString(5));
 				setUserActual(actual);
 			}
 
 			if (query.getString(6) != null) {
-				salida = query.getString(5);
+				salida = query.getString(6);
 			}
 
+			return salida;
 		} catch (Exception e) {
 			throw e;
 		} finally {
 			this.TerminarConexion();
 		}
-		return salida;
 	}
 	/**
 	 * Metodo encargado de
