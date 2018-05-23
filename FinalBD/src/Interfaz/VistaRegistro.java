@@ -30,13 +30,13 @@ public class VistaRegistro extends JFrame implements ActionListener {
     private JComboBox<String> txtTipoSolicitud;
 
     private JTextField txtIdSolicitud;
-    private ControladorRegistro controladorRegistro=new ControladorRegistro();
+    private ControladorRegistro controladorRegistro;
     // End of variables declaration 
 	
 	
 	public VistaRegistro(VistaOpciones v) {
 		initComponents();
-		
+		controladorRegistro=new ControladorRegistro();
 	}
 	
 	
@@ -62,10 +62,7 @@ public class VistaRegistro extends JFrame implements ActionListener {
 				String TipoProducto=(String) txtTipoP.getSelectedItem();
 				
 				
-				
-				Solicitud soli = new Solicitud(1234, "Pendiente"," ","000",000,"000",000,000,000);
-				
-				String resultado =  controladorRegistro.registrarSolicitud(soli);
+				String resultado =  controladorRegistro.registrarSolicitud(4344," ","000",000,000,000,000);
 
 				if (resultado.equals("Solicitud registrada correctamente.")) {
 					JOptionPane.showMessageDialog(null, resultado);

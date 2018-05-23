@@ -113,7 +113,7 @@ public class ControladoraInicioSesion extends Controladora {
 			if (query.getString(6) != null) {
 				salida = query.getString(6);
 			}
-
+			this.TerminarConexion();
 			return salida;
 		} catch (Exception e) {
 			throw e;

@@ -11,33 +11,35 @@ public class ControladorRegistro extends Controladora{
 	 * registra una solicitud en la base de datos
 	 * @param solicitud
 	 */
-	public String registrarSolicitud(Solicitud solicitud) throws Exception {
+	public String registrarSolicitud(int idSol,String obser,String cedulaCli,int tipoSol,int tipoAnoma,int tipoPro,int pro) throws Exception {
 		
 		String salida = "";
 		try {
 			this.Conectar();
-
+			System.out.println (" Pre Antes COnsulta");
 			CallableStatement query = this.conexion
 					.prepareCall("{call pkRegistroNivel3.pRegistarSolicitud(?,?,?,?,?,?,?,?)}");
 	//PROCEDURE pRegistarSolicitud(ivIdSolicitud IN NUMBER,ivObservacion IN VARCHAR2,ivIdCliente IN VARCHAR2,ivTipoSolicitud IN NUMBER
 	//,ivTipoAnomalia NUMBER,ivIdTipoProducto IN NUMBER,ivIdProducto IN NUMBER, ovRetorno out VARCHAR2);
 				    
-			query.setInt(1, solicitud.getId());
-			query.setString(2, solicitud.getObservacion());
-			query.setString(3, solicitud.getCedulaCliente());
-			query.setInt(4, solicitud.getTipoSolicitud());
-			query.setInt(5, solicitud.getTipoAnomalia());
-			query.setInt(6, solicitud.getTipoProducto());
-			query.setInt(7, solicitud.getProducto());
+			query.setInt(1, idSol);
+			query.setString(2, obser);
+			query.setString(3, cedulaCli);
+			query.setInt(4, tipoSol);
+			query.setInt(5, tipoAnoma);
+			query.setInt(6, tipoPro);
+			query.setInt(7, pro);
 			
-
+			 
 			query.registerOutParameter(8, java.sql.Types.VARCHAR);
-
+			System.out.println ("Antes COnsulta");
 			query.execute();
-
-			salida = query.getString(8);
+			System.out.println ("Despues COnsulta");
+			if (query.getString(6) != null) {
+				salida = query.getString(8);
+			}
 			
-			// System.out.println(salida);
+			this.TerminarConexion();
 			return salida;
 		} catch (Exception e) {
 			throw e;
