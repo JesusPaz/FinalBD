@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE pkAtencionNivel2 IS 
    PROCEDURE pAtenderSolicitud(ivCedulaFuncionario VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2);
    PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN VARCHAR2, ivEstado IN VARCHAR2);
-   
+   PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2);
 END pkAtencionNivel2;
 /
 CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS 
@@ -55,7 +55,46 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
     END IF;
    END IF;
    END pAtencionIndividual;
-      
+   
+   PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2)
+    IS
+   solicitud SOLICITUD%rowtype;
+   tiempoLimite VARCHAR2;
+   contador NUMBER;
+   expiradas NUMBER;
+   BEGIN 
+   
+   SELECT P.Valor into tiempoLimite
+   FROM PARAMETROS P
+   WHERE P.idParametros=0002;
+   
+   SELECT  S.IdSolicitud into expiradas
+   FROM  SOLICITUD S 
+   WHERE S.FECHAINI-S.FECHAFIN >= TO_DATE(cantidad) 
+   AND ROWNUM = 1
+   AND S.ESTADO='asignado'
+   AND (S.TIPOSOLICITUD='dano' OR S.TIPOSOLICITUD='reclamo');
+   
+   SELECT COUNT(idSolicitud) into contador
+   FROM expiradas;
+   
+   
+   solicitud :=pkSOLICITUD.OBTENERSOLICITUD(ivIdSolicitud);
+   
+   IF solicitud IS NULL THEN
+   RAISE_APPLICATION_ERROR(-20001,'No existe una solicitud con el ID buscado.');
+   END IF;
+   
+   IF solicitud.TIPOPRODUCTO_IDTIPOPRODUCTO!='dano' or solucitud.TIPOPRODUCTO_IDTIPOPRODUCTO!='reclamo' THEN
+   RAISE_APPLICATION_ERROR(-20001,'La solicitud pasada por parametro no es de tipo daño o reclamo.');
+   END IF;
+   
+    pkSOLICITUDNIVEL1.PMODIFICAR(solicitud.IDSOLICITUD, 'atendida','Atendida automaticamente por el sistema',solicitud.FECHAINI,solcitud.FECHAFIN,solicitud.CLIENTE_CEDULACLIENTE,
+    solicitud.TIPOSOLICITUD_IDTIPOSOLICITUD,solicitud.FUNCIONARIO_CEDULAFUNCIONARIO,solicitud.TIPOANOMALIA_IDANOMALIA,solicitud.TIPOPRODUCTO_IDTIPOPRODUCTO,
+    solicitud.PRODUCTO_IDPRODUCTO);
+    
+   
+   END pAtenderREclamoODanoAutomatico;   
 
 
 END pkAtencionNivel2;
