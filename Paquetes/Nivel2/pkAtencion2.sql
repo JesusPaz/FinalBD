@@ -70,7 +70,7 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
    
    SELECT  S.IdSolicitud into expiradas
    FROM  SOLICITUD S 
-   WHERE S.FECHAINI-S.FECHAFIN >= TO_DATE(cantidad) 
+   WHERE S.FECHAINI-S.FECHAFIN >= TO_DATE(TO_CHAR(cantidad)) 
    AND ROWNUM = 1
    AND S.ESTADO='asignado'
    AND (S.TIPOSOLICITUD='dano' OR S.TIPOSOLICITUD='reclamo');
