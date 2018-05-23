@@ -17,11 +17,11 @@ CREATE OR REPLACE PACKAGE BODY pkInicioSesionNivel3 IS
     BEGIN
     
     ovCliente:=PKINICIOSESIONNIVEL2.FACCEDER(ivIdCliente);
-    
     ovNombre :=ovCliente.nombre;
     ovFechaNacimiento :=ovCliente.FechaNacimiento;
     ovDireccion:=ovCliente.Direccion;
     ovTelefono:=ovCliente.Telefono;
+    ovRetorno:='Exito';
     
     EXCEPTION
         WHEN OTHERS THEN 

@@ -9,7 +9,10 @@ import controladoras.ControladoraInicioSesion;
 
 public class VistaInicioSesion extends JFrame implements ActionListener {
 	
-	  private JButton btnEntrar;
+	  
+		private static final long serialVersionUID = 1L;
+	
+		private JButton btnEntrar;
 	    private JLabel lblContra;
 	    private JLabel lblUsu;
 	    private JPasswordField txtContrasena;
@@ -32,15 +35,26 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
 			
 			try {
 				
+				String resultado =  ControladoraInicioSesion.getInstance().Acceder(txtUsuario.getText());
+
+				if (resultado.equals("Exito")) {
+					opciones=new VistaOpciones(this);
+					opciones.setVisible(true);
+					
+				} else {
+					// Mostrar Error
+					JOptionPane.showMessageDialog(null, resultado);
+				}
+
+				
 //				if(contInicioSesion.Acceder(txtUsuario.getText()).equals("Correcto")) {
-				opciones=new VistaOpciones(this);
-				opciones.setVisible(true);
+				
 //				}
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();
 			}
-			
+							
 		}
 		
 	}

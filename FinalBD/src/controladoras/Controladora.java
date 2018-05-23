@@ -43,8 +43,8 @@ public class Controladora {
 	 */
 	public void Conectar() throws Exception {
 		try {
-			conexion = DriverManager.getConnection(DB_URL, USER, PASSWORD);
 			Class.forName(JDBC_DRIVER);
+			conexion = DriverManager.getConnection(DB_URL, USER, PASSWORD);
 		} catch (Exception e) {
 			throw e;
 		}
