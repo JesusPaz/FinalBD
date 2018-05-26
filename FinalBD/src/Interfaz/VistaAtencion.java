@@ -35,24 +35,71 @@ public class VistaAtencion extends JFrame implements ActionListener {
 		 centrar();
 	}
 
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("ATENDER")) {
-			
+		
+		switch (e.getActionCommand()) {
+		case "ATENDER":
 			try {
-				//metodo que verifica usuario y id solicitud
+				
+				//PONER metodo que verifica usuario y id solicitud
+				
 				jPanel1.setVisible(false);
 				jPanel2.setVisible(true);
 			} catch (Exception e2) {
-				// TODO: handle exception
+				
 			}
-			
-		}
-		else if(e.getActionCommand().equals("REGRESAR")) {
+			break;
+
+		case "REGRESAR":
 			vistaPrinci.setVisible(true);
 			
 			this.setVisible(false);
+			break;
+		
+			//Opcion escogida de atencion
+		case "SOLICITUD":
+			try {
+				VistaAtencionOpciones sol=new VistaAtencionOpciones(vistaPrinci, "SOLICITUD");
+				sol.setVisible(true);
+				this.setVisible(false);
+				
+			} catch (Exception e2) {
+				
+			}
+			break;
+			
+			
+		case "RECLAMO":
+			try {
+				VistaAtencionOpciones sol=new VistaAtencionOpciones(vistaPrinci, "RECLAMO");
+				sol.setVisible(true);
+				this.setVisible(false);
+				
+			} catch (Exception e2) {
+				
+			}
+			break;
+			
+		case "RETIRO":
+			try {
+				VistaAtencionOpciones sol=new VistaAtencionOpciones(vistaPrinci, "RETIRO");
+				sol.setVisible(true);
+				this.setVisible(false);
+				
+			} catch (Exception e2) {
+				
+			}
+			break;
+			
+			
+			
 		}
+		
+		
+		
+		
 		
 	}
 	
