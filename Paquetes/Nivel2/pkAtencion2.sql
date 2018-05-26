@@ -1,6 +1,7 @@
 CREATE OR REPLACE PACKAGE pkAtencionNivel2 IS 
    PROCEDURE pAtenderSolicitud(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2);
    PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN VARCHAR2, ivEstado IN VARCHAR2,ivComentario IN VARCHAR2);
+   PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2);
 END pkAtencionNivel2;
 /
 CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS 
