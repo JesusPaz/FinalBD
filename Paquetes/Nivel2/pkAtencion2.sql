@@ -77,8 +77,8 @@ PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN 
    FROM  SOLICITUD S 
    WHERE S.FECHAINI-S.FECHAFIN >= TO_DATE(tiempoLimite) 
    AND ROWNUM = 1
-   AND S.ESTADO='asignado'
-   AND (S.TIPOSOLICITUD_IDTIPOSOLICITUD='dano' OR S.TIPOSOLICITUD_IDTIPOSOLICITUD='reclamo');
+   AND S.ESTADO='Asignado'
+   AND (S.TIPOSOLICITUD_IDTIPOSOLICITUD=003 OR S.TIPOSOLICITUD_IDTIPOSOLICITUD=004);
    
    
    solicitud :=pkSOLICITUD.OBTENERSOLICITUD(ivIdSolicitud);
@@ -87,9 +87,9 @@ PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN 
    RAISE_APPLICATION_ERROR(-20001,'No existe una solicitud con el ID buscado.');
    END IF;
    
-   IF solicitud.TIPOPRODUCTO_IDTIPOPRODUCTO!='dano' or solucitud.TIPOPRODUCTO_IDTIPOPRODUCTO!='reclamo' THEN
+   IF solicitud.TIPOSOLICITUD_IDTIPOSOLICITUD!=003 or solucitud.TIPOSOLICITUD_IDTIPOSOLICITUD!=004 THEN
    RAISE_APPLICATION_ERROR(-20001,'La solicitud pasada por parametro no es de tipo daño o reclamo.');
-   END IF;
+   ELSE
    --Inicio del loop
    loop
    fetch cur1 into expiradas;
@@ -98,6 +98,7 @@ PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN 
     solicitud.TIPOSOLICITUD_IDTIPOSOLICITUD,solicitud.FUNCIONARIO_CEDULAFUNCIONARIO,solicitud.TIPOANOMALIA_IDANOMALIA,solicitud.TIPOPRODUCTO_IDTIPOPRODUCTO,
     solicitud.PRODUCTO_IDPRODUCTO);
    END loop; 
+   END IF;
    
    END pAtenderReclamoODanoAutomatico;   
 
