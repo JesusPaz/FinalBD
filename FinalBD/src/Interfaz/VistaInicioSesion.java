@@ -55,13 +55,21 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
 		
 		
 	}
+	
+	private void centrar() {
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int xEsquina = (screen.width - getWidth()) / 2;
+		int yEsquina = (screen.height - getHeight()) / 2;
+		setLocation(xEsquina, yEsquina);
+	}
+	
 		
 	
     public VistaInicioSesion() {
         
     	initComponents();
     	contInicioSesion= new ControladoraInicioSesion();
-
+    	centrar();
     }
                      
     private void initComponents() {

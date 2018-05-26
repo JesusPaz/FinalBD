@@ -1,5 +1,7 @@
 package Interfaz;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -37,9 +39,15 @@ public class VistaRegistro extends JFrame implements ActionListener {
 	public VistaRegistro(VistaOpciones v) {
 		initComponents();
 		controladorRegistro=new ControladorRegistro();
+		centrar();
 	}
 	
-	
+	private void centrar() {
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int xEsquina = (screen.width - getWidth()) / 2;
+		int yEsquina = (screen.height - getHeight()) / 2;
+		setLocation(xEsquina, yEsquina);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

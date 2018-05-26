@@ -1,5 +1,7 @@
 package Interfaz;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,6 +31,14 @@ public class VistaOpciones extends JFrame implements ActionListener{
 		registrar= new VistaRegistro(this);
 		
 		initComponents();
+		centrar();
+	}
+	
+	private void centrar() {
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int xEsquina = (screen.width - getWidth()) / 2;
+		int yEsquina = (screen.height - getHeight()) / 2;
+		setLocation(xEsquina, yEsquina);
 	}
 	
     @SuppressWarnings("unchecked")                         
