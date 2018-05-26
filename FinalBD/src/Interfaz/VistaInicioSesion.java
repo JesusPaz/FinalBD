@@ -53,6 +53,7 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
 							
 		}
 		
+		
 	}
 		
 	

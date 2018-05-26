@@ -13,7 +13,7 @@ public class ControladorRegistro extends Controladora{
 	 */
 	public String registrarSolicitud(int idSol,String obser,String cedulaCli,int tipoSol,int tipoAnoma,int tipoPro,int pro) throws Exception {
 		
-		String salida = "";
+		String salida = "Exito";
 		try {
 			this.Conectar();
 			System.out.println (" Pre Antes COnsulta");
@@ -30,12 +30,11 @@ public class ControladorRegistro extends Controladora{
 			query.setInt(6, tipoPro);
 			query.setInt(7, pro);
 			
-			 
 			query.registerOutParameter(8, java.sql.Types.VARCHAR);
 			System.out.println ("Antes COnsulta");
 			query.execute();
 			System.out.println ("Despues COnsulta");
-			if (query.getString(6) != null) {
+			if (query.getString(8) != null) {
 				salida = query.getString(8);
 			}
 			
