@@ -1,6 +1,6 @@
 CREATE OR REPLACE PACKAGE pkAtencionNivel3 IS 
     PROCEDURE pAtenderSolicitud(ivIdCedulaFuncionario VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2, ovRetorno out VARCHAR2);
-    PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN VARCHAR2, ivEstado IN VARCHAR2, ovRetorno our VARCHAR2);
+    PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN VARCHAR2, ivEstado IN VARCHAR2,ivComentario IN VARCHAR2, ovRetorno our VARCHAR2);
     PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2);
    
 END pkAtencionNivel3;
@@ -25,7 +25,7 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel3 IS
    BEGIN
    
    
-   PKASIGNACIONNIVEL2.pAtenderReclamoODano(ivIdCedulaFuncionario ,ivIdSolicitud, ivEstado);
+   PKASIGNACIONNIVEL2.pAtenderReclamoODano(ivIdCedulaFuncionario ,ivIdSolicitud, ivEstado,ivComentario);
    ovRetorno:='Se atendio el reclamo o el daño de manera exitosa.';
      EXCEPTION
         WHEN OTHERS THEN 
