@@ -58,7 +58,14 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
 			
 			break;
 
-		default:
+		case "GUARDAR_RETIRO":
+			
+			
+			break;
+			
+		case "GUARDAR_RECLAMO":
+			
+			
 			break;
 		}
 		
@@ -251,7 +258,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Reclamo y Daño");
 
