@@ -22,15 +22,13 @@ public class VistaAsignacion extends JFrame implements ActionListener {
 				
 				String resultado ="";
 				
-				resultado = controladorAsignacion.asignacionAutomatica(4344);
-				if (resultado.equals("Exito")) {
+				int solicitud = Integer.parseInt(txtIdSolicitud.getText());
+				
+				resultado = controladorAsignacion.asignacionAutomatica(solicitud);
+
 					JOptionPane.showMessageDialog(null, resultado);
 					
-				} else {
-					// Mostrar Error
-					JOptionPane.showMessageDialog(null, resultado);
-					
-				}
+				
 				
 			} catch (Exception e1) {
 				
@@ -42,15 +40,14 @@ public class VistaAsignacion extends JFrame implements ActionListener {
 			try {
 				String resultado ="";
 
-				resultado = controladorAsignacion.asignacionIndividual(0, "000");
-				if (resultado.equals("Exito")) {
+				int solicitud = Integer.parseInt(txtIdSolicitud.getText());
+				String funcionario = txtIdFuncionario.getText();
+				
+				resultado = controladorAsignacion.asignacionIndividual(solicitud, funcionario);
+					
 					JOptionPane.showMessageDialog(null, resultado);
 					
-				} else {
-					// Mostrar Error
-					JOptionPane.showMessageDialog(null, resultado);
-					
-				}
+				
 				
 			} catch (Exception e1) {
 				
@@ -103,7 +100,8 @@ public class VistaAsignacion extends JFrame implements ActionListener {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ASIGNACIÓN");
-
+        txtIdSolicitud.setText("000");;
+        txtIdFuncionario.setText("000");
         jLabel2.setText("Id de la solicitud : ");
 
         jLabel3.setText("Id del funcionario : ");

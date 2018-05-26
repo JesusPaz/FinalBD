@@ -56,21 +56,23 @@ public class VistaRegistro extends JFrame implements ActionListener {
 
 			try {
 				
-				String Cedula=txtCedulaCliente.getText();
+				String Cedula=ControladoraInicioSesion.getInstance().getUserActual().getCedula();
 				String Observacion=txtObservacion.getText();
 				//numero
-				String IdSolicitud="12";
+				int IdSolicitud=Integer.parseInt(txtIdSolicitud.getText());
 				// numero
 				String TipoSolicitud=(String) txtTipoSolicitud.getSelectedItem();
 				//numero
 				String TipoAnomalia=(String) txtAnomalia.getSelectedItem() ;
 				// numero
-				String IdProducto=txtIdProducto.getText();
+				int IdProducto=Integer.parseInt(txtIdProducto.getText());
 				//numero
 				String TipoProducto=(String) txtTipoP.getSelectedItem();
 				
+				//PROCEDURE pRegistarSolicitud(ivIdSolicitud IN NUMBER,ivObservacion IN VARCHAR2,ivIdCliente IN VARCHAR2,ivTipoSolicitud IN NUMBER
+				//,ivTipoAnomalia NUMBER,ivIdTipoProducto IN NUMBER,ivIdProducto IN NUMBER, ovRetorno out VARCHAR2);
 				
-				String resultado =  controladorRegistro.registrarSolicitud(4344," ","000",000,000,000,000);
+				String resultado =  controladorRegistro.registrarSolicitud(IdSolicitud,Observacion,Cedula,000,000,000,IdProducto);
 
 				if (resultado.equals("Solicitud registrada correctamente.")) {
 					JOptionPane.showMessageDialog(null, resultado);

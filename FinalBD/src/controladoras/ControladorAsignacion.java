@@ -27,8 +27,7 @@ public class ControladorAsignacion extends Controladora{
 
 			salida = query.getString(2);
 			
-			// System.out.println(salida);
-
+			this.TerminarConexion();
 			return salida;
 		} catch (Exception e) {
 			throw e;
