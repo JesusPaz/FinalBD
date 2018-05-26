@@ -32,7 +32,7 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
     ELSIF solicitudAct.TIPOSOLICITUD_IDTIPOSOLICITUD='002' THEN
     fecha:=SYSDATE;
     pkPRODUCTOSXCLIENTENIVEL1.PINSERTAR(solicitudAct.PRODUCTO_IDPRODUCTO,solicitudAct.CLIENTE_CEDULACLIENTE,fecha,NULL);  
-    pkSOLICITUDNIVEL1.PMODIFICAR(solicitudAct.IDSOLICITUD, 'atendida',ivComentario,solicitudAct.CLIENTE_CEDULACLIENTE,solicitudAct.FUNCIONARIO_CEDULAFUNCIONARIO,
+    pkSOLICITUDNIVEL1.PMODIFICAR(solicitudAct.IDSOLICITUD, 'Atendida',ivComentario,solicitudAct.CLIENTE_CEDULACLIENTE,solicitudAct.FUNCIONARIO_CEDULAFUNCIONARIO,
     solicitudAct.FECHAINI,solicitudAct.FECHAFIN,solicitudAct.TIPOSOLICITUD_IDTIPOSOLICITUD,solicitudAct.TIPOANOMALIA_IDANOMALIA,solicitudAct.TIPOPRODUCTO_IDTIPOPRODUCTO,
     solicitudAct.PRODUCTO_IDPRODUCTO);
     
@@ -95,7 +95,7 @@ PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN 
    loop
    fetch cur1 into expiradas;
    exit when cur1%notfound;
-    pkSOLICITUDNIVEL1.PMODIFICAR(expiradas, 'atendida','Atendida automaticamente por el sistema',solicitud.FECHAINI,solcitud.FECHAFIN,solicitud.CLIENTE_CEDULACLIENTE,
+    pkSOLICITUDNIVEL1.PMODIFICAR(expiradas, 'Atendida','Atendida automaticamente por el sistema',solicitud.FECHAINI,solcitud.FECHAFIN,solicitud.CLIENTE_CEDULACLIENTE,
     solicitud.TIPOSOLICITUD_IDTIPOSOLICITUD,solicitud.FUNCIONARIO_CEDULAFUNCIONARIO,solicitud.TIPOANOMALIA_IDANOMALIA,solicitud.TIPOPRODUCTO_IDTIPOPRODUCTO,
     solicitud.PRODUCTO_IDPRODUCTO);
    END loop; 
