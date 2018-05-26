@@ -10,7 +10,7 @@ public class ControladorAsignacion extends Controladora{
 	 * se conecta con la base de datos para ejecutar la consulta de asignacion
 	 * @param idSolicitud
 	 */
-	public String asignacionAutomatica(Solicitud solicitud) throws Exception {
+	public String asignacionAutomatica(int solicitud) throws Exception {
 		
 		String salida = "";
 		try {
@@ -19,7 +19,7 @@ public class ControladorAsignacion extends Controladora{
 			CallableStatement query = this.conexion
 					.prepareCall("{call pkAsignacionNivel3.pAsignacionAutomatica (?,?)}");
 			//PROCEDURE pAsignacionAutomatica(ivIdSolicitud IN NUMBER, ovRetorno out VARCHAR2)
-			query.setInt(1, solicitud.getId());
+			query.setInt(1, solicitud);
 
 			query.registerOutParameter(2, java.sql.Types.VARCHAR);
 

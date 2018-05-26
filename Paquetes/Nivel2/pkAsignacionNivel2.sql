@@ -11,14 +11,13 @@ CREATE OR REPLACE PACKAGE BODY pkAsignacionNivel2 IS
    cedulaF VARCHAR2(20);
    cantidad NUMBER;
    BEGIN 
-   SELECT P.Valor into cantidad
-   FROM PARAMETROS P
-   WHERE P.idParametros=0001;
-   
+   --SELECT P.Valor into cantidad
+   --FROM PARAMETROS P
+   --WHERE P.idParametros=0001;
+   -- FALTA EL ID
    SELECT  F.CEDULAFUNCIONARIO into cedulaF
-   FROM  FUNCIONARIO F,SOLICITUD S 
-   GROUP BY  F.CEDULAFUNCIONARIO
-   HAVING COUNT(S.IDSOLICITUD)<=cantidad AND ROWNUM = 1;
+   FROM  FUNCIONARIO F 
+   WHERE ROWNUM = 1;
    
    PKSOLICITUDNIVEL1.PCAMBIARESTADO(ivIdSolicitud,'Asignada',cedulaF);
      EXCEPTION
@@ -32,12 +31,7 @@ CREATE OR REPLACE PACKAGE BODY pkAsignacionNivel2 IS
     
    PROCEDURE pAsignacionIndividual(ivIdSolicitud IN NUMBER,ivFuncionario IN VARCHAR2)
    IS
-    cantidad NUMBER;
    BEGIN 
-   SELECT P.Valor into cantidad
-   FROM PARAMETROS P
-   WHERE P.idParametros=0001;
-  
    PKSOLICITUDNIVEL1.PCAMBIARESTADO(ivIdSolicitud,'Asignada',ivFuncionario);
      EXCEPTION
         WHEN NO_DATA_FOUND THEN 

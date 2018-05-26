@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 
+import controladoras.ControladorAsignacion;
 import controladoras.ControladoraInicioSesion;
 
 public class VistaAsignacion extends JFrame implements ActionListener {
@@ -20,8 +21,8 @@ public class VistaAsignacion extends JFrame implements ActionListener {
 			try {
 				
 				String resultado ="";
-				//String resultado =  ControladoraInicioSesion.getInstance().Acceder(txtUsuario.getText());
-
+				
+				resultado = controladorAsignacion.asignacionAutomatica(4344);
 				if (resultado.equals("Exito")) {
 					JOptionPane.showMessageDialog(null, resultado);
 					
@@ -41,8 +42,7 @@ public class VistaAsignacion extends JFrame implements ActionListener {
 			try {
 				String resultado ="";
 
-				//String resultado =  ControladoraInicioSesion.getInstance().Acceder(txtUsuario.getText());
-
+				resultado = controladorAsignacion.asignacionIndividual(0, "000");
 				if (resultado.equals("Exito")) {
 					JOptionPane.showMessageDialog(null, resultado);
 					
@@ -72,11 +72,13 @@ public class VistaAsignacion extends JFrame implements ActionListener {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtIdFuncionario;
     private javax.swing.JTextField txtIdSolicitud;
+    private ControladorAsignacion controladorAsignacion;
     // End of variables declaration
     
     
 	public VistaAsignacion(VistaOpciones vistaOpciones) {
 		 initComponents();
+		 controladorAsignacion = new ControladorAsignacion();
 	}
 
 	
@@ -112,7 +114,7 @@ public class VistaAsignacion extends JFrame implements ActionListener {
 
         btnAutomatica.setText("Automatica");
         btnAutomatica.addActionListener(this);
-        btnIndividual.setActionCommand("AUTOMATICA");
+        btnAutomatica.setActionCommand("AUTOMATICA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
