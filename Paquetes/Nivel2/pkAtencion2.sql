@@ -1,12 +1,12 @@
 CREATE OR REPLACE PACKAGE pkAtencionNivel2 IS 
-   PROCEDURE pAtenderSolicitud(ivCedulaFuncionario VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2);
+   PROCEDURE pAtenderSolicitud(ivIdCedulaFuncionario VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2);
    PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN VARCHAR2, ivEstado IN VARCHAR2);
    PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2);
 END pkAtencionNivel2;
 /
 CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS 
 
-   PROCEDURE pAtenderSolicitud(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2)--p1
+   PROCEDURE pAtenderSolicitud(ivIdCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2)--p1
    IS 
    fecha DATE;
    solicitud SOLICITUD%rowtype;
@@ -24,7 +24,6 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
     pkSOLICITUDNIVEL1.PMODIFICAR(solicitud.IDSOLICITUD, 'atendida',ivComentario,solicitud.FECHAINI,SYSDATE,solicitud.CLIENTE_CEDULACLIENTE,
     solicitud.TIPOSOLICITUD_IDTIPOSOLICITUD,solicitud.FUNCIONARIO_CEDULAFUNCIONARIO,solicitud.TIPOANOMALIA_IDANOMALIA,solicitud.TIPOPRODUCTO_IDTIPOPRODUCTO,
     solicitud.PRODUCTO_IDPRODUCTO);
-    
     ELSIF solicitud.TIPOSOLICITUD_IDTIPOSOLICITUD='002' THEN
     fecha:=SYSDATE;
     pkPRODUCTOSXCLIENTENIVEL1.PINSERTAR(solicitud.PRODUCTO_IDPRODUCTO,CLIENTE_CEDULACLIENTE,fecha,NULL);  
@@ -60,8 +59,8 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
     IS
    solicitud SOLICITUD%rowtype;
    tiempoLimite NUMBER;
-   contador NUMBER;
-   expiradas NUMBER;
+   expiradas SOLICITUD.IDSOLICITUD%rowtype;
+   cur1 sys_refcursor;
    BEGIN 
    
    SELECT P.Valor into tiempoLimite
@@ -75,9 +74,6 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
    AND S.ESTADO='asignado'
    AND (S.TIPOSOLICITUD_IDTIPOSOLICITUD='dano' OR S.TIPOSOLICITUD_IDTIPOSOLICITUD='reclamo');
    
-   SELECT COUNT(idSolicitud) into contador
-   FROM expiradas;
-   
    
    solicitud :=pkSOLICITUD.OBTENERSOLICITUD(ivIdSolicitud);
    
@@ -88,13 +84,16 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
    IF solicitud.TIPOPRODUCTO_IDTIPOPRODUCTO!='dano' or solucitud.TIPOPRODUCTO_IDTIPOPRODUCTO!='reclamo' THEN
    RAISE_APPLICATION_ERROR(-20001,'La solicitud pasada por parametro no es de tipo daño o reclamo.');
    END IF;
-   
-    pkSOLICITUDNIVEL1.PMODIFICAR(solicitud.IDSOLICITUD, 'atendida','Atendida automaticamente por el sistema',solicitud.FECHAINI,solcitud.FECHAFIN,solicitud.CLIENTE_CEDULACLIENTE,
+   --Inicio del loop
+   loop
+   fetch cur1 into expiradas;
+   exit when cur1%notfound;
+    pkSOLICITUDNIVEL1.PMODIFICAR(expiradas, 'atendida','Atendida automaticamente por el sistema',solicitud.FECHAINI,solcitud.FECHAFIN,solicitud.CLIENTE_CEDULACLIENTE,
     solicitud.TIPOSOLICITUD_IDTIPOSOLICITUD,solicitud.FUNCIONARIO_CEDULAFUNCIONARIO,solicitud.TIPOANOMALIA_IDANOMALIA,solicitud.TIPOPRODUCTO_IDTIPOPRODUCTO,
     solicitud.PRODUCTO_IDPRODUCTO);
-    
+   END loop; 
    
-   END pAtenderREclamoODanoAutomatico;   
+   END pAtenderReclamoODanoAutomatico;   
 
 
 END pkAtencionNivel2;
