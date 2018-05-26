@@ -46,7 +46,7 @@ public String atenderSolicitud(String cedulaFunc, int idSolicitud, String coment
 	}
 	
 
-	public String asignacionIndividual(String cedulaFunc, int idSolicitud, String comentario,String estado) throws Exception {
+	public String asignacionIndividual(String cedulaFuncion, int idSolicitud, String comentario,String estado) throws Exception {
 		//PROCEDURE pAsignacionIndividual(ivIdSolicitud IN NUMBER,ivFuncionario IN VARCHAR2,ovRetorno out VARCHAR2);
 		   
 
@@ -57,7 +57,7 @@ public String atenderSolicitud(String cedulaFunc, int idSolicitud, String coment
 			CallableStatement query = this.conexion
 					.prepareCall("{call pkAsignacionNivel3.pAsignacionIndividual(?,?,?,?,?)}");
 			
-			query.setString(1, cedulaFunc);
+			query.setString(1, cedulaFuncion);
 			query.setInt(2, idSolicitud);
 			query.setString(3, comentario);
 			query.setString(4, estado);
