@@ -40,7 +40,7 @@ public class VistaInicioSesion extends JFrame implements ActionListener {
 				if (resultado.equals("Exito")) {
 					opciones=new VistaOpciones(this);
 					opciones.setVisible(true);
-					
+					this.setVisible(false);
 				} else {
 					// Mostrar Error
 					JOptionPane.showMessageDialog(null, resultado);
