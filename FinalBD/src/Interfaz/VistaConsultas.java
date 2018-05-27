@@ -3,6 +3,8 @@ package Interfaz;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.*;
 
@@ -128,24 +130,82 @@ public class VistaConsultas extends JFrame implements ActionListener{
         btnReturn.addActionListener(this);
         btnReturn.setActionCommand("REGRESAR");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CONSULTAS");
 
         btnSolicitudXFuncionario.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnSolicitudXFuncionario.setText("Solicitudes por Funcionario");
-
-        btnSolicitudXEstado.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        btnSolicitudXFuncionario.addItemListener(new ItemListener() {
+        	@Override
+     	   public void itemStateChanged(ItemEvent ev) {
+     		      if(ev.getStateChange()==ItemEvent.SELECTED){
+     		        
+     		        btnSolicitudXTipo.setSelected(false);
+     		        btnProductosXClientes.setSelected(false);
+     		        btnSolicitudXEstado.setSelected(false);
+     		        btnSolicitudXFuncionario.setSelected(true);
+     		      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
+     		        
+     		       btnSolicitudXFuncionario.setSelected(false);
+     		      }
+     		   }});
+        
+        btnSolicitudXEstado.setFont(new java.awt.Font("Tahoma", 0, 10)); 
         btnSolicitudXEstado.setText("Solicitudes por Estado");
+        btnSolicitudXEstado.addItemListener(new ItemListener() {
+        	@Override
+        	   public void itemStateChanged(ItemEvent ev) {
+        		      if(ev.getStateChange()==ItemEvent.SELECTED){
+        		        
+        		        btnSolicitudXTipo.setSelected(false);
+        		        btnProductosXClientes.setSelected(false);
+        		        btnSolicitudXEstado.setSelected(true);
+        		        btnSolicitudXFuncionario.setSelected(false);
+        		      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
+        		        
+        		        btnSolicitudXEstado.setSelected(false);
+        		      }
+        		   }});
 
-        btnSolicitudXTipo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        btnSolicitudXTipo.setFont(new java.awt.Font("Tahoma", 0, 10)); 
         btnSolicitudXTipo.setText("Solicitudes por Tipo");
+        btnSolicitudXTipo.addItemListener(new ItemListener() {
+        	@Override
+        	   public void itemStateChanged(ItemEvent ev) {
+        		      if(ev.getStateChange()==ItemEvent.SELECTED){
+        		       
+        		        btnSolicitudXTipo.setSelected(true);
+        		        btnProductosXClientes.setSelected(false);
+        		        btnSolicitudXEstado.setSelected(false);
+        		        btnSolicitudXFuncionario.setSelected(false);
+        		      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
+        		       
+        		        btnSolicitudXTipo.setSelected(false);
+        		      }
+        		   }});
+
+			
+			
 
         btnProductosXClientes.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnProductosXClientes.setText("Producto por Clientes");
-        btnProductosXClientes.addActionListener(this);
+        btnProductosXClientes.addItemListener(new ItemListener() {
+        	@Override
+     	   public void itemStateChanged(ItemEvent ev) {
+     		      if(ev.getStateChange()==ItemEvent.SELECTED){
+     		       
+     		        btnSolicitudXTipo.setSelected(false);
+     		        btnProductosXClientes.setSelected(true);
+     		        btnSolicitudXEstado.setSelected(false);
+     		        btnSolicitudXFuncionario.setSelected(false);
+     		      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
+     		       
+     		    	 btnProductosXClientes.setSelected(false);
+     		      }
+     		   }});
 
-        panelSolXFuncionario.setBorder(javax.swing.BorderFactory.createTitledBorder("Solicitudes Asignadas"));
+        panelSolXFuncionario.setBorder(BorderFactory.createTitledBorder("Solicitudes Asignadas"));
 
         jLabel2.setText("Cédula del Funcionario : ");
 
