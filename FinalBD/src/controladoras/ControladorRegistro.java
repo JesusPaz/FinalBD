@@ -16,7 +16,7 @@ public class ControladorRegistro extends Controladora{
 		String salida = "Exito";
 		try {
 			this.Conectar();
-			System.out.println (" Pre Antes COnsulta");
+			
 			CallableStatement query = this.conexion
 					.prepareCall("{call pkRegistroNivel3.pRegistarSolicitud(?,?,?,?,?,?,?,?)}");
 	//PROCEDURE pRegistarSolicitud(ivIdSolicitud IN NUMBER,ivObservacion IN VARCHAR2,ivIdCliente IN VARCHAR2,ivTipoSolicitud IN NUMBER
@@ -31,9 +31,9 @@ public class ControladorRegistro extends Controladora{
 			query.setInt(7, pro);
 			
 			query.registerOutParameter(8, java.sql.Types.VARCHAR);
-			System.out.println ("Antes COnsulta");
+			
 			query.execute();
-			System.out.println ("Despues COnsulta");
+			
 			if (query.getString(8) != null) {
 				salida = query.getString(8);
 			}
