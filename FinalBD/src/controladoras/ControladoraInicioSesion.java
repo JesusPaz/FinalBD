@@ -71,6 +71,7 @@ public class ControladoraInicioSesion extends Controladora {
 			// System.out.println(salida);
 			return salida;
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw e;
 		} finally {
 			this.TerminarConexion();

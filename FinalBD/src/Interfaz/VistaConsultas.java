@@ -258,7 +258,7 @@ public class VistaConsultas extends JFrame implements ActionListener{
 			btnTipoNuevoP.setSelected(false);
 			
 				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
-				solicitudes= controladora.solicitudesXtipo("1");
+				solicitudes= controladora.solicitudesXtipo("001");
 				
 				if(solicitudes!=null)
 				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {

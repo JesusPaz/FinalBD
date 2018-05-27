@@ -187,7 +187,7 @@ public class ControladoraConsultas extends Controladora {
 			
 			solicitudes=new ArrayList<Solicitud>();
 			ResultSet rs=stmt.executeQuery(
-					"SELECT * FROM solicitud WHERE estado='"+tipo+"'"); 
+					"SELECT * FROM solicitud WHERE tiposolicitud_idtiposolicitud='"+tipo+"'"); 
 			
 					
 			while (rs.next()) {
