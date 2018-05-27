@@ -5,12 +5,17 @@ INSERT INTO CLIENTE VALUES ('13.490.889','Valentina','10-MAR-1995','Cra 19 #45-2
 INSERT INTO CLIENTE VALUES ('1.090.423.115','Daniela','10-ABR-1993','Clle 2 #76-345','15');
 INSERT INTO CLIENTE VALUES ('1.093.885.333','Carla','10-MAY-1990','Cra 2 #34-123','15');
 
+INSERT INTO CLIENTE VALUES ('000','Diana','10-MAY-1990','Cra 2 #34-123','15');
+INSERT INTO CLIENTE VALUES ('001','Jesus','10-MAY-1990','Cra 2 #34-123','15');
+
 --funcionario
 INSERT INTO FUNCIONARIO VALUES ('37.279.508','Carlos','23-JUN-1991','Carrera 56A No. 51 - 81','22');
 INSERT INTO FUNCIONARIO VALUES ('1.090.441.17','Felipe','21-JUL-1994','Carrera 22 No. 17-31','23');
 INSERT INTO FUNCIONARIO VALUES ('1.090.395.808','Alejandro','29-AGO-1986','Carrera 54 No. 68 - 80 ','24');
 INSERT INTO FUNCIONARIO VALUES ('91.530.780','Sebastian','12-OCT-1979','Calle 59 No. 27 - 35 ','25');
 INSERT INTO FUNCIONARIO VALUES ('1.036.627.286','Nicolas','06-NOV-1990','Carrera 8  No. 20 - 59','26');
+
+INSERT INTO FUNCIONARIO VALUES ('000','Jesus','06-NOV-1997','Carrera 8  No. 20 - 59','26');
 
 
 --Telefonia: Voz
@@ -51,12 +56,15 @@ INSERT INTO TIPOANOMALIA VALUES (9,'Baja Velocidad');
 --Asignacion: tiene estados de asignada y dentro puede estar: solicitud, retiro,daño y reclamo
  
 --Registro
-INSERT INTO TIPOSOLICITUD VALUES (1,'Creacion');
-INSERT INTO TIPOSOLICITUD VALUES (2, ' Modificacion');
+INSERT INTO TIPOSOLICITUD VALUES (001,'Creacion');
+
 --Asignacion
-INSERT INTO TIPOSOLICITUD VALUES (3,'Cancelacion');
-INSERT INTO TIPOSOLICITUD VALUES (4,'Daño');
-INSERT INTO TIPOSOLICITUD VALUES (5,'Reclamo');
+INSERT INTO TIPOSOLICITUD VALUES (002,'Retiro');
+INSERT INTO TIPOSOLICITUD VALUES (003,'DanoReclamo');
+INSERT INTO TIPOSOLICITUD VALUES (004, 'Modificacion');
+INSERT INTO TIPOSOLICITUD VALUES (005,'Cancelacion');
+INSERT INTO TIPOSOLICITUD VALUES (006,'NuevoProducto');
+
 
 --solicitud
 --Una solicitud de registro
@@ -66,11 +74,9 @@ INSERT INTO SOLICITUD VALUES (1,'Creacion','esta solicitud no ha sido asignada',
 --solicitud de asignacion
 
 
-INSERT INTO SOLICITUD VALUES (5,' Solicitud','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.441.17',6,2,2);
-INSERT INTO SOLICITUD VALUES (5,'Asignada','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'91.530.780',6,2,2);
-INSERT INTO SOLICITUD VALUES (5,'Asignada','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.441.17',6,2,2);
-INSERT INTO SOLICITUD VALUES (5,'Asignada','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.395.808',6,2,2);
-INSERT INTO SOLICITUD VALUES (5,'Asignada','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.441.17',6,2,2);
+INSERT INTO SOLICITUD VALUES (5,'NuevoProducto','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.441.17',6,2,2);
+
+
 
 --
 --Relacion de clientes x producto

@@ -186,43 +186,8 @@ public class ControladoraConsultas extends Controladora {
 			Statement stmt = this.conexion.createStatement();
 			
 			solicitudes=new ArrayList<Solicitud>();
-			ResultSet rs=null;
-			
-			switch (tipo) {
-			case "Nuevo Producto":
-				rs= stmt.executeQuery(
-						"SELECT *" + 
-						"FROM solicitud" + 
-						"WHERE estado='Nuevo Producto' "); 
-				break;
-			case "Retiro":
-				 rs = stmt.executeQuery(
-						"SELECT *" + 
-						"FROM solicitud" + 
-						"WHERE estado='Retiro' "); 
-				break;
-				
-			case "Daño y Reclamo":
-				rs = stmt.executeQuery(
-						"SELECT *" + 
-						"FROM solicitud" + 
-						"WHERE estado='Daño y Reclamo' "); 
-				break;
-				
-			case "Creacion":
-				 rs = stmt.executeQuery(
-						"SELECT *" + 
-						"FROM solicitud" + 
-						"WHERE estado='Creacion' "); 
-				break;
-				
-			case "Modificacion":
-				 rs = stmt.executeQuery(
-						"SELECT *" + 
-						"FROM solicitud" + 
-						"WHERE estado='Modificacion' "); 
-				break;
-			}
+			ResultSet rs=stmt.executeQuery(
+					"SELECT * FROM solicitud WHERE estado='"+tipo+"'"); 
 			
 					
 			while (rs.next()) {
@@ -235,7 +200,7 @@ public class ControladoraConsultas extends Controladora {
 			String cliente= rs.getString("cliente_cedulacliente");
 			int tipoSol= Integer.parseInt(rs.getString("tiposolicitud_idtiposolicitud"));
 			String cedFuncionario= rs.getString("funcionario_cedulafuncionario");
-			int tipoAnoma= Integer.parseInt(rs.getString("tipoanomalia_idtipoanomalia")) ;
+			int tipoAnoma= Integer.parseInt(rs.getString("tipoanomalia_idanomalia")) ;
 			int tipoP=Integer.parseInt( rs.getString("tipoproducto_idtipoproducto"));
 			int prod=Integer.parseInt(rs.getString("producto_idproducto"));
 				
@@ -247,6 +212,7 @@ public class ControladoraConsultas extends Controladora {
 //				System.out.println(s+","+f);
 				}
 		} catch (SQLException e) {
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null,"Error. La tabla no existe en la base de datos.");
 		}
 			
@@ -280,19 +246,17 @@ public class ControladoraConsultas extends Controladora {
 			
 			
 			ResultSet rs = stmt.executeQuery(
-					"SELECT *" + 
-					"FROM productosxcliente" + 
-					"WHERE cliente_cedulacliente=cedulacliente;  ");
+					"SELECT * FROM productosxcliente WHERE cliente_cedulacliente='"+cedulaCliente+"'");
 					
 			while (rs.next()) {
 			
 			String id=rs.getString("producto_idproducto");
 			String estado=rs.getString("cliente_cedulacliente");
-			String fechai= rs.getString("fechainicio");//cambiar a date
-			String fechaf= rs.getString("fechafin"); //cambiar a date
+			String fechai= rs.getString("fechainicio");
+			String fechaf= rs.getString("fechafin");
 			
 			
-			String[] datos= new String[5];
+			String[] datos= new String[4];
 			
 			datos[0]=id;
 			datos[1]=estado;
@@ -301,9 +265,10 @@ public class ControladoraConsultas extends Controladora {
 				
 			productos.add(datos);
 				
-//				System.out.println(s+","+f);
+
 				}
 		} catch (SQLException e) {
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null,"Error. La tabla no existe en la base de datos.");
 		}
 			

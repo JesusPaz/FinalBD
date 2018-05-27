@@ -216,6 +216,71 @@ public class VistaConsultas extends JFrame implements ActionListener{
 			}
 				
 		break;
+		
+		
+		//////////PRODUCTOSXCLIENTE
+		
+	case "PXC":
+		
+		if(!txtCedCliente.getText().equals("") && txtCedCliente.getText()!=null){
+			try {
+				
+				ArrayList<String[]> productos=new ArrayList<String[]>();
+				productos= controladora.productosXclientes(txtCedCliente.getText());
+				
+				if(productos!=null)
+					tablaPXCliente = new JTable(pasarAMAtrizPXC(productos),new String [] {
+	            		"Id producto","Cliente","Fecha de inicio","Fecha de fin"
+	            });
+				
+				scrollPaneTablaPXClientes.setViewportView(tablaPXCliente);
+			
+			
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			
+		}else {
+			JOptionPane.showMessageDialog(this, "Ingrese la cédula del Cliente");
+		}
+		
+		break;
+		
+		//////////////SolXTIPO
+		
+	case "Creacion":
+		
+		try {
+			btnTipoRetiro.setSelected(false);
+			btnTipoCreacion.setSelected(true);
+			btnTipoModificacion.setSelected(false);
+			btnTipoReclamo.setSelected(false);
+			btnTipoNuevoP.setSelected(false);
+			
+				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
+				solicitudes= controladora.solicitudesXtipo("1");
+				
+				if(solicitudes!=null)
+				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
+	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
+	            		"Tipo Producto","Producto"
+	            });
+				
+				scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
+			
+			
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+				
+		break;
+		
+		
+		
+		
+		
+		
+		
 	
 	}
 		
@@ -248,6 +313,26 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
 		return matriz;
 	}
 	
+
+
+	public String[][] pasarAMAtrizPXC(ArrayList<String[]> ma) {
+	
+	String[][] matriz= new String[ma.size()][4];
+	int i=0;
+	
+	for (String[] sActual:ma) {
+		
+		matriz[i][0]=sActual[0]+"";
+		matriz[i][1]=sActual[1]+"";
+		matriz[i][2]=sActual[2]+"";
+		matriz[i][3]=sActual[3]+"";
+	
+		i++;
+		
+	}
+	
+	return matriz;
+}
 
 	
 	public void mostrarPanelRespectivo(String string) {
@@ -567,23 +652,30 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía", "Tipo Producto","Producto"
             }
         ));
         scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
 
         btnTipoNuevoP.setText("Nuevo Producto");
         btnTipoNuevoP.setActionCommand("NuevoProducto");
+        btnTipoNuevoP.addActionListener(this);
 
         btnTipoRetiro.setText("Retiro");
+        btnTipoRetiro.setActionCommand("Retiro");
+        btnTipoRetiro.addActionListener(this);
 
         btnTipoReclamo.setText("Daño y Reclamo");
         btnTipoReclamo.setActionCommand("DanoReclamo");
+        btnTipoReclamo.addActionListener(this);
 
         btnTipoCreacion.setText("Creación");
         btnTipoCreacion.setActionCommand("Creacion");
+        btnTipoCreacion.addActionListener(this);
 
         btnTipoModificacion.setText("Modificacion");
+        btnTipoModificacion.setActionCommand("Modificacion");
+        btnTipoModificacion.addActionListener(this);
 
         javax.swing.GroupLayout panelSolXTipoLayout = new javax.swing.GroupLayout(panelSolXTipo);
         panelSolXTipo.setLayout(panelSolXTipoLayout);
@@ -631,7 +723,8 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
         jLabel5.setText("Cédula del cliente : ");
 
         btnVerProductosXCliente.setText("Ver Productos");
-        btnVerProductosXCliente.setActionCommand("VerProductos");
+        btnVerProductosXCliente.setActionCommand("PXC");
+        btnVerProductosXCliente.addActionListener(this);
 
         tablaPXCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -641,7 +734,7 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+            		"Id producto","Cliente","Fecha de inicio","Fecha de fin"
             }
         ));
         scrollPaneTablaPXClientes.setViewportView(tablaPXCliente);
