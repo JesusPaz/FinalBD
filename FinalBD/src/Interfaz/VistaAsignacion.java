@@ -13,6 +13,12 @@ public class VistaAsignacion extends JFrame implements ActionListener {
 
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -32,7 +38,8 @@ public class VistaAsignacion extends JFrame implements ActionListener {
 				
 			} catch (Exception e1) {
 				
-				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "El id de la solicitud debe ser numerico");
+				
 			}
 							
 		}else if(e.getActionCommand().equals("INDIVIDUAL")) {
@@ -51,7 +58,8 @@ public class VistaAsignacion extends JFrame implements ActionListener {
 				
 			} catch (Exception e1) {
 				
-				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "El id de la solicitud debe ser numerico");
+				
 			}
 							
 		}

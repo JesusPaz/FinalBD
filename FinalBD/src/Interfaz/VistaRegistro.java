@@ -14,6 +14,30 @@ import mundo.Solicitud;
 
 public class VistaRegistro extends JFrame implements ActionListener {
 	
+	//CONSTANTES
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public final static int VOZ=1;
+	public final static int DATOS=2;
+	public final static int INTEGRADO=4;
+	
+	
+	public final static int CREACION=1;
+	public final static int MODIFICACION=2;
+	public final static int CANCELACION=3;
+	public final static int DAÑO =4;
+	public final static int RECLAMO = 5;
+	
+	public final static int SIN_ANOMALIA=4;
+	public final static int BAJA_VELOCIDAD=5;
+	public final static int MALA_CALIDAD=6;
+	
+	
+	
+	
 	// Variables declaration - do not modify                     
     private JButton btnRegistrar;
     private  JLabel jLabel1;
@@ -71,20 +95,52 @@ public class VistaRegistro extends JFrame implements ActionListener {
 				
 				//PROCEDURE pRegistarSolicitud(ivIdSolicitud IN NUMBER,ivObservacion IN VARCHAR2,ivIdCliente IN VARCHAR2,ivTipoSolicitud IN NUMBER
 				//,ivTipoAnomalia NUMBER,ivIdTipoProducto IN NUMBER,ivIdProducto IN NUMBER, ovRetorno out VARCHAR2);
-				
-				String resultado =  controladorRegistro.registrarSolicitud(IdSolicitud,Observacion,Cedula,000,000,000,IdProducto);
-
-				if (resultado.equals("Solicitud registrada correctamente.")) {
-					JOptionPane.showMessageDialog(null, resultado);
-					
-				} else {
-					// Mostrar Error
-					JOptionPane.showMessageDialog(null, resultado);
-					
+			
+				int realTipoSoli=1;
+				if (TipoSolicitud.equalsIgnoreCase("Creacion")) {
+					realTipoSoli=CREACION;
+				}else 		if (TipoSolicitud.equalsIgnoreCase("Modificacion")) {
+					realTipoSoli=MODIFICACION;
+				}else 		if (TipoSolicitud.equalsIgnoreCase("Cancelacion")) {
+					realTipoSoli=CANCELACION;
+				}else 		if (TipoSolicitud.equalsIgnoreCase("Daño")) {
+					realTipoSoli=DAÑO;
+				}else 		if (TipoSolicitud.equalsIgnoreCase("Reclamo")) {
+					realTipoSoli=RECLAMO;
 				}
+				
+				int realTipoAnomalia=1;
+		 		if (TipoAnomalia.equalsIgnoreCase("Sin Anomalia")) {
+		 			realTipoAnomalia=SIN_ANOMALIA;
+				}else 		if (TipoAnomalia.equalsIgnoreCase("Baja Velocidad")) {
+					realTipoAnomalia=BAJA_VELOCIDAD;
+				}else 		if (TipoAnomalia.equalsIgnoreCase("Mala Calidad")) {
+					realTipoAnomalia=MALA_CALIDAD;
+				}
+				
+		 		
+		 		int realTipoProducto=1;
+		 		if (TipoProducto.equalsIgnoreCase("Voz")) {
+		 			realTipoAnomalia=VOZ;
+				}else 		if (TipoProducto.equalsIgnoreCase("Datos")) {
+					realTipoAnomalia=DATOS;
+				}else 		if (TipoProducto.equalsIgnoreCase("Integrado")) {
+					realTipoAnomalia=INTEGRADO;
+				}
+				
+				
+				String resultado =  controladorRegistro.registrarSolicitud(IdSolicitud,Observacion,Cedula,realTipoSoli,realTipoAnomalia
+						,realTipoProducto,IdProducto);
 
-
-			} catch (Exception exception) {
+				
+					JOptionPane.showMessageDialog(null, resultado);
+				
+					
+			} catch (NumberFormatException exe) {
+				JOptionPane.showMessageDialog(null, "Ingrese Id numerico");
+				
+			}
+			catch (Exception ex) {
 				
 			}
 		}
@@ -121,7 +177,7 @@ public class VistaRegistro extends JFrame implements ActionListener {
 
         txtTipoP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Voz", "Datos", "Integrado" }));
 
-        txtAnomalia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "anomalia1", "anomalia2", "anomalia3" }));
+        txtAnomalia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin Anomalia", "Baja Velocidad", "Mala Calidad" }));
 
         txtTipoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Creación", "Modificación", "Cancelación", "Daño", "Reclamo" }));
 
