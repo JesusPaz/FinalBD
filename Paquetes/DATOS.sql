@@ -1,4 +1,4 @@
- --Clientes
+--Clientes
 INSERT INTO CLIENTE VALUES ('1.090.427.627','Sofia','10-ENE-1996','Clle 5 #12-321','12');
 INSERT INTO CLIENTE VALUES ('1.090.450.726','Karen','10-FEB-1997','Cra 1 #21-432','13');
 INSERT INTO CLIENTE VALUES ('13.490.889','Valentina','10-MAR-1995','Cra 19 #45-253','14');
@@ -65,3 +65,11 @@ INSERT INTO SOLICITUD VALUES (1,'Creacion','esta solicitud no ha sido asignada',
 
 
 INSERT INTO SOLICITUD VALUES (5,' Solicitud','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.441.17',6,2,2);
+
+--
+--Relacion de clientes x producto
+--Solo se crea esta relación para una solicitud de TipoSolicitud
+--Falta revisar lo de la fecha de ini.
+
+INSERT INTO PRODUCTOSXCLIENTE VALUES (2, '1.090.450.726', '01-FEB-2018','01-MAR-2018');
+
