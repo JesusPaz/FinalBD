@@ -39,7 +39,7 @@ public class VistaConsultas extends JFrame implements ActionListener{
     private JLabel jLabel5;
     private JLayeredPane jLayeredPane1;
     private JPanel jPanel2;
-    private JRadioButton jRadioButton1;
+    private JRadioButton btnAsignadas;
     private JScrollPane jScrollPane1;
     private JPanel panelProductosXCliente;
     private JPanel panelSolXEstado;
@@ -83,6 +83,7 @@ public class VistaConsultas extends JFrame implements ActionListener{
 			
 			break;
 
+			////SOLICITUDESXFUNCIONARIO
 		case "SXF":
 			
 			if(!txtCedFuncionario.getText().equals("") && txtCedFuncionario.getText()!=null){
@@ -92,7 +93,7 @@ public class VistaConsultas extends JFrame implements ActionListener{
 					solicitudes= controladora.solicitudesAsignadasXFunc(txtCedFuncionario.getText());
 					
 					if(solicitudes!=null)
-					tablaSolXFunc = new JTable(pasarAMAtriz(solicitudes),new String [] {
+					tablaSolXFunc = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
 		            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
 		            		"Tipo Producto","Producto"
 		            });
@@ -109,12 +110,121 @@ public class VistaConsultas extends JFrame implements ActionListener{
 			}
 			
 			break;
-		}
-	}
-	
-public String[][] pasarAMAtriz(ArrayList<Solicitud> ma) {
+			
+			//////SOLICITUDESXESTADO
+		case "Asignada":
+			
+			try {
+					btnAnuladas.setSelected(false);
+					btnAtendidas.setSelected(false);
+					btnPendientes.setSelected(false);
+					btnAsignadas.setSelected(true);
+					
+					ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
+					solicitudes= controladora.solicitudesXestado("Asignada");
+					
+					if(solicitudes!=null)
+					 tablaSolXEstados = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
+		            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
+		            		"Tipo Producto","Producto"
+		            });
+					
+					scrollPaneTablaXEstados.setViewportView(tablaSolXEstados);
+				
+				
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+					
+			break;
+			
+			
+		case "Pendiente":
+			
+			try {
+				btnAnuladas.setSelected(false);
+				btnAtendidas.setSelected(false);
+				btnPendientes.setSelected(true);
+				btnAsignadas.setSelected(false);
+					
+					ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
+					solicitudes= controladora.solicitudesXestado("Pendiente");
+					
+					if(solicitudes!=null)
+					 tablaSolXEstados = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
+		            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
+		            		"Tipo Producto","Producto"
+		            });
+					
+					scrollPaneTablaXEstados.setViewportView(tablaSolXEstados);
+				
+				
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+					
+			break;
 		
-		String[][] matriz= new String[ma.size()][2];
+		
+	case "Anulada":
+		
+		try {
+			btnAnuladas.setSelected(true);
+			btnAtendidas.setSelected(false);
+			btnPendientes.setSelected(false);
+			btnAsignadas.setSelected(false);
+			
+				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
+				solicitudes= controladora.solicitudesXestado("Anulada");
+				
+				if(solicitudes!=null)
+				 tablaSolXEstados = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
+	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
+	            		"Tipo Producto","Producto"
+	            });
+				
+				scrollPaneTablaXEstados.setViewportView(tablaSolXEstados);
+			
+			
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+				
+		break;
+	case "Atendida":
+		
+		try {
+			btnAnuladas.setSelected(false);
+			btnAtendidas.setSelected(true);
+			btnPendientes.setSelected(false);
+			btnAsignadas.setSelected(false);
+			
+				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
+				solicitudes= controladora.solicitudesXestado("Atendida");
+				
+				if(solicitudes!=null)
+				 tablaSolXEstados = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
+	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
+	            		"Tipo Producto","Producto"
+	            });
+				
+				scrollPaneTablaXEstados.setViewportView(tablaSolXEstados);
+			
+			
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+				
+		break;
+	
+	}
+		
+	}
+
+	
+public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
+		
+		String[][] matriz= new String[ma.size()][9];
 		int i=0;
 		
 		for (Solicitud sActual : ma) {
@@ -224,7 +334,7 @@ public String[][] pasarAMAtriz(ArrayList<Solicitud> ma) {
         btnAtendidas = new javax.swing.JRadioButton();
         btnAnuladas = new javax.swing.JRadioButton();
         btnPendientes = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        btnAsignadas = new javax.swing.JRadioButton();
         scrollPaneTablaXEstados = new javax.swing.JScrollPane();
         tablaSolXEstados = new javax.swing.JTable();
         panelSolXTipo = new javax.swing.JPanel();
@@ -407,12 +517,21 @@ public String[][] pasarAMAtriz(ArrayList<Solicitud> ma) {
         jLabel3.setText("Estados :");
 
         btnAtendidas.setText("Atendida");
-
+        btnAtendidas.addActionListener(this);
+        btnAtendidas.setActionCommand("Atendida");
+        
         btnAnuladas.setText("Anulada");
+        btnAnuladas.addActionListener(this);
+        btnAnuladas.setActionCommand("Anulada");
 
-        btnPendientes.setText("Pendientes");
+        btnPendientes.setText("Pendiente");
+        btnPendientes.addActionListener(this);
+        btnPendientes.setActionCommand("Pendiente");
 
-        jRadioButton1.setText("Asignadas");
+        btnAsignadas.setText("Asignada");
+        btnAsignadas.addActionListener(this);
+        btnAsignadas.setActionCommand("Asignada");
+        
 
         tablaSolXEstados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -422,7 +541,7 @@ public String[][] pasarAMAtriz(ArrayList<Solicitud> ma) {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía", "Tipo Producto","Producto"
             }
         ));
         scrollPaneTablaXEstados.setViewportView(tablaSolXEstados);
@@ -441,7 +560,7 @@ public String[][] pasarAMAtriz(ArrayList<Solicitud> ma) {
                         .addGap(10, 10, 10)
                         .addComponent(btnPendientes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton1))
+                        .addComponent(btnAsignadas))
                     .addGroup(panelSolXEstadoLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -460,7 +579,7 @@ public String[][] pasarAMAtriz(ArrayList<Solicitud> ma) {
                     .addComponent(btnAtendidas)
                     .addComponent(btnAnuladas)
                     .addComponent(btnPendientes)
-                    .addComponent(jRadioButton1))
+                    .addComponent(btnAsignadas))
                 .addGap(18, 18, 18)
                 .addComponent(scrollPaneTablaXEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
