@@ -1,5 +1,5 @@
 CREATE OR REPLACE PACKAGE pkAtencionNivel3 IS 
-    PROCEDURE pValidarAtencion(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ovRetorno out VARCHAR2);
+    PROCEDURE pValidarAtencion(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ovRetorno out NUMBER);
     PROCEDURE pAtenderSolicitud(ivIdCedulaFuncionario VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2, ovRetorno out VARCHAR2);
     PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN VARCHAR2, ivEstado IN VARCHAR2,ivComentario IN VARCHAR2, ovRetorno out VARCHAR2);
     PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2, ovRetorno out VARCHAR2);
@@ -8,12 +8,12 @@ END pkAtencionNivel3;
 /
 CREATE OR REPLACE PACKAGE BODY pkAtencionNivel3 IS 
 
-   PROCEDURE pValidarAtencion(ivCedulaFuncionario VARCHAR2,ivIdSolicitud IN NUMBER, ovRetorno out VARCHAR2)
+   PROCEDURE pValidarAtencion(ivCedulaFuncionario VARCHAR2,ivIdSolicitud IN NUMBER, ovRetorno out NUMBER)
    IS 
    BEGIN 
    
-   PKATENCIONNIVEL2.fValidarAtencion(ivCedulaFuncionario,ivIdSolicitud);
-   ovRetorno:='Se atendio la solicitud de manera exitosa.';
+   ovRetorno:=PKATENCIONNIVEL2.fValidarAtencion(ivCedulaFuncionario,ivIdSolicitud);
+  
      EXCEPTION
         
         WHEN OTHERS THEN 
