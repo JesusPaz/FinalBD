@@ -29,7 +29,7 @@ public class Controladora {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conexion = DriverManager.getConnection(
-					"jdbc:oracle:thin:@200.3.193.24:1522:ESTUD","P09551_1_16","1234");
+					"jdbc:oracle:thin:@200.3.193.24:1522:ESTUD","p09551_1_4","dianis1234");
 		} catch (Exception e) {
 			throw e;
 		}

@@ -72,7 +72,7 @@ public class ControladoraConsultas extends Controladora {
 			
 			ResultSet rs = stmt.executeQuery(
 					"SELECT * FROM solicitud WHERE funcionario_cedulafuncionario=cedulaFuncionario "
-					+ "AND estado='Atendida'  ");
+					+ "AND estado='Asignada'  ");
 					
 			while (rs.next()) {
 			

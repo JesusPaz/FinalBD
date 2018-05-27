@@ -55,8 +55,8 @@ INSERT INTO TIPOSOLICITUD VALUES (1,'Creacion');
 INSERT INTO TIPOSOLICITUD VALUES (2, ' Modificacion');
 --Asignacion
 INSERT INTO TIPOSOLICITUD VALUES (3,'Cancelacion');
-INSERT INTO TIPOSOLICITUD VALUES (4,' Daño');
-INSERT INTO TIPOSOLICITUD VALUES (5,' Reclamo');
+INSERT INTO TIPOSOLICITUD VALUES (4,'Daño');
+INSERT INTO TIPOSOLICITUD VALUES (5,'Reclamo');
 
 --solicitud
 --Una solicitud de registro
@@ -67,6 +67,10 @@ INSERT INTO SOLICITUD VALUES (1,'Creacion','esta solicitud no ha sido asignada',
 
 
 INSERT INTO SOLICITUD VALUES (5,' Solicitud','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.441.17',6,2,2);
+INSERT INTO SOLICITUD VALUES (5,'Asignada','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'91.530.780',6,2,2);
+INSERT INTO SOLICITUD VALUES (5,'Asignada','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.441.17',6,2,2);
+INSERT INTO SOLICITUD VALUES (5,'Asignada','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.395.808',6,2,2);
+INSERT INTO SOLICITUD VALUES (5,'Asignada','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.441.17',6,2,2);
 
 --
 --Relacion de clientes x producto

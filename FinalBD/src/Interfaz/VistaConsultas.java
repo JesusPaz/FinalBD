@@ -1,12 +1,17 @@
 package Interfaz;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
+
+import controladoras.ControladoraConsultas;
+import mundo.Solicitud;
 
 public class VistaConsultas extends JFrame implements ActionListener{
 
@@ -54,6 +59,7 @@ public class VistaConsultas extends JFrame implements ActionListener{
     // End of variables declaration 
 	public VistaConsultas(VistaOpciones vistaOpciones) {
 		vistaOpc=vistaOpciones;
+		controladora= new ControladoraConsultas();
 		initComponents();
 		
 		panelSolXFuncionario.setVisible(true);
@@ -62,6 +68,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
 		panelSolXTipo.setVisible(false);
 		
 	}
+	
+	private ControladoraConsultas controladora;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -75,29 +83,140 @@ public class VistaConsultas extends JFrame implements ActionListener{
 			
 			break;
 
-		default:
+		case "SXF":
+			
+			if(!txtCedFuncionario.getText().equals("") && txtCedFuncionario.getText()!=null){
+				try {
+					
+					ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
+					solicitudes= controladora.solicitudesAsignadasXFunc(txtCedFuncionario.getText());
+					
+					if(solicitudes!=null)
+					tablaSolXFunc = new JTable(pasarAMAtriz(solicitudes),new String [] {
+		            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
+		            		"Tipo Producto","Producto"
+		            });
+					
+					 jScrollPane1.setViewportView(tablaSolXFunc);
+				
+				
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}else {
+				JOptionPane.showMessageDialog(this, "Ingrese la cédula del Funcionario");
+			}
+			
 			break;
 		}
 	}
 	
+public String[][] pasarAMAtriz(ArrayList<Solicitud> ma) {
+		
+		String[][] matriz= new String[ma.size()][2];
+		int i=0;
+		
+		for (Solicitud sActual : ma) {
+			
+		
+			matriz[i][0]=sActual.getId()+"";
+			matriz[i][1]=sActual.getEstado()+"";
+			matriz[i][2]=sActual.getObservacion()+"";
+			matriz[i][3]=sActual.getCedulaCliente()+"";
+			matriz[i][4]=sActual.getTipoSolicitud()+"";
+			matriz[i][5]=sActual.getCedulaFuncionaario()+"";
+			matriz[i][6]=sActual.getTipoAnomalia()+"";
+			matriz[i][7]=sActual.getTipoProducto()+"";
+			matriz[i][8]=sActual.getProducto()+"";
+			
+			
+			i++;
+			
+		}
+		
+		return matriz;
+	}
 	
+//public void actualizarPanelMostrar(int filas, ArrayList<String[]> matri) {
+//		
+//		if(panelMostrar==null)		panelMostrar= new JPanel();
+//		
+//		else {
+//			
+//			this.remove(panelMostrar);
+//			
+//			panelMostrar= new JPanel();
+//			
+//			String[] columnNames= {"Estudiante","Curso"};
+//			
+//		if(matri!=null && filas!=0) {	
+//
+//			
+//			tabli= new JTable(pasarAMAtriz(matri),columnNames);
+//			tabli.setPreferredSize(new Dimension(8000,8000));
+//			JScrollPane tableSP = new JScrollPane(tabli);
+//			
+//			panelMostrar.add(tableSP);
+//			
+//		}else if(matri==null && filas==0 ){
+//			JOptionPane.showMessageDialog(null,"No existen datos en la tabla MATRICULAS para mostrar.");
+//		}
+//		
+//		
+//
+//		add(panelMostrar);
+//		
+//		
+//	}
+//	}
 	
+	public void mostrarPanelRespectivo(String string) {
+		switch (string) {
+		case "SXF":
+			panelSolXFuncionario.setVisible(true);
+			panelSolXEstado.setVisible(false);
+			panelProductosXCliente.setVisible(false);
+			panelSolXTipo.setVisible(false);
+			break;
+		case "SXT":
+			panelSolXFuncionario.setVisible(false);
+			panelSolXEstado.setVisible(false);
+			panelProductosXCliente.setVisible(false);
+			panelSolXTipo.setVisible(true);
+			break;
+		case "SXE":
+			panelSolXFuncionario.setVisible(false);
+			panelSolXEstado.setVisible(true);
+			panelProductosXCliente.setVisible(false);
+			panelSolXTipo.setVisible(false);
+			break;
+		case "PXC":
+			panelSolXFuncionario.setVisible(false);
+			panelSolXEstado.setVisible(false);
+			panelProductosXCliente.setVisible(true);
+			panelSolXTipo.setVisible(false);
+			break;
+		
+		}
+		
+	}
  
                            
     private void initComponents() {
 
-        btnReturn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        btnSolicitudXFuncionario = new javax.swing.JToggleButton();
-        btnSolicitudXEstado = new javax.swing.JToggleButton();
-        btnSolicitudXTipo = new javax.swing.JToggleButton();
-        btnProductosXClientes = new javax.swing.JToggleButton();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        panelSolXFuncionario = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtCedFuncionario = new javax.swing.JTextField();
-        btnVerSolicitudSolXFunc = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        btnReturn = new JButton();
+        jLabel1 = new JLabel();
+        btnSolicitudXFuncionario = new JToggleButton();
+        btnSolicitudXEstado = new JToggleButton();
+        btnSolicitudXTipo = new JToggleButton();
+        btnProductosXClientes = new JToggleButton();
+        jLayeredPane1 = new JLayeredPane();
+        panelSolXFuncionario = new JPanel();
+        jLabel2 = new JLabel();
+        txtCedFuncionario = new JTextField();
+        btnVerSolicitudSolXFunc = new JButton();
+        jPanel2 = new JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaSolXFunc = new javax.swing.JTable();
         panelSolXEstado = new javax.swing.JPanel();
@@ -145,11 +264,14 @@ public class VistaConsultas extends JFrame implements ActionListener{
      		        btnProductosXClientes.setSelected(false);
      		        btnSolicitudXEstado.setSelected(false);
      		        btnSolicitudXFuncionario.setSelected(true);
+     		        mostrarPanelRespectivo("SXF");
      		      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
      		        
      		       btnSolicitudXFuncionario.setSelected(false);
      		      }
-     		   }});
+     		   }
+
+			});
         
         btnSolicitudXEstado.setFont(new java.awt.Font("Tahoma", 0, 10)); 
         btnSolicitudXEstado.setText("Solicitudes por Estado");
@@ -162,6 +284,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
         		        btnProductosXClientes.setSelected(false);
         		        btnSolicitudXEstado.setSelected(true);
         		        btnSolicitudXFuncionario.setSelected(false);
+        		        
+        		        mostrarPanelRespectivo("SXE");
         		      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
         		        
         		        btnSolicitudXEstado.setSelected(false);
@@ -179,6 +303,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
         		        btnProductosXClientes.setSelected(false);
         		        btnSolicitudXEstado.setSelected(false);
         		        btnSolicitudXFuncionario.setSelected(false);
+        		        
+        		        mostrarPanelRespectivo("SXT");
         		      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
         		       
         		        btnSolicitudXTipo.setSelected(false);
@@ -199,6 +325,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
      		        btnProductosXClientes.setSelected(true);
      		        btnSolicitudXEstado.setSelected(false);
      		        btnSolicitudXFuncionario.setSelected(false);
+     		        
+     		       mostrarPanelRespectivo("PXC");
      		      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
      		       
      		    	 btnProductosXClientes.setSelected(false);
@@ -210,18 +338,20 @@ public class VistaConsultas extends JFrame implements ActionListener{
         jLabel2.setText("Cédula del Funcionario : ");
 
         btnVerSolicitudSolXFunc.setText("Ver solicitudes");
+        btnVerSolicitudSolXFunc.addActionListener(this);
+        btnVerSolicitudSolXFunc.setActionCommand("SXF");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         tablaSolXFunc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
+                {},
+                {},
                 {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía", "Tipo Producto","Producto"
             }
         ));
         jScrollPane1.setViewportView(tablaSolXFunc);
