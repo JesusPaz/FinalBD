@@ -248,38 +248,7 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
 		return matriz;
 	}
 	
-//public void actualizarPanelMostrar(int filas, ArrayList<String[]> matri) {
-//		
-//		if(panelMostrar==null)		panelMostrar= new JPanel();
-//		
-//		else {
-//			
-//			this.remove(panelMostrar);
-//			
-//			panelMostrar= new JPanel();
-//			
-//			String[] columnNames= {"Estudiante","Curso"};
-//			
-//		if(matri!=null && filas!=0) {	
-//
-//			
-//			tabli= new JTable(pasarAMAtriz(matri),columnNames);
-//			tabli.setPreferredSize(new Dimension(8000,8000));
-//			JScrollPane tableSP = new JScrollPane(tabli);
-//			
-//			panelMostrar.add(tableSP);
-//			
-//		}else if(matri==null && filas==0 ){
-//			JOptionPane.showMessageDialog(null,"No existen datos en la tabla MATRICULAS para mostrar.");
-//		}
-//		
-//		
-//
-//		add(panelMostrar);
-//		
-//		
-//	}
-//	}
+
 	
 	public void mostrarPanelRespectivo(String string) {
 		switch (string) {
