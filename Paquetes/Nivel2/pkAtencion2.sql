@@ -1,10 +1,27 @@
 CREATE OR REPLACE PACKAGE pkAtencionNivel2 IS 
+   FUNCTION fValidarAtencion(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER) RETURN NUMBER;
    PROCEDURE pAtenderSolicitud(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2);
    PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN VARCHAR2, ivEstado IN VARCHAR2,ivComentario IN VARCHAR2);
    PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2);
 END pkAtencionNivel2;
 /
 CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS 
+
+   FUNCTION fValidarAtencion(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER) RETURN NUMBER IS
+   solicitudAct SOLICITUD%rowtype;
+   
+   BEGIN
+     solicitudAct :=pkSOLICITUDNIVEL1.fCONSULTAR(ivIdSolicitud);
+ 
+
+    
+   IF solicitudAct.IDSOLICITUD IS NULL THEN
+   RETURN 1;
+   ELSE
+   RETURN 0;
+   END IF;
+   
+   END fValidarAtencion;
 
    PROCEDURE pAtenderSolicitud(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2)
    IS 
@@ -16,10 +33,6 @@ CREATE OR REPLACE PACKAGE BODY pkAtencionNivel2 IS
    solicitudAct :=pkSOLICITUDNIVEL1.fCONSULTAR(ivIdSolicitud);
  
 
-    
-   IF solicitudAct.IDSOLICITUD IS NULL THEN
-   RAISE_APPLICATION_ERROR(-20001,'No existe una solicitud con el ID buscado.');
-   END IF;
    
    IF solicitudAct.FUNCIONARIO_CEDULAFUNCIONARIO=ivCedulaFuncionario THEN     
     IF solicitudAct.TIPOSOLICITUD_IDTIPOSOLICITUD='001' THEN
@@ -64,9 +77,9 @@ PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN 
 
    PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2)--p3
     IS
-   solicitud SOLICITUD%rowtype;
+   solicitudAct SOLICITUD%rowtype;
    tiempoLimite NUMBER;
-   expiradas SOLICITUD.IDSOLICITUD%rowtype;
+   expiradas SOLICITUD.IDSOLICITUD%type;
    cur1 sys_refcursor;
    BEGIN 
    
@@ -76,28 +89,28 @@ PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN 
    
    SELECT  S.IdSolicitud into expiradas
    FROM  SOLICITUD S 
-   WHERE S.FECHAINI-S.FECHAFIN >= TO_DATE(tiempoLimite) 
+   WHERE S.FECHAINI-S.FECHAFIN >= tiempoLimite 
    AND ROWNUM = 1
    AND S.ESTADO='Asignado'
    AND (S.TIPOSOLICITUD_IDTIPOSOLICITUD=003 OR S.TIPOSOLICITUD_IDTIPOSOLICITUD=004);
    
    
-   solicitud :=pkSOLICITUD.OBTENERSOLICITUD(ivIdSolicitud);
+   solicitudAct :=pkSOLICITUDNIVEL1.fConsultar(ivIdSolicitud);
    
-   IF solicitud IS NULL THEN
+   IF solicitudAct.IDSOLICITUD IS NULL THEN
    RAISE_APPLICATION_ERROR(-20001,'No existe una solicitud con el ID buscado.');
    END IF;
    
-   IF solicitud.TIPOSOLICITUD_IDTIPOSOLICITUD!=003 or solucitud.TIPOSOLICITUD_IDTIPOSOLICITUD!=004 THEN
+   IF solicitudAct.TIPOSOLICITUD_IDTIPOSOLICITUD!=003 or solicitudAct.TIPOSOLICITUD_IDTIPOSOLICITUD!=004 THEN
    RAISE_APPLICATION_ERROR(-20001,'La solicitud pasada por parametro no es de tipo daño o reclamo.');
    ELSE
    --Inicio del loop
    loop
    fetch cur1 into expiradas;
    exit when cur1%notfound;
-    pkSOLICITUDNIVEL1.PMODIFICAR(expiradas, 'Atendida','Atendida automaticamente por el sistema',solicitud.FECHAINI,solcitud.FECHAFIN,solicitud.CLIENTE_CEDULACLIENTE,
-    solicitud.TIPOSOLICITUD_IDTIPOSOLICITUD,solicitud.FUNCIONARIO_CEDULAFUNCIONARIO,solicitud.TIPOANOMALIA_IDANOMALIA,solicitud.TIPOPRODUCTO_IDTIPOPRODUCTO,
-    solicitud.PRODUCTO_IDPRODUCTO);
+    pkSOLICITUDNIVEL1.PMODIFICAR(expiradas, 'Atendida','Atendida automaticamente por el sistema',solicitudAct.CLIENTE_CEDULACLIENTE,solicitudAct.FUNCIONARIO_CEDULAFUNCIONARIO,
+    solicitudAct.FECHAINI,solicitudAct.FECHAFIN,solicitudAct.TIPOSOLICITUD_IDTIPOSOLICITUD,solicitudAct.TIPOANOMALIA_IDANOMALIA,solicitudAct.TIPOPRODUCTO_IDTIPOPRODUCTO,
+    solicitudAct.PRODUCTO_IDPRODUCTO);
    END loop; 
    END IF;
    
