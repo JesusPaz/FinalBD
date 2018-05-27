@@ -110,15 +110,20 @@ public class VistaRegistro extends JFrame implements ActionListener {
 					realTipoSoli=RECLAMO;
 				}
 				
-				int realTipoAnomalia=1;
-		 		if (TipoAnomalia.equalsIgnoreCase("Sin Anomalia")) {
-		 			realTipoAnomalia=SIN_ANOMALIA;
-				}else 		if (TipoAnomalia.equalsIgnoreCase("Baja Velocidad")) {
-					realTipoAnomalia=BAJA_VELOCIDAD;
-				}else 		if (TipoAnomalia.equalsIgnoreCase("Mala Calidad")) {
-					realTipoAnomalia=MALA_CALIDAD;
-				}
-				
+				System. out. println(TipoAnomalia);
+				int realTipoAnomalia=SIN_ANOMALIA;
+//		 		if (TipoAnomalia.equalsIgnoreCase("Sin Anomalia")) {
+//		 			realTipoAnomalia=SIN_ANOMALIA;
+//				}else if (TipoAnomalia.equalsIgnoreCase("Baja Velocidad")) {
+//					realTipoAnomalia=BAJA_VELOCIDAD;
+//				}else if (TipoAnomalia.equalsIgnoreCase("Mala Calidad")) {
+//					realTipoAnomalia=MALA_CALIDAD;
+//				}
+//		 		
+		 		System. out. println(realTipoAnomalia);
+		 		
+		 		
+		 		
 		 		
 		 		int realTipoProducto=1;
 		 		if (TipoProducto.equalsIgnoreCase("Voz")) {
@@ -130,7 +135,7 @@ public class VistaRegistro extends JFrame implements ActionListener {
 				}
 				
 				
-				String resultado =  controladorRegistro.registrarSolicitud(IdSolicitud,Observacion,Cedula,realTipoSoli,realTipoAnomalia
+				String resultado =  controladorRegistro.registrarSolicitud(IdSolicitud,Observacion,Cedula,realTipoSoli,SIN_ANOMALIA
 						,realTipoProducto,IdProducto);
 
 				
@@ -180,9 +185,9 @@ public class VistaRegistro extends JFrame implements ActionListener {
 
         txtTipoP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Voz", "Datos", "Integrado" }));
 
-        txtAnomalia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "anomalia1", "anomalia2", "anomalia3" }));
+        txtAnomalia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin Anomalia", "Baja Velocidad", "Mala Calidad" }));
 
-        txtTipoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Creación", "Modificación", "Cancelación", "Daño", "Reclamo" }));
+        txtTipoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Creacion", "Modificacion", "Cancelacion", "Daño", "Reclamo" }));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); 
         jLabel2.setText("Tipo producto : ");
