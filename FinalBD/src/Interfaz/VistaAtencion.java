@@ -64,7 +64,7 @@ public class VistaAtencion extends JFrame implements ActionListener {
 				jPanel2.setVisible(true);
 
 			} catch (NumberFormatException e2) {
-//				e2.printStackTrace();
+       			e2.printStackTrace();
 				JOptionPane.showMessageDialog(null, "El Id de la solicitud debe ser númerico.");
 			}
 			break;

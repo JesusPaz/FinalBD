@@ -67,6 +67,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
 			comentario=txtComentariosNuevoProducto.getText();
 			try {
 				controladorAtencion.atenderSolicitud(idFunc, idSolicitud, comentario);
+				JOptionPane.showMessageDialog(null, "La solicitud se atendio exitosamente");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -78,6 +79,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
 			comentario=txtComentariosNuevoProducto.getText();
 			try {
 				controladorAtencion.atenderSolicitud(idFunc, idSolicitud, comentario);
+				JOptionPane.showMessageDialog(null, "La solicitud se atendio exitosamente");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
