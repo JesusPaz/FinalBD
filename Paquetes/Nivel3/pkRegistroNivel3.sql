@@ -13,9 +13,6 @@ CREATE OR REPLACE PACKAGE BODY pkRegistroNivel3 IS
     IS
     BEGIN
     
-    PKSOLICITUDNIVEL1.pInsertar(ivIdSolicitud ,'Pendiente',ivObservacion,ivIdCliente ,'000' 
-    ,ivTipoSolicitud,ivTipoAnomalia,ivIdTipoProducto ,ivIdProducto );
-    
     PKREGISTRONIVEL2.pRegistarSolicitud(ivIdSolicitud,ivObservacion,ivIdCliente
     ,ivTipoSolicitud,ivTipoAnomalia,ivIdTipoProducto ,ivIdProducto);
     ovRetorno:='Solicitud registrada correctamente.';

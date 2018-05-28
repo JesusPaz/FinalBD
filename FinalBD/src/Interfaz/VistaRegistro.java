@@ -22,7 +22,7 @@ public class VistaRegistro extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	public final static int VOZ=1;
 	public final static int DATOS=2;
-	public final static int INTEGRADO=4;
+	public final static int INTEGRADO=3;
 	
 	
 	public final static int CREACION=1;
@@ -31,9 +31,9 @@ public class VistaRegistro extends JFrame implements ActionListener {
 	public final static int DAÑO =4;
 	public final static int RECLAMO = 5;
 	
-	public final static int SIN_ANOMALIA=4;
-	public final static int BAJA_VELOCIDAD=5;
-	public final static int MALA_CALIDAD=6;
+	public final static int SIN_ANOMALIA=1;
+	public final static int BAJA_VELOCIDAD=2;
+	public final static int MALA_CALIDAD=3;
 	
 	
 	
@@ -113,17 +113,16 @@ public class VistaRegistro extends JFrame implements ActionListener {
 					realTipoSoli=RECLAMO;
 				}
 				
-				System. out. println(TipoAnomalia);
+				
 				int realTipoAnomalia=SIN_ANOMALIA;
-//		 		if (TipoAnomalia.equalsIgnoreCase("Sin Anomalia")) {
-//		 			realTipoAnomalia=SIN_ANOMALIA;
-//				}else if (TipoAnomalia.equalsIgnoreCase("Baja Velocidad")) {
-//					realTipoAnomalia=BAJA_VELOCIDAD;
-//				}else if (TipoAnomalia.equalsIgnoreCase("Mala Calidad")) {
-//					realTipoAnomalia=MALA_CALIDAD;
-//				}
-//		 		
-		 		System. out. println(realTipoAnomalia);
+		 		if (TipoAnomalia.equalsIgnoreCase("Sin Anomalia")) {
+		 			realTipoAnomalia=SIN_ANOMALIA;
+				}else if (TipoAnomalia.equalsIgnoreCase("Baja Velocidad")) {
+					realTipoAnomalia=BAJA_VELOCIDAD;
+				}else if (TipoAnomalia.equalsIgnoreCase("Mala Calidad")) {
+					realTipoAnomalia=MALA_CALIDAD;
+				}
+		 		
 		 		
 		 		
 		 		
@@ -138,7 +137,7 @@ public class VistaRegistro extends JFrame implements ActionListener {
 				}
 				
 				
-				String resultado =  controladorRegistro.registrarSolicitud(IdSolicitud,Observacion,Cedula,realTipoSoli,SIN_ANOMALIA
+				String resultado =  controladorRegistro.registrarSolicitud(IdSolicitud,Observacion,Cedula,realTipoSoli,realTipoAnomalia
 						,realTipoProducto,IdProducto);
 
 				
