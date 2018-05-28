@@ -7,15 +7,23 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import controladoras.ControladorAtencion;
+
 public class VistaAtencionOpciones extends JFrame implements ActionListener{
 
+	private ControladorAtencion controladorAtencion;
+	private int idSolicitud;
+	private String idFunc;
 	String tipoAtencion;
-	public VistaAtencionOpciones(VistaOpciones vistaOpciones, String tipoAten) {
+	public VistaAtencionOpciones(VistaOpciones vistaOpciones, String tipoAten, String idFuncionario, int idSolicitud) {
 		
+		this.idFunc=idFuncionario;
+		this.idSolicitud=idSolicitud;
 		princi=vistaOpciones;
 		tipoAtencion=tipoAten;
 		
 		initComponents();
+		controladorAtencion= new ControladorAtencion();
 		if(!tipoAtencion.equals("") && tipoAtencion!=null) {
 			switch (tipoAtencion) {
 			case "SOLICITUD":
@@ -53,18 +61,37 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String evento= e.getActionCommand();
+		String comentario="";
 		switch (evento) {
 		case "GUARDAR_SOLICITUD":
-			
+			comentario=txtComentariosNuevoProducto.getText();
+			try {
+				controladorAtencion.atenderSolicitud(idFunc, idSolicitud, comentario);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			break;
 
 		case "GUARDAR_RETIRO":
-			
+			String estado="";
+			comentario=txtComentariosNuevoProducto.getText();
+			try {
+				controladorAtencion.atenderSolicitud(idFunc, idSolicitud, comentario);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 			break;
 			
 		case "GUARDAR_RECLAMO":
-			
+			try {
+				controladorAtencion.atenderReclamoODanoAutomatico(idSolicitud);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 			break;
 		}

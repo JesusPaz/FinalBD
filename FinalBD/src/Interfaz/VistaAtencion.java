@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import controladoras.ControladorAtencion;
 
 public class VistaAtencion extends JFrame implements ActionListener {
 	
@@ -29,9 +30,14 @@ public class VistaAtencion extends JFrame implements ActionListener {
     private JPanel jPanel1;
     private JPanel jPanel2;
     
+    private String idFuncionario;
+    private int idSolicitud;
+    private ControladorAtencion controladorAtencion;
+    
 	public VistaAtencion(VistaOpciones vistaOpciones) {
 		vistaPrinci=vistaOpciones;
 		 initComponents();
+		 controladorAtencion= new ControladorAtencion();
 		 centrar();
 	}
 
@@ -44,11 +50,22 @@ public class VistaAtencion extends JFrame implements ActionListener {
 			try {
 				
 				//PONER metodo que verifica usuario y id solicitud
-				
+				idFuncionario=txtIdFuncionario.getText();
+				idSolicitud=Integer.parseInt(txtIdSolicitud.getText());
+				/**int validar=controladorAtencion.validarAtencion(idFuncionario, idSolicitud);
+				if(validar==1){
 				jPanel1.setVisible(false);
 				jPanel2.setVisible(true);
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "La solicitud no puede ser atendida por este funcionario.");
+				}*/
+				jPanel1.setVisible(false);
+				jPanel2.setVisible(true);
+
 			} catch (Exception e2) {
-				
+				e2.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Algo ha salido mal");
 			}
 			break;
 
@@ -61,7 +78,7 @@ public class VistaAtencion extends JFrame implements ActionListener {
 			//Opcion escogida de atencion
 		case "SOLICITUD":
 			try {
-				VistaAtencionOpciones sol=new VistaAtencionOpciones(vistaPrinci, "SOLICITUD");
+				VistaAtencionOpciones sol=new VistaAtencionOpciones(vistaPrinci, "SOLICITUD", idFuncionario, idSolicitud);
 				sol.setVisible(true);
 				this.setVisible(false);
 				
@@ -73,7 +90,7 @@ public class VistaAtencion extends JFrame implements ActionListener {
 			
 		case "RECLAMO":
 			try {
-				VistaAtencionOpciones sol=new VistaAtencionOpciones(vistaPrinci, "RECLAMO");
+				VistaAtencionOpciones sol=new VistaAtencionOpciones(vistaPrinci, "RECLAMO",idFuncionario, idSolicitud);
 				sol.setVisible(true);
 				this.setVisible(false);
 				
@@ -84,7 +101,7 @@ public class VistaAtencion extends JFrame implements ActionListener {
 			
 		case "RETIRO":
 			try {
-				VistaAtencionOpciones sol=new VistaAtencionOpciones(vistaPrinci, "RETIRO");
+				VistaAtencionOpciones sol=new VistaAtencionOpciones(vistaPrinci, "RETIRO",idFuncionario, idSolicitud);
 				sol.setVisible(true);
 				this.setVisible(false);
 				
@@ -92,8 +109,14 @@ public class VistaAtencion extends JFrame implements ActionListener {
 				
 			}
 			break;
+		case "RECLAMO AUTOMATICO":
 			
-			
+			try {
+				controladorAtencion.atenderReclamoODanoAutomatico(idSolicitud);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 		}
 		

@@ -27,7 +27,7 @@ public class VistaConsultas extends JFrame implements ActionListener{
     private JToggleButton btnSolicitudXTipo;
     private JRadioButton btnTipoCreacion;
     private JRadioButton btnTipoModificacion;
-    private JRadioButton btnTipoNuevoP;
+    private JRadioButton btnDano;
     private JRadioButton btnTipoReclamo;
     private JRadioButton btnTipoRetiro;
     private JButton btnVerProductosXCliente;
@@ -255,10 +255,118 @@ public class VistaConsultas extends JFrame implements ActionListener{
 			btnTipoCreacion.setSelected(true);
 			btnTipoModificacion.setSelected(false);
 			btnTipoReclamo.setSelected(false);
-			btnTipoNuevoP.setSelected(false);
+			btnDano.setSelected(false);
 			
 				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
 				solicitudes= controladora.solicitudesXtipo("001");
+				
+				if(solicitudes!=null)
+				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
+	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
+	            		"Tipo Producto","Producto"
+	            });
+				
+				scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
+			
+			
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+				
+		break;
+		
+	case "Retiro":
+		
+		try {
+			btnTipoRetiro.setSelected(true);
+			btnTipoCreacion.setSelected(false);
+			btnTipoModificacion.setSelected(false);
+			btnTipoReclamo.setSelected(false);
+			btnDano.setSelected(false);
+			
+				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
+				solicitudes= controladora.solicitudesXtipo("005");
+				
+				if(solicitudes!=null)
+				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
+	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
+	            		"Tipo Producto","Producto"
+	            });
+				
+				scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
+			
+			
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+				
+		break;
+		
+	case "Reclamo":
+		
+		try {
+			btnTipoRetiro.setSelected(false);
+			btnTipoCreacion.setSelected(false);
+			btnTipoModificacion.setSelected(false);
+			btnTipoReclamo.setSelected(true);
+			btnDano.setSelected(false);
+			
+				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
+				solicitudes= controladora.solicitudesXtipo("003");
+				
+				if(solicitudes!=null)
+				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
+	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
+	            		"Tipo Producto","Producto"
+	            });
+				
+				scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
+			
+			
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+				
+		break;
+		
+	case "Dano":
+		
+		try {
+			btnTipoRetiro.setSelected(false);
+			btnTipoCreacion.setSelected(false);
+			btnTipoModificacion.setSelected(false);
+			btnTipoReclamo.setSelected(false);
+			btnDano.setSelected(true);
+			
+				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
+				solicitudes= controladora.solicitudesXtipo("004");
+				
+				if(solicitudes!=null)
+				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
+	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
+	            		"Tipo Producto","Producto"
+	            });
+				
+				scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
+			
+			
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+				
+		break;
+		
+	case "Modificacion":
+		
+		try {
+			btnTipoRetiro.setSelected(false);
+			btnTipoCreacion.setSelected(false);
+			btnTipoModificacion.setSelected(true);
+			btnTipoReclamo.setSelected(false);
+			btnDano.setSelected(false);
+			
+				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
+				solicitudes= controladora.solicitudesXtipo("002");
 				
 				if(solicitudes!=null)
 				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
@@ -395,7 +503,7 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
         jLabel4 = new javax.swing.JLabel();
         scrollPaneTablaXTipo = new javax.swing.JScrollPane();
         tablaSolXTipo = new javax.swing.JTable();
-        btnTipoNuevoP = new javax.swing.JRadioButton();
+        btnDano = new javax.swing.JRadioButton();
         btnTipoRetiro = new javax.swing.JRadioButton();
         btnTipoReclamo = new javax.swing.JRadioButton();
         btnTipoCreacion = new javax.swing.JRadioButton();
@@ -657,16 +765,16 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
         ));
         scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
 
-        btnTipoNuevoP.setText("Nuevo Producto");
-        btnTipoNuevoP.setActionCommand("NuevoProducto");
-        btnTipoNuevoP.addActionListener(this);
+        btnDano.setText("Dano");
+        btnDano.setActionCommand("Dano");
+        btnDano.addActionListener(this);
 
         btnTipoRetiro.setText("Retiro");
         btnTipoRetiro.setActionCommand("Retiro");
         btnTipoRetiro.addActionListener(this);
 
-        btnTipoReclamo.setText("Daño y Reclamo");
-        btnTipoReclamo.setActionCommand("DanoReclamo");
+        btnTipoReclamo.setText("Reclamo");
+        btnTipoReclamo.setActionCommand("Reclamo");
         btnTipoReclamo.addActionListener(this);
 
         btnTipoCreacion.setText("Creación");
@@ -687,7 +795,7 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSolXTipoLayout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(btnTipoNuevoP))
+                        .addComponent(btnDano))
                     .addComponent(btnTipoCreacion, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(35, 35, 35)
                 .addGroup(panelSolXTipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -707,7 +815,7 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
             .addGroup(panelSolXTipoLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(panelSolXTipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTipoNuevoP)
+                    .addComponent(btnDano)
                     .addComponent(btnTipoRetiro)
                     .addComponent(btnTipoReclamo)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
