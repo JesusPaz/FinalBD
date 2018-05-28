@@ -1,9 +1,9 @@
-CREATE OR REPLACE PACKAGE pkAtencionNivel3 IS 
-    PROCEDURE pValidarAtencion(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ovRetorno out NUMBER);
+create or replace PACKAGE pkAtencionNivel3 IS 
+    PROCEDURE pValidarAtencion(ivCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ovRetorno out NUMBER, ovRetorno2 out VARCHAR2);
     PROCEDURE pAtenderSolicitud(ivIdCedulaFuncionario VARCHAR2,ivIdSolicitud IN NUMBER, ivComentario IN VARCHAR2, ovRetorno out VARCHAR2);
-    PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN NUMBER,ivIdSolicitud IN VARCHAR2, ivEstado IN VARCHAR2,ivComentario IN VARCHAR2, ovRetorno out VARCHAR2);
-    PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2, ovRetorno out VARCHAR2);
-   
+    PROCEDURE pAtenderReclamoODano(ivIdCedulaFuncionario IN VARCHAR2,ivIdSolicitud IN NUMBER, ivEstado IN VARCHAR2,ivComentario IN VARCHAR2, ovRetorno out VARCHAR2);
+    PROCEDURE pAtenderReclamoODanoAutomatico(ivIdSolicitud IN VARCHAR2, ovRetorno out VARCHAR2 );
+
 END pkAtencionNivel3;
 /
 create or replace PACKAGE pkAtencionNivel3 IS 
