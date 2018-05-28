@@ -75,8 +75,8 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
 			break;
 
 		case "GUARDAR_RETIRO":
-			String estado="";
-			comentario=txtComentariosNuevoProducto.getText();
+			
+			comentario=txtComentariosRetiro.getText();
 			try {
 				controladorAtencion.atenderSolicitud(idFunc, idSolicitud, comentario);
 				JOptionPane.showMessageDialog(null, "La solicitud se atendio exitosamente");
@@ -89,7 +89,10 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
 			
 		case "GUARDAR_RECLAMO":
 			try {
-				controladorAtencion.atenderReclamoODanoAutomatico(idSolicitud);
+				comentario=txtComentariosReclamo.getText();
+				String estado=btnRechazar.getText();
+				controladorAtencion.atenderReclamoODano(idFunc,idSolicitud,estado,comentario);
+				JOptionPane.showMessageDialog(null, "La solicitud se atendio exitosamente");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -102,11 +105,11 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
 
 	// Variables declaration - do not modify    
 	private VistaOpciones princi;
-    private JRadioButton btnAceptar;
+
     private JButton btnGuardarReclamo;
     private JButton btnGuardarRetiroProducto;
     private JButton btnGuardarSolNuevoProducto;
-    private JRadioButton btnRechazar;
+    private JTextField btnRechazar;
     private JLabel jLabel1;
     private JLabel jLabel10;
     private JLabel jLabel2;
@@ -157,8 +160,8 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
         jLabel10 = new javax.swing.JLabel();
         txtComentariosReclamo = new javax.swing.JTextField();
         btnGuardarReclamo = new javax.swing.JButton();
-        btnRechazar = new javax.swing.JRadioButton();
-        btnAceptar = new javax.swing.JRadioButton();
+        btnRechazar = new javax.swing.JTextField();
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -291,7 +294,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Reclamo y Daño");
 
-        jLabel9.setText("Solicitud :  ");
+        jLabel9.setText("Estado :  ");
 
         jLabel10.setText("Comentarios : ");
 
@@ -299,9 +302,9 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
         btnGuardarReclamo.setActionCommand("GUARDAR_RECLAMO");
         btnGuardarReclamo.addActionListener(this);
 
-        btnRechazar.setText("Rechazar");
+        btnRechazar.setText("");
 
-        btnAceptar.setText("Aceptar");
+       
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(panelReclamoDano);
         panelReclamoDano.setLayout(jPanel3Layout);
@@ -320,7 +323,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(btnRechazar)
                                 .addGap(26, 26, 26)
-                                .addComponent(btnAceptar))))
+                                )))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -338,7 +341,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRechazar)
-                    .addComponent(btnAceptar))
+                    )
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)

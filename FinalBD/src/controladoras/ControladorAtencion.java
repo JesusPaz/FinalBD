@@ -94,7 +94,7 @@ public String atenderSolicitud(String cedulaFunc, int idSolicitud, String coment
 			this.Conectar();
 
 			CallableStatement query = this.conexion
-					.prepareCall("{call pkAsignacionNivel3.pAsignacionIndividual(?,?,?,?,?)}");
+					.prepareCall("{call pkAtencionNivel3.pAtenderReclamoODano(?,?,?,?,?)}");
 			
 			query.setString(1, cedulaFuncion);
 			query.setInt(2, idSolicitud);
@@ -128,7 +128,7 @@ public String atenderSolicitud(String cedulaFunc, int idSolicitud, String coment
 			this.Conectar();
 
 			CallableStatement query = this.conexion
-					.prepareCall("{call pkAsignacionNivel3.pAsignacionIndividual(?,?)}");
+					.prepareCall("{call pkAtencionNivel3.pAtenderReclamoODanoAutomatico(?,?)}");
 			
 			query.setInt(1, idSolicitud);
 			
