@@ -48,22 +48,22 @@ INSERT INTO TIPOANOMALIA VALUES (3,'Mala calidad del servicio');
 --Asignacion: tiene estados de asignada y dentro puede estar: solicitud, retiro,daño y reclamo
  
 --Registro
-INSERT INTO TIPOSOLICITUD VALUES (1,'Creacion');
-INSERT INTO TIPOSOLICITUD VALUES (2, ' Modificacion');
+INSERT INTO TIPOSOLICITUD VALUES (001,'Creacion');
+INSERT INTO TIPOSOLICITUD VALUES (002, 'Retiro');
 --Asignacion
-INSERT INTO TIPOSOLICITUD VALUES (3,'Cancelacion');
-INSERT INTO TIPOSOLICITUD VALUES (4,' Daño');
-INSERT INTO TIPOSOLICITUD VALUES (5,' Reclamo');
+INSERT INTO TIPOSOLICITUD VALUES (003,'Reclamo');
+INSERT INTO TIPOSOLICITUD VALUES (004,'Dano');
+INSERT INTO TIPOSOLICITUD VALUES (005,'Modificacion');
 
 --solicitud
 --Una solicitud de registro
 
-INSERT INTO SOLICITUD VALUES (1,'Creacion','esta solicitud no ha sido asignada','01-ENE-2018','01-FEB-2018','1.090.427.627',1,'37.279.508',5,1,1);
+INSERT INTO SOLICITUD VALUES (1,'Atendida','esta solicitud no ha sido asignada','01-ENE-2018','01-FEB-2018','1.090.427.627',1,'37.279.508',5,1,1);
 
 --solicitud de asignacion
 
 
-INSERT INTO SOLICITUD VALUES (5,' Solicitud','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.441.17',6,2,2);
+INSERT INTO SOLICITUD VALUES (5,'Asignada','Pidiendo un nuevo producto','01-FEB-2018','01-MAR-2018','1.090.450.726',5,'1.090.441.17',6,2,2);
 
 --
 --Relacion de clientes x producto

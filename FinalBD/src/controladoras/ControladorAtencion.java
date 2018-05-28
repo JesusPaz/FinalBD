@@ -24,8 +24,6 @@ public int validarAtencion(String cedulaFunc, int idSolicitud) throws Exception 
 			query.setString(1, cedulaFunc);
 			query.setInt(2, idSolicitud);
 			
-
-			
 			query.registerOutParameter(3, java.sql.Types.NUMERIC);
 
 			query.execute();

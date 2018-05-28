@@ -49,7 +49,7 @@ public class VistaAtencion extends JFrame implements ActionListener {
 		case "ATENDER":
 			try {
 				
-				//PONER metodo que verifica usuario y id solicitud
+				
 				idFuncionario=txtIdFuncionario.getText();
 				idSolicitud=Integer.parseInt(txtIdSolicitud.getText());
 				/**int validar=controladorAtencion.validarAtencion(idFuncionario, idSolicitud);
@@ -63,9 +63,9 @@ public class VistaAtencion extends JFrame implements ActionListener {
 				jPanel1.setVisible(false);
 				jPanel2.setVisible(true);
 
-			} catch (Exception e2) {
-				e2.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Algo ha salido mal");
+			} catch (NumberFormatException e2) {
+//				e2.printStackTrace();
+				JOptionPane.showMessageDialog(null, "El Id de la solicitud debe ser númerico.");
 			}
 			break;
 
@@ -95,7 +95,7 @@ public class VistaAtencion extends JFrame implements ActionListener {
 				this.setVisible(false);
 				
 			} catch (Exception e2) {
-				
+				JOptionPane.showMessageDialog(null,"Error de la base de datos. No se ha podido atender el reclamo.");
 			}
 			break;
 			
@@ -106,7 +106,7 @@ public class VistaAtencion extends JFrame implements ActionListener {
 				this.setVisible(false);
 				
 			} catch (Exception e2) {
-				
+				JOptionPane.showMessageDialog(null,"Error de la base de datos. No se ha podido atender el retiro.");
 			}
 			break;
 		case "RECLAMO AUTOMATICO":
@@ -116,6 +116,7 @@ public class VistaAtencion extends JFrame implements ActionListener {
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null,"Error de la base de datos. No se ha podido atender automaticamente el reclamo.");
 			}
 			
 		}

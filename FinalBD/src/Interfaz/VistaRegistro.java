@@ -55,16 +55,19 @@ public class VistaRegistro extends JFrame implements ActionListener {
     private JComboBox<String> txtTipoP;
     private JComboBox<String> txtTipoSolicitud;
 
+    private JButton btnReturn3;
     private JTextField txtIdSolicitud;
     
     private ControladorRegistro controladorRegistro;
     // End of variables declaration 
-	
+	private VistaOpciones ven;
 	
 	public VistaRegistro(VistaOpciones v) {
+		ven=v;
 		initComponents();
 		controladorRegistro=new ControladorRegistro();
 		centrar();
+		
 	}
 	
 	private void centrar() {
@@ -149,6 +152,11 @@ public class VistaRegistro extends JFrame implements ActionListener {
 			catch (Exception ex) {
 				
 			}
+		}else if (e.getActionCommand().equals("REGRESAR")) {
+			
+			ven.setVisible(true);
+			this.setVisible(false);
+			
 		}
 		
 		
@@ -176,7 +184,7 @@ public class VistaRegistro extends JFrame implements ActionListener {
         btnRegistrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtIdSolicitud = new javax.swing.JTextField();
-
+        btnReturn3= new JButton();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -211,6 +219,10 @@ public class VistaRegistro extends JFrame implements ActionListener {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); 
         jLabel3.setText("Id de la solicitud : ");
+
+        btnReturn3.setIcon(new javax.swing.ImageIcon("C:\\Users\\diana\\git\\FinalBD\\FinalBD\\imagenes\\return.png")); // NOI18N
+        btnReturn3.setActionCommand("REGRESAR");
+        btnReturn3.addActionListener(this);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,7 +261,8 @@ public class VistaRegistro extends JFrame implements ActionListener {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnReturn3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -283,7 +296,8 @@ public class VistaRegistro extends JFrame implements ActionListener {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(btnReturn3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

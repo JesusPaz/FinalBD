@@ -1,5 +1,7 @@
 package Interfaz;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -60,18 +62,30 @@ public class VistaAsignacion extends JFrame implements ActionListener {
 				
 				JOptionPane.showMessageDialog(null, "El id de la solicitud debe ser numerico");
 				
-			}
-							
-		}
+			}}
+			else if(e.getActionCommand().equals("REGRESAR")) {
+				
+				v.setVisible(true);
+				this.setVisible(false);
+				
+								
+			}			
+		
 
 		
 	}
 	
-	
+	private void centrar() {
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int xEsquina = (screen.width - getWidth()) / 2;
+		int yEsquina = (screen.height - getHeight()) / 2;
+		setLocation(xEsquina, yEsquina);
+	}
 	
 	// Variables declaration - do not modify                     
     private javax.swing.JButton btnAutomatica;
     private javax.swing.JButton btnIndividual;
+    private javax.swing.JButton btnReturn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -80,10 +94,13 @@ public class VistaAsignacion extends JFrame implements ActionListener {
     private ControladorAsignacion controladorAsignacion;
     // End of variables declaration
     
+    private VistaOpciones v;
     
 	public VistaAsignacion(VistaOpciones vistaOpciones) {
 		 initComponents();
+		 v=vistaOpciones;
 		 controladorAsignacion = new ControladorAsignacion();
+		 centrar();
 	}
 
 	
@@ -102,7 +119,12 @@ public class VistaAsignacion extends JFrame implements ActionListener {
         txtIdFuncionario = new JTextField();
         btnIndividual = new javax.swing.JButton();
         btnAutomatica = new javax.swing.JButton();
-
+        btnReturn= new JButton( new ImageIcon("C:\\Users\\diana\\git\\FinalBD\\FinalBD\\imagenes\\return.png"));
+        
+        btnReturn.addActionListener(this);
+        btnReturn.setActionCommand("REGRESAR");
+        
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); 
@@ -131,19 +153,21 @@ public class VistaAsignacion extends JFrame implements ActionListener {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
-                        .addComponent(btnAutomatica, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtIdSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIdFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtIdFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(btnAutomatica, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,9 +188,14 @@ public class VistaAsignacion extends JFrame implements ActionListener {
                     .addComponent(btnAutomatica, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(btnIndividual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
+
+       
     }                        
 
                                                
