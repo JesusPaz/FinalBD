@@ -90,7 +90,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
 		case "GUARDAR_RECLAMO":
 			try {
 				comentario=txtComentariosReclamo.getText();
-				String estado=btnRechazar.getText();
+				String estado=(String) txtEstadoSolicitud.getSelectedItem();
 				controladorAtencion.atenderReclamoODano(idFunc,idSolicitud,estado,comentario);
 				JOptionPane.showMessageDialog(null, "La solicitud se atendio exitosamente");
 			} catch (Exception e1) {
@@ -113,7 +113,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
     private JButton btnGuardarReclamo;
     private JButton btnGuardarRetiroProducto;
     private JButton btnGuardarSolNuevoProducto;
-    private JTextField btnRechazar;
+    private JComboBox<String> txtEstadoSolicitud;
     private JLabel jLabel1;
     private JLabel jLabel10;
     private JLabel jLabel2;
@@ -166,7 +166,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
         jLabel10 = new javax.swing.JLabel();
         txtComentariosReclamo = new javax.swing.JTextField();
         btnGuardarReclamo = new javax.swing.JButton();
-        btnRechazar = new javax.swing.JTextField();
+        txtEstadoSolicitud = new JComboBox<>();
         btnReturn= new JButton();
         
 
@@ -302,7 +302,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
         btnGuardarReclamo.setActionCommand("GUARDAR_RECLAMO");
         btnGuardarReclamo.addActionListener(this);
 
-        btnRechazar.setText("");
+        txtEstadoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Atendida", "Asignada", "Pendiente","Anulada" }));
 
        
 
@@ -321,7 +321,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtComentariosReclamo, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btnRechazar)
+                                .addComponent(txtEstadoSolicitud)
                                 .addGap(26, 26, 26)
                                 )))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -340,7 +340,7 @@ public class VistaAtencionOpciones extends JFrame implements ActionListener{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRechazar)
+                    .addComponent(txtEstadoSolicitud)
                     )
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
