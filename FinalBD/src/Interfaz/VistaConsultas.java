@@ -427,15 +427,15 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
 				break;
 			}
 					
-			matriz[i][5]=sActual.getCedulaFuncionaario()+"";
+			matriz[i][4]=sActual.getCedulaFuncionaario()+"";
 			
 			if(sActual.getFechaFin()!=null && sActual.getFechaIni()!=null) {
-			matriz[i][6]=sActual.getFechaIni()+"";
+			matriz[i][5]=sActual.getFechaIni()+"";
 		
-			matriz[i][7]=sActual.getFechaFin()+"";
+			matriz[i][6]=sActual.getFechaFin()+"";
 			}else {
+				matriz[i][5]="No definida";
 				matriz[i][6]="No definida";
-				matriz[i][7]="No definida";
 			}
 			
 			
@@ -649,8 +649,8 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
                 {null, null, null, null}
             },
             new String [] {
-            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía", "Tipo Producto","Producto"
-            }
+            		"Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio", 
+            		"Fecha Fin" }
         ));
         jScrollPane1.setViewportView(tablaSolXFunc);
 
@@ -729,8 +729,8 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
                 {null, null, null, null}
             },
             new String [] {
-            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía", "Tipo Producto","Producto"
-            }
+            		"Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio", 
+            		"Fecha Fin"}
         ));
         scrollPaneTablaXEstados.setViewportView(tablaSolXEstados);
 
@@ -785,9 +785,8 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
-            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía", "Tipo Producto","Producto"
-            }
+            new String [] {"Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio", 
+            		"Fecha Fin" }
         ));
         scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
 
