@@ -47,26 +47,33 @@ public class VistaAtencion extends JFrame implements ActionListener {
 		
 		switch (e.getActionCommand()) {
 		case "ATENDER":
-			try {
+			
 				
 				
 				idFuncionario=txtIdFuncionario.getText();
 				idSolicitud=Integer.parseInt(txtIdSolicitud.getText());
-				/**int validar=controladorAtencion.validarAtencion(idFuncionario, idSolicitud);
-				if(validar==1){
-				jPanel1.setVisible(false);
-				jPanel2.setVisible(true);
-				}
-				else{
-					JOptionPane.showMessageDialog(null, "La solicitud no puede ser atendida por este funcionario.");
-				}*/
-				jPanel1.setVisible(false);
-				jPanel2.setVisible(true);
-
-			} catch (NumberFormatException e2) {
-       			e2.printStackTrace();
+		/** String[] validar;
+		try {
+				validar = controladorAtencion.validarAtencion(idFuncionario, idSolicitud);
+				
+				if(validar[0].equals("1")){
+					jPanel1.setVisible(false);
+					jPanel2.setVisible(true);
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "La solicitud no puede ser atendida por este funcionario.");
+					}
+			} catch (Exception e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
 				JOptionPane.showMessageDialog(null, "El Id de la solicitud debe ser númerico.");
 			}
+				
+
+			
+       		*/	
+			jPanel1.setVisible(false);
+			jPanel2.setVisible(true);
 			break;
 
 		case "REGRESAR":

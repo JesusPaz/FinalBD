@@ -12,25 +12,26 @@ public class ControladorAtencion extends Controladora{
 	 * @return
 	 * @throws Exception
 	 */
-public int validarAtencion(String cedulaFunc, int idSolicitud) throws Exception {
+public String[] validarAtencion(String cedulaFunc, int idSolicitud) throws Exception {
 		
-		int salida = 0;
+		String salida[] = new String[2];
 		try {
 			this.Conectar();
 
 			CallableStatement query = this.conexion
-					.prepareCall("{call pkAtencionNivel3.pAtenderSolicitud (?,?,?)}");
+					.prepareCall("{call pkAtencionNivel3.pAtenderSolicitud (?,?,?,?)}");
 			
 			query.setString(1, cedulaFunc);
 			query.setInt(2, idSolicitud);
 			
 			query.registerOutParameter(3, java.sql.Types.NUMERIC);
-
+			query.registerOutParameter(4, java.sql.Types.VARCHAR);
+			
 			query.execute();
 
 		
-			salida = query.getInt(3);
-			
+			salida[0]= ""+query.getInt(3);
+			salida[1]=query.getString(4);
 			
 			this.TerminarConexion();
 			return salida;
