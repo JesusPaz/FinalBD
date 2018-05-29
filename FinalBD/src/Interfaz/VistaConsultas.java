@@ -92,7 +92,7 @@ public class VistaConsultas extends JFrame implements ActionListener{
 					ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
 					solicitudes= controladora.solicitudesAsignadasXFunc(txtCedFuncionario.getText());
 					
-					System.out.println("paso");
+//					System.out.println("paso");
 					if(solicitudes!=null)
 					tablaSolXFunc = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
 		            		"Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",

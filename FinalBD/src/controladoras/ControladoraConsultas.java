@@ -270,6 +270,7 @@ public class ControladoraConsultas extends Controladora {
 			ResultSet rs = stmt.executeQuery(
 					"SELECT * FROM productosxcliente WHERE cliente_cedulacliente='"+cedulaCliente+"'");
 					
+			if(rs!=null) {
 			while (rs.next()) {
 			
 			String id=rs.getString("producto_idproducto");
@@ -282,13 +283,17 @@ public class ControladoraConsultas extends Controladora {
 			
 			datos[0]=id;
 			datos[1]=estado;
-			datos[2]=fechai;
-			datos[3]=fechaf;
-				
+			if(fechai!=null)datos[2]=fechai;
+			else datos[2]="No definida";
+			if(fechaf!=null)datos[3]=fechaf;
+			else datos[3]="No definida";	
 			productos.add(datos);
 				
 
 				}
+		}else {
+				System.out.println("null, no hay tabla");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null,"Error. La tabla no existe en la base de datos.");
