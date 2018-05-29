@@ -3,8 +3,11 @@ package controladoras;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.*;
 import java.util.ArrayList;
-import java.util.Date;
+
+import java.util.Locale;
+import java.sql.*;
 
 import javax.swing.JOptionPane;
 
@@ -48,7 +51,23 @@ public class ControladoraConsultas extends Controladora {
 			return instance;
 		}
 		
-		
+		public Date convertirADate(String fecha) {
+			
+			Date date=null;
+			try {
+				if(fecha!=null && !fecha.equals("")) {
+				DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+				
+				java.util.Date daa= format.parse(fecha);
+				date = new Date(daa.getTime());
+				}
+			} catch (ParseException e) {
+				JOptionPane.showMessageDialog(null,"La fecha no está en el debido formato.");
+//				e.printStackTrace();
+			}
+			
+			return date;
+		}
 	
 		/**
 		 * Consulta solicitudes asignadas de un funcionario dado.
@@ -79,8 +98,8 @@ public class ControladoraConsultas extends Controladora {
 			int id=Integer.parseInt(rs.getString("idsolicitud"));
 			String estado=rs.getString("estado");
 			String obs= rs.getString("observacion");
-			String fechai= rs.getString("fechaini"); //cambiar a date
-			String fechaf= rs.getString("fechaini"); //cambiar a date - no quitarrr
+			Date fechai= convertirADate(rs.getString("fechaini")); 
+			Date fechaf= convertirADate(rs.getString("fechafin")); 
 			String cliente= rs.getString("cliente_cedulacliente");
 			int tipoSol= Integer.parseInt(rs.getString("tiposolicitud_idtiposolicitud"));
 			String cedFuncionario= rs.getString("funcionario_cedulafuncionario");
@@ -89,8 +108,11 @@ public class ControladoraConsultas extends Controladora {
 			int prod=Integer.parseInt(rs.getString("producto_idproducto"));
 				
 			Solicitud s= new Solicitud(id, estado, obs, cliente, tipoSol, cedFuncionario, tipoAnoma, tipoP, prod);
-				
-				
+	
+			if(fechai!=null && fechaf!=null) {
+			s.setFechaIni(fechai);
+			s.setFechaIni(fechaf);
+			}
 				
 				solicitudesAsignadas.add(s);
 				

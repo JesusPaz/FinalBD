@@ -92,10 +92,11 @@ public class VistaConsultas extends JFrame implements ActionListener{
 					ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
 					solicitudes= controladora.solicitudesAsignadasXFunc(txtCedFuncionario.getText());
 					
+					System.out.println("paso");
 					if(solicitudes!=null)
 					tablaSolXFunc = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
-		            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
-		            		"Tipo Producto","Producto"
+		            		"Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",
+		            		"Fecha Fin"
 		            });
 					
 					 jScrollPane1.setViewportView(tablaSolXFunc);
@@ -125,8 +126,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
 					
 					if(solicitudes!=null)
 					 tablaSolXEstados = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
-		            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
-		            		"Tipo Producto","Producto"
+							 "Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",
+			            		"Fecha Fin"
 		            });
 					
 					scrollPaneTablaXEstados.setViewportView(tablaSolXEstados);
@@ -152,8 +153,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
 					
 					if(solicitudes!=null)
 					 tablaSolXEstados = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
-		            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
-		            		"Tipo Producto","Producto"
+							 "Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",
+			            		"Fecha Fin"
 		            });
 					
 					scrollPaneTablaXEstados.setViewportView(tablaSolXEstados);
@@ -179,8 +180,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
 				
 				if(solicitudes!=null)
 				 tablaSolXEstados = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
-	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
-	            		"Tipo Producto","Producto"
+						 "Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",
+		            		"Fecha Fin"
 	            });
 				
 				scrollPaneTablaXEstados.setViewportView(tablaSolXEstados);
@@ -204,8 +205,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
 				
 				if(solicitudes!=null)
 				 tablaSolXEstados = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
-	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
-	            		"Tipo Producto","Producto"
+						 "Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",
+		            		"Fecha Fin"
 	            });
 				
 				scrollPaneTablaXEstados.setViewportView(tablaSolXEstados);
@@ -262,8 +263,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
 				
 				if(solicitudes!=null)
 				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
-	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
-	            		"Tipo Producto","Producto"
+						 "Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",
+		            		"Fecha Fin"
 	            });
 				
 				scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
@@ -285,12 +286,12 @@ public class VistaConsultas extends JFrame implements ActionListener{
 			btnDano.setSelected(false);
 			
 				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
-				solicitudes= controladora.solicitudesXtipo("005");
+				solicitudes= controladora.solicitudesXtipo("002");
 				
 				if(solicitudes!=null)
 				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
-	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
-	            		"Tipo Producto","Producto"
+						 "Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",
+		            		"Fecha Fin"
 	            });
 				
 				scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
@@ -316,8 +317,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
 				
 				if(solicitudes!=null)
 				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
-	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
-	            		"Tipo Producto","Producto"
+						 "Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",
+		            		"Fecha Fin"
 	            });
 				
 				scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
@@ -343,8 +344,8 @@ public class VistaConsultas extends JFrame implements ActionListener{
 				
 				if(solicitudes!=null)
 				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
-	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
-	            		"Tipo Producto","Producto"
+						 "Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",
+		            		"Fecha Fin"
 	            });
 				
 				scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
@@ -366,12 +367,12 @@ public class VistaConsultas extends JFrame implements ActionListener{
 			btnDano.setSelected(false);
 			
 				ArrayList<Solicitud> solicitudes=new ArrayList<Solicitud>();
-				solicitudes= controladora.solicitudesXtipo("002");
+				solicitudes= controladora.solicitudesXtipo("005");
 				
 				if(solicitudes!=null)
 				 tablaSolXTipo = new JTable(pasarAMAtrizSolicitudes(solicitudes),new String [] {
-	            		"Id","Estado","Obs","Cliente","Tipo","Funcionario", "Anomalía",
-	            		"Tipo Producto","Producto"
+						 "Id","Estado","Cliente","Tipo","Funcionario", "Fecha Inicio",
+		            		"Fecha Fin"
 	            });
 				
 				scrollPaneTablaXTipo.setViewportView(tablaSolXTipo);
@@ -405,13 +406,38 @@ public String[][] pasarAMAtrizSolicitudes(ArrayList<Solicitud> ma) {
 		
 			matriz[i][0]=sActual.getId()+"";
 			matriz[i][1]=sActual.getEstado()+"";
-			matriz[i][2]=sActual.getObservacion()+"";
-			matriz[i][3]=sActual.getCedulaCliente()+"";
-			matriz[i][4]=sActual.getTipoSolicitud()+"";
+			matriz[i][2]=sActual.getCedulaCliente()+"";
+			
+			
+			switch (sActual.getTipoSolicitud()) {
+			case 001:
+				matriz[i][3]="Creación";
+				break;
+			case 002:
+				matriz[i][3]="Retiro";
+				break;
+			case 003:
+				matriz[i][3]="Reclamo";
+				break;
+			case 004:
+				matriz[i][3]="Dano";
+				break;
+			case 005:
+				matriz[i][3]="Modificacion";
+				break;
+			}
+					
 			matriz[i][5]=sActual.getCedulaFuncionaario()+"";
-			matriz[i][6]=sActual.getTipoAnomalia()+"";
-			matriz[i][7]=sActual.getTipoProducto()+"";
-			matriz[i][8]=sActual.getProducto()+"";
+			
+			if(sActual.getFechaFin()!=null && sActual.getFechaIni()!=null) {
+			matriz[i][6]=sActual.getFechaIni()+"";
+		
+			matriz[i][7]=sActual.getFechaFin()+"";
+			}else {
+				matriz[i][6]="No definida";
+				matriz[i][7]="No definida";
+			}
+			
 			
 			
 			i++;
