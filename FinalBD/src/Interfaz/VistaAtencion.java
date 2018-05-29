@@ -48,7 +48,8 @@ public class VistaAtencion extends JFrame implements ActionListener {
 		switch (e.getActionCommand()) {
 		case "ATENDER":
 			
-				
+				if(!txtIdFuncionario.getText().equals("") && !txtIdSolicitud.getText().equals("") &&
+						txtIdFuncionario.getText()!=null && txtIdSolicitud.getText()!=null) {
 				
 				idFuncionario=txtIdFuncionario.getText();
 				idSolicitud=Integer.parseInt(txtIdSolicitud.getText());
@@ -74,6 +75,10 @@ public class VistaAtencion extends JFrame implements ActionListener {
        		*/	
 			jPanel1.setVisible(false);
 			jPanel2.setVisible(true);
+			
+				}else {
+					JOptionPane.showMessageDialog(null,"Datos incompletos. Llenar los campos porfavor.");
+				}
 			break;
 
 		case "REGRESAR":
