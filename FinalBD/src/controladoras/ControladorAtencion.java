@@ -99,8 +99,8 @@ public String atenderSolicitud(String cedulaFunc, int idSolicitud, String coment
 			
 			query.setString(1, cedulaFuncion);
 			query.setInt(2, idSolicitud);
-			query.setString(3, comentario);
-			query.setString(4, estado);
+			query.setString(3, estado);
+			query.setString(4, comentario);
 			
 			query.registerOutParameter(5, java.sql.Types.VARCHAR);
 
